@@ -339,11 +339,6 @@ patch_list = [
 	},
 	{
 		'patch_module': 'patches.may_2012',
-		'patch_file': 'cms',
-		'description': 'generate html pages'
-	},
-	{
-		'patch_module': 'patches.may_2012',
 		'patch_file': 'reload_reports',
 		'description': 'reload reports: itemwise sales/delivery details'
 	},
@@ -451,5 +446,79 @@ patch_list = [
 		'patch_module': 'patches.june_2012',
 		'patch_file': 'alter_tabsessions',
 		'description': "alter tabsessions to change user column definition"
+	},
+	{
+		'patch_module': 'patches.june_2012',
+		'patch_file': 'delete_old_parent_entries',
+		'description': "delete entries of child table having parent like old_par%% or ''"
+	},
+	{
+		'patch_module': 'patches.april_2012',
+		'patch_file': 'delete_about_contact',
+		'description': "delete depracated doctypes of website module"
+	},
+	{
+		'patch_module': 'patches.june_2012',
+		'patch_file': 'cache_item_table',
+		'description': "create cache item table again"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'reload_pr_po_mapper',
+		'description': "order date should be greater than equal to request date"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'address_contact_perms',
+		'description': "sync address contact perms"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'packing_list_cleanup_and_serial_no',
+		'description': "packing list cleanup and serial no status update"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'deprecate_import_data_control',
+		'description': "deprecate doctype - Import Data Control and page - Import Data"
+	},
+	{
+		'patch_module': 'patches.june_2012',
+		'patch_file': 'cms2',
+		'description': 'cms2 release patches'
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'remove_event_role_owner_match',
+		'description': "Remove Owner match from Event DocType's Permissions"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'sync_trial_balance',
+		'description': "sync trial balance"
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'blog_guest_permission',
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'bin_permission',
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'project_patch_repeat',
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'repost_stock_due_to_wrong_packing_list',
+	},
+	{
+		'patch_module': 'patches.july_2012',
+		'patch_file': 'supplier_quotation',
+	},
+	{
+		'patch_module': 'patches.august_2012',
+		'patch_file': 'report_supplier_quotations',
 	},
 ]

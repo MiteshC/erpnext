@@ -28,38 +28,18 @@ class DocType:
 		self.validate_domain_list()	
 
 	def on_update(self):
-		self.rewrite_pages()
-		
-		from webnotes.session_cache import clear_cache
-		clear_cache('Guest')
-		
-	def rewrite_pages(self):
-		"""rewrite all web pages"""
-		import webnotes
-		from webnotes.model.doclist import DocList
-		from webnotes.model.code import get_obj
-		
-		# rewrite all web pages
-		for name in webnotes.conn.sql("""select name, modified from `tabWeb Page` 
-			where docstatus=0"""):
-			DocList('Web Page', name[0]).save()
-			webnotes.conn.set_value('Web Page', name[0], 'modified', name[1])
-
-		# rewrite all blog pages
-		for name in webnotes.conn.sql("""select name, modified from `tabBlog` 
-			where docstatus=0 and ifnull(published,0)=1"""):
-			DocList('Blog', name[0]).save()
-			webnotes.conn.set_value('Blog', name[0], 'modified', name[1])
-		
+		# make js and css
 		from webnotes.cms.make import make_web_core
 		make_web_core()
 		
-		get_obj('Page', 'blog').write_cms_page(force=True)
-		get_obj('Page', 'Login Page').write_cms_page(force=True)
-		
-		webnotes.msgprint('Rebuilt all blogs and pages')
-		
-		
+		# clear web cache
+		import website.web_cache
+		#website.web_cache.refresh_cache(build=['Blog'])
+		website.web_cache.refresh_cache()
+
+		from webnotes.session_cache import clear_cache
+		clear_cache('Guest')
+
 	def set_home_page(self):
 
 		import webnotes
@@ -69,6 +49,8 @@ class DocType:
 		
 		d = Document('Default Home Page')
 		d.parent = 'Control Panel'
+		d.parenttype = 'Control Panel'
+		d.parentfield = 'default_home_pages'
 		d.role = 'Guest'
 		d.home_page = self.doc.home_page
 		d.save()

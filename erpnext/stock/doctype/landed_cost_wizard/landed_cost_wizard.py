@@ -43,7 +43,7 @@ class DocType:
 	def get_purchase_receipts(self):
 		"""	Get purchase receipts for given period """
 				
-		self.doc.clear_table(self.doclist,'lc_pr_details',1)
+		self.doclist = self.doc.clear_table(self.doclist,'lc_pr_details',1)
 		self.check_mandatory()
 		
 		pr = sql("select name from `tabPurchase Receipt` where docstatus = 1 and posting_date >= '%s' and posting_date <= '%s' and currency = '%s' order by name " % (self.doc.from_pr_date, self.doc.to_pr_date, self.doc.currency), as_dict = 1)
@@ -58,7 +58,7 @@ class DocType:
 
 	def get_landed_cost_master_details(self):
 		""" pull details from landed cost master"""
-		self.doc.clear_table(self.doclist, 'landed_cost_details')
+		self.doclist = self.doc.clear_table(self.doclist, 'landed_cost_details')
 		idx = 0
 		landed_cost = sql("select account_head, description from `tabLanded Cost Master Detail` where parent=%s", (self.doc.landed_cost), as_dict = 1)
 		for cost in landed_cost:
@@ -236,7 +236,7 @@ class DocType:
 	
 	def update_serial_no(self, sr_no, rate):
 		""" update valuation rate in serial no"""
-		sr_no = sr_no.split('\n')
+		sr_no = cstr(sr_no).split('\n')
 		for d in sr_no:
 			sql("update `tabSerial No` set purchase_rate = %s where name = %s", (rate, d))
 

@@ -252,8 +252,7 @@ wn.re_route={}
 wn.route=function(){if(wn.re_route[window.location.hash]){var re_route_val=wn.get_route_str(wn.re_route[window.location.hash]);var cur_route_val=wn.get_route_str(wn._cur_route);if(decodeURIComponent(re_route_val)===decodeURIComponent(cur_route_val)){window.history.back();return;}else{window.location.hash=wn.re_route[window.location.hash];}}
 wn._cur_route=window.location.hash;route=wn.get_route();switch(route[0]){case"List":wn.views.doclistview.show(route[1]);break;case"Form":if(route.length>3){route[2]=route.splice(2).join('/');}
 wn.views.formview.show(route[1],route[2]);break;case"Report":wn.views.reportview.show(route[1],route[2]);break;case"Report2":wn.views.reportview2.show();break;default:wn.views.pageview.show(route[0]);}}
-wn.get_route=function(route){if(!wn.boot){return[window.page_name];}
-return $.map(wn.get_route_str(route).split('/'),function(r){return decodeURIComponent(r);});}
+wn.get_route=function(route){return $.map(wn.get_route_str(route).split('/'),function(r){return decodeURIComponent(r);});}
 wn.get_route_str=function(route){if(!route)
 route=window.location.hash;if(route.substr(0,1)=='#')route=route.substr(1);if(route.substr(0,1)=='!')route=route.substr(1);return route;}
 wn.set_route=function(){route=$.map(arguments,function(a){return encodeURIComponent(a)}).join('/');window.location.hash=route;wn.app.set_favicon();}
@@ -310,13 +309,13 @@ if(me.show_filters){this.add_button('Show Filters',function(){me.filter_list.sho
 if(me.no_toolbar||me.hide_toolbar){me.$w.find('.list-toolbar-wrapper').toggle(false);}},make_new_doc:function(new_doctype){new_doc(new_doctype);},make_filters:function(){this.filter_list=new wn.ui.FilterList({listobj:this,$parent:this.$w.find('.list-filters').toggle(true),doctype:this.doctype,filter_fields:this.filter_fields});},clear:function(){this.data=[];this.$w.find('.result-list').empty();this.$w.find('.result').toggle(true);this.$w.find('.no-result').toggle(false);this.start=0;},run:function(){var me=this;var a0=arguments[0];var a1=arguments[1];if(a0&&typeof a0=='function')
 this.onrun=a0;if(a0&&a0.callback)
 this.onrun=a0.callback;if(!a1&&!(a0&&a0.append))
-this.start=0;me.set_working(true);wn.call({method:this.opts.method||'webnotes.widgets.query_builder.runquery',args:this.get_call_args(a0),callback:function(r){me.set_working(false);me.render_results(r)},no_spinner:this.opts.no_loading});},set_working:function(flag){this.$w.find('.img-load').toggle(flag);},get_call_args:function(opts){if(!this.method){this.query=this.get_query?this.get_query():this.query;this.add_limits();var args={query_max:this.query_max,as_dict:1}
-args.simple_query=this.query;}else{var args={limit_start:this.start,limit_page_length:this.page_length}}
+this.start=0;me.set_working(true);wn.call({method:this.opts.method||'webnotes.widgets.query_builder.runquery',args:this.get_call_args(a0),callback:function(r){me.set_working(false);me.render_results(r)},no_spinner:this.opts.no_loading});},set_working:function(flag){this.$w.find('.img-load').toggle(flag);},get_call_args:function(opts){if(!this.method){var query=this.get_query?this.get_query():this.query;query=this.add_limits(query);var args={query_max:this.query_max,as_dict:1}
+args.simple_query=query;}else{var args={limit_start:this.start,limit_page_length:this.page_length}}
 if(this.args)
 $.extend(args,this.args)
 if(this.get_args){$.extend(args,this.get_args(opts));}
 return args;},render_results:function(r){if(this.start==0)this.clear();this.$w.find('.btn-more').toggle(false);if(r.message)r.values=r.message;if(r.values&&r.values.length){this.data=this.data.concat(r.values);this.render_list(r.values);this.update_paging(r.values);}else{if(this.start==0){this.$w.find('.result').toggle(false);this.$w.find('.no-result').toggle(true);}}
-if(this.onrun)this.onrun();if(this.callback)this.callback(r);},render_list:function(values){var m=Math.min(values.length,this.page_length);for(var i=0;i<m;i++){this.render_row(this.add_row(),values[i],this,i);}},update_paging:function(values){if(values.length>=this.page_length){this.$w.find('.btn-more').toggle(true);this.start+=this.page_length;}},add_row:function(){return $('<div class="list-row">').appendTo(this.$w.find('.result-list')).get(0);},refresh:function(){this.run();},add_limits:function(){this.query+=' LIMIT '+this.start+','+(this.page_length+1);}});
+if(this.onrun)this.onrun();if(this.callback)this.callback(r);},render_list:function(values){var m=Math.min(values.length,this.page_length);for(var i=0;i<m;i++){this.render_row(this.add_row(),values[i],this,i);}},update_paging:function(values){if(values.length>=this.page_length){this.$w.find('.btn-more').toggle(true);this.start+=this.page_length;}},add_row:function(){return $('<div class="list-row">').appendTo(this.$w.find('.result-list')).get(0);},refresh:function(){this.run();},add_limits:function(query){query+=' LIMIT '+this.start+','+(this.page_length+1);return query}});
 /*
  *	lib/js/wn/ui/filters.js
  */
@@ -353,7 +352,7 @@ return[me.fieldselect.$select.find('option:selected').attr('table'),me.field.df.
 this.add_field_option(this.filter_fields[i])}else{this.build_options();}},build_options:function(){var me=this;me.table_fields=[];var std_filters=[{fieldname:'name',fieldtype:'Data',label:'ID',parent:me.doctype},{fieldname:'modified',fieldtype:'Date',label:'Last Modified',parent:me.doctype},{fieldname:'owner',fieldtype:'Data',label:'Created By',parent:me.doctype},{fieldname:'creation',fieldtype:'Date',label:'Created On',parent:me.doctype},{fieldname:'_user_tags',fieldtype:'Data',label:'Tags',parent:me.doctype},{fieldname:'docstatus',fieldtype:'Int',label:'Doc Status',parent:me.doctype},];var doctype_obj=locals['DocType'][me.doctype];if(doctype_obj&&cint(doctype_obj.istable)){std_filters=std_filters.concat([{fieldname:'parent',fieldtype:'Data',label:'Parent',parent:me.doctype}]);}
 if(this.with_blank){this.$select.append($('<option>',{value:''}).text(''));}
 $.each(std_filters.concat(wn.meta.docfield_list[me.doctype]),function(i,df){me.add_field_option(df);});$.each(me.table_fields,function(i,table_df){if(table_df.options){$.each(wn.meta.docfield_list[table_df.options],function(i,df){me.add_field_option(df);});}});},add_field_option:function(df){var me=this;if(me.doctype&&df.parent==me.doctype){var label=df.label;var table=me.doctype;if(df.fieldtype=='Table')me.table_fields.push(df);}else{var label=df.label+' ('+df.parent+')';var table=df.parent;}
-if(wn.model.no_value_type.indexOf(df.fieldtype)==-1&&!me.fields_by_name[df.fieldname]){this.$select.append($('<option>',{value:df.fieldname,table:table}).text(label));me.fields_by_name[df.fieldname]=df;}}})
+if(wn.model.no_value_type.indexOf(df.fieldtype)==-1&&!(me.fields_by_name[df.fieldname]&&me.fields_by_name[df.fieldname]['parent']==df.parent)){this.$select.append($('<option>',{value:df.fieldname,table:table}).text(label));me.fields_by_name[df.fieldname]=df;}}})
 /*
  *	lib/js/wn/views/container.js
  */
@@ -390,13 +389,13 @@ wn.views.make_404=function(){var page=wn.container.add_page('404');$(page).html(
 /*
  *	lib/js/wn/request.js
  */
-wn.provide('wn.request');wn.request.url='index.cgi';wn.request.prepare=function(opts){if(opts.btn)$(opts.btn).set_working();if(opts.show_spinner)set_loading();if(opts.freeze)freeze();if(!opts.args.cmd){console.log(opts)
+wn.provide('wn.request');wn.request.url='server.py';wn.request.prepare=function(opts){if(opts.btn)$(opts.btn).set_working();if(opts.show_spinner)set_loading();if(opts.freeze)freeze();if(!opts.args.cmd){console.log(opts)
 throw"Incomplete Request";}}
 wn.request.cleanup=function(opts,r){if(opts.btn)$(opts.btn).done_working();if(opts.show_spinner)hide_loading();if(opts.freeze)unfreeze();if(wn.boot&&wn.boot.sid&&wn.get_cookie('sid')!=wn.boot.sid){if(!wn.app.logged_out){msgprint('Session Expired. Logging you out');wn.app.logout();}
 return;}
 if(r.server_messages)msgprint(r.server_messages)
 if(r.exc){console.log(r.exc);};if(r['403']){wn.container.change_to('403');}
-if(r.docs)LocalDB.sync(r.docs);}
+if(r.docs){LocalDB.sync(r.docs);}}
 wn.request.call=function(opts){wn.request.prepare(opts);$.ajax({url:opts.url||wn.request.url,data:opts.args,type:opts.type||'POST',dataType:opts.dataType||'json',success:function(r,xhr){wn.request.cleanup(opts,r);opts.success(r,xhr.responseText);},error:function(xhr,textStatus){wn.request.cleanup(opts,{});show_alert('Unable to complete request: '+textStatus)
 if(opts.error)opts.error(xhr)}})}
 wn.call=function(opts){var args=$.extend({},opts.args)
@@ -479,7 +478,7 @@ if(d.search('-')!=-1){var t=d.split('-');return new Date(t[0],t[1]-1,t[2],tm[0],
 new_dt=new Date(dt.getFullYear(),dt.getMonth()+months,dt.getDate())
 if(new_dt.getDate()!=dt.getDate()){return dateutil.month_end(new Date(dt.getFullYear(),dt.getMonth()+months,1))}
 return dateutil.obj_to_str(new_dt);},month_start:function(){var d=new Date();return d.getFullYear()+'-'+int_to_str(d.getMonth()+1,2)+'-01';},month_end:function(d){if(!d)var d=new Date();var m=d.getMonth()+1;var y=d.getFullYear();last_date=month_last[m];if(m==2&&(y%4)==0&&((y%100)!=0||(y%400)==0))
-last_date=29;return y+'-'+int_to_str(m,2)+'-'+last_date;},get_user_fmt:function(){var t=wn.control_panel.date_format;if(!t)t='dd-mm-yyyy';return t;},str_to_user:function(val,no_time_str){var user_fmt=dateutil.get_user_fmt();var time_str='';if(val==null||val=='')return null;if(val.search(':')!=-1){var tmp=val.split(' ');if(tmp[1])
+last_date=29;return y+'-'+int_to_str(m,2)+'-'+last_date;},get_user_fmt:function(){var t=sys_defaults.date_format;if(!t)t='dd-mm-yyyy';return t;},str_to_user:function(val,no_time_str){var user_fmt=dateutil.get_user_fmt();var time_str='';if(val==null||val=='')return null;if(val.search(':')!=-1){var tmp=val.split(' ');if(tmp[1])
 time_str=' '+tmp[1];var d=tmp[0];}else{var d=val;}
 if(no_time_str)time_str='';d=d.split('-');if(d.length==3){if(user_fmt=='dd-mm-yyyy')
 val=d[2]+'-'+d[1]+'-'+d[0]+time_str;else if(user_fmt=='dd/mm/yyyy')
@@ -720,7 +719,7 @@ ReadOnlyField.prototype=new Field();function HTMLField(){}
 HTMLField.prototype=new Field();HTMLField.prototype.with_label=0;HTMLField.prototype.set_disp=function(val){this.disp_area.innerHTML=val;}
 HTMLField.prototype.set_input=function(val){if(val)this.set_disp(val);}
 HTMLField.prototype.onrefresh=function(){this.set_disp(this.df.options?this.df.options:'');}
-var datepicker_active=0;function DateField(){}DateField.prototype=new Field();DateField.prototype.make_input=function(){var me=this;this.user_fmt=wn.control_panel.date_format;if(!this.user_fmt)this.user_fmt='dd-mm-yy';this.input=$a(this.input_area,'input');$(this.input).datepicker({dateFormat:me.user_fmt.replace('yyyy','yy'),altFormat:'yy-mm-dd',changeYear:true,beforeShow:function(input,inst){datepicker_active=1},onClose:function(dateText,inst){datepicker_active=0;if(_f.cur_grid_cell)
+var datepicker_active=0;function DateField(){}DateField.prototype=new Field();DateField.prototype.make_input=function(){var me=this;this.user_fmt=sys_defaults.date_format;if(!this.user_fmt)this.user_fmt='dd-mm-yy';this.input=$a(this.input_area,'input');$(this.input).datepicker({dateFormat:me.user_fmt.replace('yyyy','yy'),altFormat:'yy-mm-dd',changeYear:true,beforeShow:function(input,inst){datepicker_active=1},onClose:function(dateText,inst){datepicker_active=0;if(_f.cur_grid_cell)
 _f.cur_grid_cell.grid.cell_deselect();}});var me=this;me.input.onchange=function(){if(this.value==null)this.value='';if(!this.not_in_form)
 me.set(dateutil.user_to_str(me.input.value));me.run_trigger();}
 me.input.set_input=function(val){if(val==null)val='';else val=dateutil.str_to_user(val);me.input.value=val;}
@@ -735,19 +734,20 @@ return v;};function LinkField(){}LinkField.prototype=new Field();LinkField.proto
 $(me.btn2).css('display','inline-block');else $dh(me.btn2);}}
 me.txt.field_object=this;me.input.set_input=function(val){if(val==undefined)val='';me.txt.value=val;}
 me.get_value=function(){return me.txt.value;}
-$(me.txt).autocomplete({source:function(request,response){wn.call({method:'webnotes.widgets.search.search_link',args:{'txt':request.term,'dt':me.df.options,'query':me.get_custom_query()},callback:function(r){response(r.results);},});},select:function(event,ui){me.set_input_value(ui.item.value);}}).data('autocomplete')._renderItem=function(ul,item){return $('<li></li>').data('item.autocomplete',item).append(repl('<a>%(label)s<br><span style="font-size:10px">%(info)s</span></a>',item)).appendTo(ul);};$(this.txt).change(function(){if(!$(this).val()){if(selector&&selector.display)
-return;me.set_input_value('');}})}
+$(me.txt).autocomplete({source:function(request,response){wn.call({method:'webnotes.widgets.search.search_link',args:{'txt':request.term,'dt':me.df.options,'query':me.get_custom_query()},callback:function(r){response(r.results);},});},select:function(event,ui){me.set_input_value(ui.item.value);}}).data('autocomplete')._renderItem=function(ul,item){return $('<li></li>').data('item.autocomplete',item).append(repl('<a>%(label)s<br><span style="font-size:10px">%(info)s</span></a>',item)).appendTo(ul);};$(this.txt).change(function(){var val=$(this).val();me.set_input_value_executed=false;if(!val){if(selector&&selector.display)
+return;me.set_input_value('');}else{setTimeout(function(){if(!me.set_input_value_executed){me.set_input_value(val);}},1000);}})}
 LinkField.prototype.get_custom_query=function(){this.set_get_query();if(this.get_query){if(cur_frm)
 var doc=locals[cur_frm.doctype][cur_frm.docname];return this.get_query(doc,this.doctype,this.docname);}}
 LinkField.prototype.setup_buttons=function(){var me=this;me.btn.onclick=function(){selector.set(me,me.df.options,me.df.label);selector.show(me.txt);}
 if(me.btn1)me.btn1.onclick=function(){if(me.txt.value&&me.df.options){loaddoc(me.df.options,me.txt.value);}}
 me.can_create=0;if((!me.not_in_form)&&in_list(profile.can_create,me.df.options)){me.can_create=1;me.btn2.onclick=function(){var on_save_callback=function(new_rec){if(new_rec){var d=_f.calling_doc_stack.pop();locals[d[0]][d[1]][me.df.fieldname]=new_rec;me.refresh();if(me.grid)me.grid.refresh();me.run_trigger();}}
 _f.calling_doc_stack.push([me.doctype,me.docname]);new_doc(me.df.options,me.on_new,1,on_save_callback,me.doctype,me.docname,me.frm.not_in_container);}}else{$dh(me.btn2);$y($td(me.tab,0,2),{width:'0px'});}}
-LinkField.prototype.set_input_value=function(val){var me=this;var from_selector=false;if(selector&&selector.display)from_selector=true;me.refresh_label_icon();if(me.not_in_form){$(this.txt).val(val);return;}
+LinkField.prototype.set_input_value=function(val){var me=this;me.set_input_value_executed=true;var from_selector=false;if(selector&&selector.display)from_selector=true;me.refresh_label_icon();if(me.not_in_form){$(this.txt).val(val);return;}
 if(cur_frm){if(val==locals[me.doctype][me.docname][me.df.fieldname]){me.run_trigger();return;}}
 me.set(val);if(_f.cur_grid_cell)
 _f.cur_grid_cell.grid.cell_deselect();if(locals[me.doctype][me.docname][me.df.fieldname]&&!val){me.run_trigger();return;}
-var fetch='';if(cur_frm.fetch_dict[me.df.fieldname])
+if(val){me.validate_link(val,from_selector);}}
+LinkField.prototype.validate_link=function(val,from_selector){var me=this;var fetch='';if(cur_frm.fetch_dict[me.df.fieldname])
 fetch=cur_frm.fetch_dict[me.df.fieldname].columns.join(', ');$c('webnotes.widgets.form.utils.validate_link',{'value':val,'options':me.df.options,'fetch':fetch},function(r,rt){if(r.message=='Ok'){if($(me.txt).val()!=val){if((me.grid&&!from_selector)||(!me.grid)){$(me.txt).val(val);}}
 if(r.fetch_values)
 me.set_fetch_values(r.fetch_values);me.run_trigger();}else{var astr='';if(in_list(profile.can_create,me.df.options))astr=repl('<br><br><span class="link_type" onclick="newdoc(\'%(dt)s\')">Click here</span> to create a new %(dtl)s',{dt:me.df.options,dtl:get_doctype_label(me.df.options)})
@@ -870,7 +870,8 @@ opts.parent.appframe=new wn.ui.AppFrame($(opts.parent).find('.layout-appframe'))
  *	lib/js/wn/ui/dialog.js
  */
 wn.widgets.FieldGroup=function(){this.first_button=false;this.make_fields=function(body,fl){if(!window.make_field){wn.require('css/fields.css');wn.require('js/fields.js');}
-$y(this.body,{padding:'11px'});this.fields_dict={};for(var i=0;i<fl.length;i++){var df=fl[i];var div=$a(body,'div','',{margin:'6px 0px'})
+$y(this.body,{padding:'11px'});this.fields_dict={};for(var i=0;i<fl.length;i++){var df=fl[i];if(!df.fieldname&&df.label){df.fieldname=df.label.replace(/ /g,'_').toLowerCase();}
+var div=$a(body,'div','',{margin:'6px 0px'})
 f=make_field(df,null,div,null);f.not_in_form=1;this.fields_dict[df.fieldname]=f
 f.refresh();if(df.fieldtype=='Button'&&!this.first_button){$(f.input).addClass('btn-info');this.first_button=true;}}}
 this.get_values=function(){var ret={};var errors=[];for(var key in this.fields_dict){var f=this.fields_dict[key];var v=f.get_value?f.get_value():null;if(f.df.reqd&&!v)
@@ -967,13 +968,13 @@ wn.views.DocListView=wn.ui.Listing.extend({init:function(doctype){this.doctype=d
    <div style="clear: both"></div>\
   </div>');this.appframe=new wn.ui.AppFrame(this.$page.find('.appframe-area'));wn.views.breadcrumbs($('<span class="breadcrumb-area">').appendTo(this.appframe.$titlebar),locals.DocType[this.doctype].module,this.doctype);},setup:function(){var me=this;me.can_delete=wn.model.can_delete(me.doctype);me.meta=locals.DocType[me.doctype];me.$page.find('.wnlist-area').empty(),me.setup_docstatus_filter();me.setup_listview();me.init_list();me.init_stats();me.make_report_button();me.add_delete_option();},make_report_button:function(){var me=this;if(wn.boot.profile.can_get_report.indexOf(this.doctype)!=-1){this.appframe.add_button('Build Report',function(){wn.set_route('Report2',me.doctype);},'icon-th')}},setup_docstatus_filter:function(){var me=this;this.can_submit=$.map(locals.DocPerm,function(d){if(d.parent==me.meta.name&&d.submit)return 1
 else return null;}).length;if(this.can_submit){this.$page.find('.show-docstatus').removeClass('hide');this.$page.find('.show-docstatus input').click(function(){me.run();})}},setup_listview:function(){if(this.meta.__listjs){eval(this.meta.__listjs);this.listview=new wn.doclistviews[this.doctype](this);}else{this.listview=new wn.views.ListView(this);}
-this.listview.parent=this;this.wrapper=this.$page.find('.wnlist-area');this.page_length=20;this.allow_delete=true;},init_list:function(auto_run){this.make({method:'webnotes.widgets.doclistview.get',get_args:this.get_args,parent:this.wrapper,start:0,page_length:this.page_length,show_filters:true,show_grid:true,new_doctype:this.doctype,allow_delete:this.allow_delete,no_result_message:this.make_no_result(),columns:this.listview.fields});if((auto_run!==false)&&(auto_run!==0))this.run();},make_no_result:function(){return repl('<div class="well"><p>No %(doctype_label)s found</p>\
+this.listview.parent=this;this.wrapper=this.$page.find('.wnlist-area');this.page_length=20;this.allow_delete=true;},init_list:function(auto_run){var me=this;this.make({method:'webnotes.widgets.doclistview.get',get_args:this.get_args,parent:this.wrapper,start:0,page_length:this.page_length,show_filters:true,show_grid:true,new_doctype:this.doctype,allow_delete:this.allow_delete,no_result_message:this.make_no_result(),columns:this.listview.fields});$(this.wrapper).find('button[list_view_doc="'+me.doctype+'"]').click(function(){me.make_new_doc(me.doctype);});if((auto_run!==false)&&(auto_run!==0))this.run();},make_no_result:function(){var no_result_message=repl('<div class="well">\
+  <p>No %(doctype_label)s found</p>\
   %(description)s\
   <hr>\
-  <p><button class="btn btn-info btn-small"\
-    onclick="newdoc(\'%(doctype)s\');"\
-    >Make a new %(doctype_label)s</button>\
-  </p></div>',{doctype_label:get_doctype_label(this.doctype),doctype:this.doctype,description:wn.markdown(locals.DocType[this.doctype].description||'')});},render_row:function(row,data){data.doctype=this.doctype;this.listview.render(row,data,this);},get_query_fields:function(){return this.listview.fields;},get_args:function(){return{doctype:this.doctype,fields:this.get_query_fields(),filters:this.filter_list.get_filters(),docstatus:this.can_submit?$.map(this.$page.find('.show-docstatus :checked'),function(inp){return $(inp).attr('data-docstatus')}):[],order_by:this.listview.order_by||undefined,}},add_delete_option:function(){var me=this;if(this.can_delete){this.add_button('Delete',function(){me.delete_items();},'icon-remove')}},delete_items:function(){var me=this;var dl=$.map(me.$page.find('.list-delete:checked'),function(e){return $(e).data('name');});if(!dl.length)
+  <p><button class="btn btn-info btn-small" list_view_doc="%(doctype)s">\
+   Make a new %(doctype_label)s</button>\
+  </p></div>',{doctype_label:get_doctype_label(this.doctype),doctype:this.doctype,description:wn.markdown(locals.DocType[this.doctype].description||''),});return no_result_message;},render_row:function(row,data){data.doctype=this.doctype;this.listview.render(row,data,this);},get_query_fields:function(){return this.listview.fields;},get_args:function(){return{doctype:this.doctype,fields:this.get_query_fields(),filters:this.filter_list.get_filters(),docstatus:this.can_submit?$.map(this.$page.find('.show-docstatus :checked'),function(inp){return $(inp).attr('data-docstatus')}):[],order_by:this.listview.order_by||undefined,group_by:this.listview.group_by||undefined,}},add_delete_option:function(){var me=this;if(this.can_delete){this.add_button('Delete',function(){me.delete_items();},'icon-remove')}},delete_items:function(){var me=this;var dl=$.map(me.$page.find('.list-delete:checked'),function(e){return $(e).data('name');});if(!dl.length)
 return;if(!confirm('This is PERMANENT action and you cannot undo. Continue?')){return;}
 me.set_working(true);wn.call({method:'webnotes.widgets.doclistview.delete_items',args:{items:dl,doctype:me.doctype},callback:function(){me.set_working(false);me.refresh();}})},init_stats:function(){var me=this
 wn.call({method:'webnotes.widgets.doclistview.get_stats',args:{stats:me.listview.stats,doctype:me.doctype},callback:function(r){$.each(me.listview.stats,function(i,v){me.render_stat(v,r.message[v]);});if(me.listview.stats.length){$('<button class="btn btn-small"><i class="refresh"></i> Refresh</button>').click(function(){me.reload_stats();}).appendTo($('<div class="stat-wrapper">').appendTo(me.$page.find('.layout-side-section')))}}});},render_stat:function(field,stat){var me=this;if(!stat||!stat.length){if(field=='_user_tags'){this.$page.find('.layout-side-section').append('<div class="stat-wrapper"><h4>Tags</h4>\
@@ -996,7 +997,7 @@ args.label=v[0];args.width=flt(v[1])/max*100;args.count=v[1];args.field=field;$i
   </div>',args));this.setup_stat_item_click($item);return $item;},reload_stats:function(){this.$page.find('.layout-side-section .stat-wrapper').remove();this.init_stats();},setup_stat_item_click:function($item){var me=this;$item.find('a').click(function(){var fieldname=$(this).attr('data-field');var label=$(this).attr('data-label');me.set_filter(fieldname,label);return false;});},set_filter:function(fieldname,label){var filter=this.filter_list.get_filter(fieldname);if(filter){var v=filter.field.get_value();if(v.indexOf(label)!=-1){return false;}else{if(fieldname=='_user_tags'){this.filter_list.add_filter(fieldname,'like','%'+label);}else{filter.set_values(fieldname,'in',v+', '+label);}}}else{if(fieldname=='_user_tags'){this.filter_list.add_filter(fieldname,'like','%'+label);}else{this.filter_list.add_filter(fieldname,'=',label);}}
 this.run();}});wn.views.ListView=Class.extend({init:function(doclistview){this.doclistview=doclistview;this.doctype=doclistview.doctype;var t="`tab"+this.doctype+"`.";this.fields=[t+'name',t+'owner',t+'docstatus',t+'_user_tags',t+'modified'];this.stats=['_user_tags'];this.show_hide_check_column();},columns:[{width:'3%',content:'check'},{width:'4%',content:'avatar'},{width:'3%',content:'docstatus',css:{"text-align":"center"}},{width:'35%',content:'name'},{width:'40%',content:'tags',css:{'color':'#aaa'}},{width:'15%',content:'modified',css:{'text-align':'right','color':'#222'}}],render_column:function(data,parent,opts){var me=this;if(opts.css){$.each(opts.css,function(k,v){$(parent).css(k,v)});}
 if(opts.content.indexOf&&opts.content.indexOf('+')!=-1){$.map(opts.content.split('+'),function(v){me.render_column(data,parent,{content:v});});return;}
-if(typeof opts.content=='function'){opts.content(parent,data);}
+if(typeof opts.content=='function'){opts.content(parent,data,me);}
 else if(opts.content=='name'){$(parent).append(repl('<a href="#!Form/%(doctype)s/%(name)s">%(name)s</a>',data));}
 else if(opts.content=='avatar'){$(parent).append(repl('<span class="avatar-small"><img src="%(avatar)s" \
     title="%(fullname)s"/></span>',data));}
@@ -1005,22 +1006,21 @@ else if(opts.content=='docstatus'){$(parent).append(repl('<span class="docstatus
     title="%(docstatus_title)s"></i></span>',data));}
 else if(opts.content=='tags'){this.add_user_tags(parent,data);}
 else if(opts.content=='modified'){$(parent).append(data.when);}
-else if(opts.type=='bar-graph'){args={percent:data[opts.content],fully_delivered:(data[opts.content]>99?'bar-complete':''),label:opts.label}
-$(parent).append(repl('<span class="bar-outer" style="width: 30px; float: right" \
-    title="%(percent)s% %(label)s">\
-    <span class="bar-inner %(fully_delivered)s" \
-     style="width: %(percent)s%;"></span>\
-   </span>',args));}
+else if(opts.type=='bar-graph'){this.render_bar_graph(parent,data,opts.content,opts.label);}
 else if(opts.type=='link'&&opts.doctype){$(parent).append(repl('<a href="#!Form/'+opts.doctype+'/'
 +data[opts.content]+'">'+data[opts.content]+'</a>',data));}
 else if(opts.template){$(parent).append(repl(opts.template,data));}
-else if(data[opts.content]){$(parent).append(' '+data[opts.content]);}},render:function(row,data){var me=this;this.prepare_data(data);rowhtml='';$.each(this.columns,function(i,v){rowhtml+=repl('<td style="width: %(width)s"></td>',v);});var tr=$(row).html('<table><tbody><tr>'+rowhtml+'</tr></tbody></table>').find('tr').get(0);$.each(this.columns,function(i,v){me.render_column(data,tr.cells[i],v);});},prepare_data:function(data){data.fullname=wn.user_info(data.owner).fullname;data.avatar=wn.user_info(data.owner).image;data.when=dateutil.str_to_user(data.modified).split(' ')[0];var diff=dateutil.get_diff(dateutil.get_today(),data.modified.split(' ')[0]);if(diff==0){data.when=dateutil.comment_when(data.modified);}
+else if(data[opts.content]){$(parent).append(' '+data[opts.content]);}},render:function(row,data){var me=this;this.prepare_data(data);rowhtml='';$.each(this.columns,function(i,v){rowhtml+=repl('<td style="width: %(width)s"></td>',v);});var tr=$(row).html('<table><tbody><tr>'+rowhtml+'</tr></tbody></table>').find('tr').get(0);$.each(this.columns,function(i,v){me.render_column(data,tr.cells[i],v);});},prepare_data:function(data){data.fullname=wn.user_info(data.owner).fullname;data.avatar=wn.user_info(data.owner).image;this.prepare_when(data,data.modified);if(data.docstatus==0||data.docstatus==null){data.docstatus_icon='icon-pencil';data.docstatus_title='Editable';}else if(data.docstatus==1){data.docstatus_icon='icon-lock';data.docstatus_title='Submitted';}else if(data.docstatus==2){data.docstatus_icon='icon-remove';data.docstatus_title='Cancelled';}
+for(key in data){if(data[key]==null){data[key]='';}}},prepare_when:function(data,date_str){if(!date_str)date_str=data.modified;data.when=dateutil.str_to_user(date_str).split(' ')[0];var diff=dateutil.get_diff(dateutil.get_today(),date_str.split(' ')[0]);if(diff==0){data.when=dateutil.comment_when(date_str);}
 if(diff==1){data.when='Yesterday'}
-if(diff==2){data.when='2 days ago'}
-if(data.docstatus==0||data.docstatus==null){data.docstatus_icon='icon-pencil';data.docstatus_title='Editable';}else if(data.docstatus==1){data.docstatus_icon='icon-lock';data.docstatus_title='Submitted';}else if(data.docstatus==2){data.docstatus_icon='icon-remove';data.docstatus_title='Cancelled';}
-for(key in data){if(data[key]==null){data[key]='';}}},add_user_tags:function(parent,data){var me=this;if(data._user_tags){if($(parent).html().length>0){$(parent).append('<br />');}
+if(diff==2){data.when='2 days ago'}},add_user_tags:function(parent,data){var me=this;if(data._user_tags){if($(parent).html().length>0){$(parent).append('<br />');}
 $.each(data._user_tags.split(','),function(i,t){if(t){$('<span class="label label-info" style="cursor: pointer; line-height: 200%">'
-+strip(t)+'</span>').click(function(){me.doclistview.set_filter('_user_tags',$(this).text())}).appendTo(parent);}});}},show_hide_check_column:function(){if(!this.doclistview.can_delete){this.columns=$.map(this.columns,function(v,i){if(v.content!='check')return v});}}});wn.provide('wn.views.RecordListView');wn.views.RecordListView=wn.views.DocListView.extend({init:function(doctype,wrapper,ListView){this.doctype=doctype;this.wrapper=wrapper;this.listview=new ListView(this);this.listview.parent=this;this.setup();},setup:function(){var me=this;me.page_length=10;$(me.wrapper).empty();me.init_list();},get_args:function(){var args=this._super();$.each((this.default_filters||[]),function(i,f){args.filters.push(f);});args.docstatus=args.docstatus.concat((this.default_docstatus||[]));return args;},});
++strip(t)+'</span>').click(function(){me.doclistview.set_filter('_user_tags',$(this).text())}).appendTo(parent);}});}},show_hide_check_column:function(){if(!this.doclistview.can_delete){this.columns=$.map(this.columns,function(v,i){if(v.content!='check')return v});}},render_bar_graph:function(parent,data,field,label){var args={percent:data[field],fully_delivered:(data[field]>99?'bar-complete':''),label:label}
+$(parent).append(repl('<span class="bar-outer" style="width: 30px; float: right" \
+   title="%(percent)s% %(label)s">\
+   <span class="bar-inner %(fully_delivered)s" \
+    style="width: %(percent)s%;"></span>\
+  </span>',args));},render_icon:function(parent,icon_class,label){var icon_html="<i class='%(icon_class)s' title='%(label)s'></i>";$(parent).append(repl(icon_html,{icon_class:icon_class,label:label||''}));}});wn.provide('wn.views.RecordListView');wn.views.RecordListView=wn.views.DocListView.extend({init:function(doctype,wrapper,ListView){this.doctype=doctype;this.wrapper=wrapper;this.listview=new ListView(this);this.listview.parent=this;this.setup();},setup:function(){var me=this;me.page_length=10;$(me.wrapper).empty();me.init_list();},get_args:function(){var args=this._super();$.each((this.default_filters||[]),function(i,f){args.filters.push(f);});args.docstatus=args.docstatus.concat((this.default_docstatus||[]));return args;},});
 /*
  *	lib/js/wn/views/formview.js
  */
@@ -1032,7 +1032,7 @@ wn.container.change_to('Form - '+dt);wn.views.formview[dt].frm.refresh(dn);});})
  *	lib/js/wn/views/reportview.js
  */
 wn.views.reportview={show:function(dt,rep_name){wn.require('js/report-legacy.js');dt=get_label_doctype(dt);if(!_r.rb_con){_r.rb_con=new _r.ReportContainer();}
-_r.rb_con.set_dt(dt,function(rb){if(rep_name){var t=rb.current_loaded;var route_changed=(rb.current_route!=wn.get_route_str())
+_r.rb_con.set_dt(dt,function(rb){if(rep_name){var route_changed=(rb.current_route!=wn.get_route_str())
 rb.load_criteria(rep_name);if(rb.dt&&route_changed){rb.dt.run();}}
 if(!rb.forbidden){wn.container.change_to('Report Builder');}});}}
 wn.views.reportview2={show:function(dt){var page_name=wn.get_route_str();if(wn.pages[page_name]){wn.container.change_to(wn.pages[page_name]);}else{var route=wn.get_route();if(route[1]){new wn.views.ReportViewPage(route[1],route[2]);}else{wn.set_route('404');}}}}
@@ -1313,8 +1313,10 @@ LocalDB.add=function(dt,dn){if(!locals[dt])locals[dt]={};if(locals[dt][dn])delet
 LocalDB.delete_doc=function(dt,dn){var doc=get_local(dt,dn);for(var ndt in locals){if(locals[ndt]){for(var ndn in locals[ndt]){var doc=locals[ndt][ndn];if(doc&&doc.parenttype==dt&&(doc.parent==dn||doc.__oldparent==dn)){delete locals[ndt][ndn];}}}}
 delete locals[dt][dn];}
 function get_local(dt,dn){return locals[dt]?locals[dt][dn]:null;}
-LocalDB.sync=function(list){if(list._kl)list=expand_doclist(list);for(var i=0;i<list.length;i++){var d=list[i];if(!d.name)
+LocalDB.sync=function(list){if(list._kl)list=expand_doclist(list);if(list){LocalDB.clear_locals(list[0].doctype,list[0].name);}
+for(var i=0;i<list.length;i++){var d=list[i];if(!d.name)
 d.name=LocalDB.get_localname(d.doctype);LocalDB.add(d.doctype,d.name);locals[d.doctype][d.name]=d;if(d.doctype=='DocField')wn.meta.add_field(d);if(d.localname){wn.model.new_names[d.localname]=d.name;$(document).trigger('rename',[d.doctype,d.localname,d.name]);delete locals[d.doctype][d.localname];}}}
+LocalDB.clear_locals=function(dt,dn){var doclist=make_doclist(dt,dn,1);$.each(doclist,function(i,v){v&&delete locals[v.doctype][v.name];});}
 local_name_idx={};LocalDB.get_localname=function(doctype){if(!local_name_idx[doctype])local_name_idx[doctype]=1;var n='New '+get_doctype_label(doctype)+' '+local_name_idx[doctype];local_name_idx[doctype]++;return n;}
 LocalDB.set_default_values=function(doc){var doctype=doc.doctype;var docfields=wn.meta.docfield_list[doctype];if(!docfields){return;}
 var fields_to_refresh=[];for(var fid=0;fid<docfields.length;fid++){var f=docfields[fid];if(!in_list(no_value_fields,f.fieldtype)&&doc[f.fieldname]==null){var v=LocalDB.get_default_value(f.fieldname,f.fieldtype,f['default']);if(v){doc[f.fieldname]=v;fields_to_refresh.push(f.fieldname);}}}
@@ -1332,8 +1334,7 @@ perm[pl][WRITE]=0;}
 return perm;}
 LocalDB.create=function(doctype,n){if(!n)n=LocalDB.get_localname(doctype);var doc=LocalDB.add(doctype,n)
 doc.__islocal=1;doc.owner=user;LocalDB.set_default_values(doc);return n;}
-LocalDB.delete_record=function(dt,dn){var d=locals[dt][dn];if(!d.__islocal)
-d.__oldparent=d.parent;d.parent='old_parent:'+d.parent;d.docstatus=2;d.__deleted=1;}
+LocalDB.delete_record=function(dt,dn){delete locals[dt][dn];}
 LocalDB.get_default_value=function(fn,ft,df){if(df=='_Login'||df=='__user')
 return user;else if(df=='_Full Name')
 return user_fullname;else if(ft=='Date'&&(df=='Today'||df=='__today')){return get_today();}
@@ -1344,7 +1345,8 @@ return sys_defaults[fn];}
 LocalDB.add_child=function(doc,childtype,parentfield){var n=LocalDB.create(childtype);var d=locals[childtype][n];d.parent=doc.name;d.parentfield=parentfield;d.parenttype=doc.doctype;return d;}
 LocalDB.no_copy_list=['amended_from','amendment_date','cancel_reason'];LocalDB.copy=function(dt,dn,from_amend){var newdoc=LocalDB.create(dt);for(var key in locals[dt][dn]){var df=get_field(dt,key);if(key!=='name'&&key.substr(0,2)!='__'&&!(df&&((!from_amend&&cint(df.no_copy)==1)||in_list(LocalDB.no_copy_list,df.fieldname)))){locals[dt][newdoc][key]=locals[dt][dn][key];}}
 return locals[dt][newdoc];}
-function make_doclist(dt,dn,deleted){var dl=[];dl[0]=locals[dt][dn];for(var ndt in locals){if(locals[ndt]){for(var ndn in locals[ndt]){var doc=locals[ndt][ndn];if(doc&&doc.parenttype==dt&&(doc.parent==dn||(deleted&&doc.__oldparent==dn))){dl[dl.length]=doc;}}}}
+function make_doclist(dt,dn){if(!locals[dt]){return[];}
+var dl=[];dl[0]=locals[dt][dn];for(var ndt in locals){if(locals[ndt]){for(var ndn in locals[ndt]){var doc=locals[ndt][ndn];if(doc&&doc.parenttype==dt&&doc.parent==dn){dl.push(doc)}}}}
 return dl;}
 var Meta={};var local_dt={};Meta.make_local_dt=function(dt,dn){var dl=make_doclist('DocType',dt);if(!local_dt[dt])local_dt[dt]={};if(!local_dt[dt][dn])local_dt[dt][dn]={};for(var i=0;i<dl.length;i++){var d=dl[i];if(d.doctype=='DocField'){var key=d.fieldname?d.fieldname:d.label;local_dt[dt][dn][key]=copy_dict(d);}}}
 Meta.get_field=function(dt,fn,dn){if(dn&&local_dt[dt]&&local_dt[dt][dn]){return local_dt[dt][dn][fn];}else{if(wn.meta.docfield_map[dt])var d=wn.meta.docfield_map[dt][fn];if(d)return d;}
@@ -1356,7 +1358,7 @@ var getchildren=LocalDB.getchildren;var get_field=Meta.get_field;var createLocal
 /*
  *	lib/js/legacy/model/doclist.js
  */
-function compress_doclist(list){var kl={};var vl=[];var flx={};for(var i=0;i<list.length;i++){var o=list[i];var fl=[];if(!kl[o.doctype]){var tfl=['doctype','name','docstatus','owner','parent','parentfield','parenttype','idx','creation','modified','modified_by','__islocal','__deleted','__newname','__modified','_user_tags'];var fl=['doctype','name','docstatus','owner','parent','parentfield','parenttype','idx','creation','modified','modified_by','__islocal','__deleted','__newname','__modified','_user_tags'];for(key in wn.meta.docfield_map[o.doctype]){if(!in_list(fl,key)&&!in_list(no_value_fields,wn.meta.docfield_map[o.doctype][key].fieldtype)&&!wn.meta.docfield_map[o.doctype][key].no_column){fl[fl.length]=key;tfl[tfl.length]=key}}
+function compress_doclist(list){var kl={};var vl=[];var flx={};for(var i=0;i<list.length;i++){var o=list[i];var fl=[];if(!kl[o.doctype]){var tfl=['doctype','name','docstatus','owner','parent','parentfield','parenttype','idx','creation','modified','modified_by','__islocal','__newname','__modified','_user_tags'];var fl=[].concat(tfl);for(key in wn.meta.docfield_map[o.doctype]){if(!in_list(fl,key)&&!in_list(no_value_fields,wn.meta.docfield_map[o.doctype][key].fieldtype)&&!wn.meta.docfield_map[o.doctype][key].no_column){fl[fl.length]=key;tfl[tfl.length]=key}}
 flx[o.doctype]=fl;kl[o.doctype]=tfl}
 var nl=[];var fl=flx[o.doctype];for(var j=0;j<fl.length;j++){var v=o[fl[j]];nl.push(v);}
 vl.push(nl);}
@@ -1544,7 +1546,7 @@ ReadOnlyField.prototype=new Field();function HTMLField(){}
 HTMLField.prototype=new Field();HTMLField.prototype.with_label=0;HTMLField.prototype.set_disp=function(val){this.disp_area.innerHTML=val;}
 HTMLField.prototype.set_input=function(val){if(val)this.set_disp(val);}
 HTMLField.prototype.onrefresh=function(){this.set_disp(this.df.options?this.df.options:'');}
-var datepicker_active=0;function DateField(){}DateField.prototype=new Field();DateField.prototype.make_input=function(){var me=this;this.user_fmt=wn.control_panel.date_format;if(!this.user_fmt)this.user_fmt='dd-mm-yy';this.input=$a(this.input_area,'input');$(this.input).datepicker({dateFormat:me.user_fmt.replace('yyyy','yy'),altFormat:'yy-mm-dd',changeYear:true,beforeShow:function(input,inst){datepicker_active=1},onClose:function(dateText,inst){datepicker_active=0;if(_f.cur_grid_cell)
+var datepicker_active=0;function DateField(){}DateField.prototype=new Field();DateField.prototype.make_input=function(){var me=this;this.user_fmt=sys_defaults.date_format;if(!this.user_fmt)this.user_fmt='dd-mm-yy';this.input=$a(this.input_area,'input');$(this.input).datepicker({dateFormat:me.user_fmt.replace('yyyy','yy'),altFormat:'yy-mm-dd',changeYear:true,beforeShow:function(input,inst){datepicker_active=1},onClose:function(dateText,inst){datepicker_active=0;if(_f.cur_grid_cell)
 _f.cur_grid_cell.grid.cell_deselect();}});var me=this;me.input.onchange=function(){if(this.value==null)this.value='';if(!this.not_in_form)
 me.set(dateutil.user_to_str(me.input.value));me.run_trigger();}
 me.input.set_input=function(val){if(val==null)val='';else val=dateutil.str_to_user(val);me.input.value=val;}
@@ -1559,19 +1561,20 @@ return v;};function LinkField(){}LinkField.prototype=new Field();LinkField.proto
 $(me.btn2).css('display','inline-block');else $dh(me.btn2);}}
 me.txt.field_object=this;me.input.set_input=function(val){if(val==undefined)val='';me.txt.value=val;}
 me.get_value=function(){return me.txt.value;}
-$(me.txt).autocomplete({source:function(request,response){wn.call({method:'webnotes.widgets.search.search_link',args:{'txt':request.term,'dt':me.df.options,'query':me.get_custom_query()},callback:function(r){response(r.results);},});},select:function(event,ui){me.set_input_value(ui.item.value);}}).data('autocomplete')._renderItem=function(ul,item){return $('<li></li>').data('item.autocomplete',item).append(repl('<a>%(label)s<br><span style="font-size:10px">%(info)s</span></a>',item)).appendTo(ul);};$(this.txt).change(function(){if(!$(this).val()){if(selector&&selector.display)
-return;me.set_input_value('');}})}
+$(me.txt).autocomplete({source:function(request,response){wn.call({method:'webnotes.widgets.search.search_link',args:{'txt':request.term,'dt':me.df.options,'query':me.get_custom_query()},callback:function(r){response(r.results);},});},select:function(event,ui){me.set_input_value(ui.item.value);}}).data('autocomplete')._renderItem=function(ul,item){return $('<li></li>').data('item.autocomplete',item).append(repl('<a>%(label)s<br><span style="font-size:10px">%(info)s</span></a>',item)).appendTo(ul);};$(this.txt).change(function(){var val=$(this).val();me.set_input_value_executed=false;if(!val){if(selector&&selector.display)
+return;me.set_input_value('');}else{setTimeout(function(){if(!me.set_input_value_executed){me.set_input_value(val);}},1000);}})}
 LinkField.prototype.get_custom_query=function(){this.set_get_query();if(this.get_query){if(cur_frm)
 var doc=locals[cur_frm.doctype][cur_frm.docname];return this.get_query(doc,this.doctype,this.docname);}}
 LinkField.prototype.setup_buttons=function(){var me=this;me.btn.onclick=function(){selector.set(me,me.df.options,me.df.label);selector.show(me.txt);}
 if(me.btn1)me.btn1.onclick=function(){if(me.txt.value&&me.df.options){loaddoc(me.df.options,me.txt.value);}}
 me.can_create=0;if((!me.not_in_form)&&in_list(profile.can_create,me.df.options)){me.can_create=1;me.btn2.onclick=function(){var on_save_callback=function(new_rec){if(new_rec){var d=_f.calling_doc_stack.pop();locals[d[0]][d[1]][me.df.fieldname]=new_rec;me.refresh();if(me.grid)me.grid.refresh();me.run_trigger();}}
 _f.calling_doc_stack.push([me.doctype,me.docname]);new_doc(me.df.options,me.on_new,1,on_save_callback,me.doctype,me.docname,me.frm.not_in_container);}}else{$dh(me.btn2);$y($td(me.tab,0,2),{width:'0px'});}}
-LinkField.prototype.set_input_value=function(val){var me=this;var from_selector=false;if(selector&&selector.display)from_selector=true;me.refresh_label_icon();if(me.not_in_form){$(this.txt).val(val);return;}
+LinkField.prototype.set_input_value=function(val){var me=this;me.set_input_value_executed=true;var from_selector=false;if(selector&&selector.display)from_selector=true;me.refresh_label_icon();if(me.not_in_form){$(this.txt).val(val);return;}
 if(cur_frm){if(val==locals[me.doctype][me.docname][me.df.fieldname]){me.run_trigger();return;}}
 me.set(val);if(_f.cur_grid_cell)
 _f.cur_grid_cell.grid.cell_deselect();if(locals[me.doctype][me.docname][me.df.fieldname]&&!val){me.run_trigger();return;}
-var fetch='';if(cur_frm.fetch_dict[me.df.fieldname])
+if(val){me.validate_link(val,from_selector);}}
+LinkField.prototype.validate_link=function(val,from_selector){var me=this;var fetch='';if(cur_frm.fetch_dict[me.df.fieldname])
 fetch=cur_frm.fetch_dict[me.df.fieldname].columns.join(', ');$c('webnotes.widgets.form.utils.validate_link',{'value':val,'options':me.df.options,'fetch':fetch},function(r,rt){if(r.message=='Ok'){if($(me.txt).val()!=val){if((me.grid&&!from_selector)||(!me.grid)){$(me.txt).val(val);}}
 if(r.fetch_values)
 me.set_fetch_values(r.fetch_values);me.run_trigger();}else{var astr='';if(in_list(profile.can_create,me.df.options))astr=repl('<br><br><span class="link_type" onclick="newdoc(\'%(dt)s\')">Click here</span> to create a new %(dtl)s',{dt:me.df.options,dtl:get_doctype_label(me.df.options)})
@@ -1709,7 +1712,7 @@ this.appframe.add_button('Amend',function(){cur_frm.amend_doc()},'icon-pencil');
  */
 wn.provide('_f');_f.frms={};_f.Frm=function(doctype,parent,in_form){this.docname='';this.doctype=doctype;this.display=0;var me=this;this.is_editable={};this.opendocs={};this.sections=[];this.grids=[];this.cscript={};this.pformat={};this.fetch_dict={};this.parent=parent;this.tinymce_id_list=[];this.setup_meta(doctype);this.in_form=in_form?true:false;var me=this;$(document).bind('rename',function(event,dt,old_name,new_name){if(dt==me.doctype)
 me.rename_notify(dt,old_name,new_name)});}
-_f.Frm.prototype.check_doctype_conflict=function(docname){var me=this;if(this.doctype=='DocType'&&docname=='DocType'){msgprint('Allowing DocType, DocType. Be careful!')}else if(this.doctype=='DocType'){if(wn.views.formview[docname]){msgprint("Cannot open DocType when its instance is open")
+_f.Frm.prototype.check_doctype_conflict=function(docname){var me=this;if(this.doctype=='DocType'&&docname=='DocType'){msgprint('Allowing DocType, DocType. Be careful!')}else if(this.doctype=='DocType'){if(wn.views.formview[docname]||wn.pages['List/'+docname]){msgprint("Cannot open DocType when its instance is open")
 throw'doctype open conflict'}}else{if(wn.views.formview.DocType&&wn.views.formview.DocType.frm.opendocs[this.doctype]){msgprint("Cannot open instance when its DocType is open")
 throw'doctype open conflict'}}}
 _f.Frm.prototype.setup=function(){var me=this;this.fields=[];this.fields_dict={};this.wrapper=this.parent;this.setup_print_layout();this.saved_wrapper=$a(this.wrapper,'div');this.setup_std_layout();this.setup_client_script();this.setup_done=true;}
@@ -1766,11 +1769,12 @@ if(this.frm_head)this.frm_head.refresh();if(wn.ui.toolbar.recent)
 wn.ui.toolbar.recent.add(this.doctype,this.docname,1);}
 _f.Frm.prototype.check_doc_perm=function(){var dt=this.parent_doctype?this.parent_doctype:this.doctype;var dn=this.parent_docname?this.parent_docname:this.docname;this.perm=get_perm(dt,dn);this.orig_perm=get_perm(dt,dn,1);if(!this.perm[0][READ]){if(user=='Guest'){if(_f.temp_access[dt]&&_f.temp_access[dt][dn]){this.perm=[[1,0,0]]
 return 1;}}
-window.back();return 0;}
+window.history.back();return 0;}
 return 1}
 _f.Frm.prototype.refresh=function(docname){if(docname){if(this.docname!=docname&&(!this.meta.in_dialog||this.in_form)&&!this.meta.istable)scroll(0,0);this.docname=docname;}
 if(!this.meta.istable){cur_frm=this;this.parent.cur_frm=this;}
-if(this.docname){if(!this.check_doc_perm())return;if(!this.setup_done)this.setup();this.runclientscript('set_perm',this.doctype,this.docname);this.doc=get_local(this.doctype,this.docname);cur_frm.cscript.is_onload=false;if(!this.opendocs[this.docname]){cur_frm.cscript.is_onload=true;this.setnewdoc(this.docname);}
+if(this.docname){if(!this.check_doc_perm())return;if(!this.opendocs[this.docname]){this.check_doctype_conflict(this.docname);}
+if(!this.setup_done)this.setup();this.runclientscript('set_perm',this.doctype,this.docname);this.doc=get_local(this.doctype,this.docname);cur_frm.cscript.is_onload=false;if(!this.opendocs[this.docname]){cur_frm.cscript.is_onload=true;this.setnewdoc(this.docname);}
 if(this.doc.__islocal)
 this.is_editable[this.docname]=1;this.editable=this.is_editable[this.docname];if(!this.doc.__archived&&(this.editable||(!this.editable&&this.meta.istable))){if(this.print_wrapper){$dh(this.print_wrapper);$ds(this.page_layout.wrapper);}
 if(!this.meta.istable){this.refresh_header();this.sidebar&&this.sidebar.refresh();}
@@ -1786,11 +1790,10 @@ this.cleanup_refresh(this);}
 _f.Frm.prototype.cleanup_refresh=function(){var me=this;if(me.fields_dict['amended_from']){if(me.doc.amended_from){unhide_field('amended_from');unhide_field('amendment_date');}else{hide_field('amended_from');hide_field('amendment_date');}}
 if(me.fields_dict['trash_reason']){if(me.doc.trash_reason&&me.doc.docstatus==2){unhide_field('trash_reason');}else{hide_field('trash_reason');}}
 if(me.meta.autoname&&me.meta.autoname.substr(0,6)=='field:'&&!me.doc.__islocal){var fn=me.meta.autoname.substr(6);set_field_permlevel(fn,1);}}
-_f.Frm.prototype.refresh_dependency=function(){var me=this;var doc=locals[this.doctype][this.docname];var dep_dict={};var has_dep=false;for(fkey in me.fields){var f=me.fields[fkey];f.dependencies_clear=true;var guardian=f.df.depends_on;if(guardian){if(!dep_dict[guardian])
-dep_dict[guardian]=[];dep_dict[guardian][dep_dict[guardian].length]=f;has_dep=true;}}
+_f.Frm.prototype.refresh_dependency=function(){var me=this;var doc=locals[this.doctype][this.docname];var has_dep=false;for(fkey in me.fields){var f=me.fields[fkey];f.dependencies_clear=true;if(f.df.depends_on){has_dep=true;}}
 if(!has_dep)return;for(var i=me.fields.length-1;i>=0;i--){var f=me.fields[i];f.guardian_has_value=true;if(f.df.depends_on){var v=doc[f.df.depends_on];if(f.df.depends_on.substr(0,5)=='eval:'){f.guardian_has_value=eval(f.df.depends_on.substr(5));}else if(f.df.depends_on.substr(0,3)=='fn:'){f.guardian_has_value=me.runclientscript(f.df.depends_on.substr(3),me.doctype,me.docname);}else{if(v||(v==0&&!v.substr)){}else{f.guardian_has_value=false;}}
-if(f.guardian_has_value){if(f.grid)f.grid.show();else $ds(f.wrapper);}else{if(f.grid)f.grid.hide();else $dh(f.wrapper);}}}}
-_f.Frm.prototype.setnewdoc=function(docname){this.check_doctype_conflict(docname);if(this.opendocs[docname]){this.docname=docname;return;}
+if(f.guardian_has_value){f.df.hidden=0;f.refresh()}else{f.df.hidden=1;f.refresh()}}}}
+_f.Frm.prototype.setnewdoc=function(docname){if(this.opendocs[docname]){this.docname=docname;return;}
 Meta.make_local_dt(this.doctype,docname);this.docname=docname;var me=this;var viewname=docname;if(this.meta.issingle)viewname=this.doctype;this.runclientscript('onload',this.doctype,this.docname);this.is_editable[docname]=1;if(this.meta.read_only_onload)this.is_editable[docname]=0;this.opendocs[docname]=true;}
 _f.Frm.prototype.edit_doc=function(){this.is_editable[this.docname]=true;this.refresh();}
 _f.Frm.prototype.show_doc=function(dn){this.refresh(dn);}
@@ -1820,18 +1823,17 @@ if(doctype.__css)set_style(doctype.__css)
 if(doctype.client_string){this.cstring={};var elist=doctype.client_string.split('---');for(var i=1;i<elist.length;i=i+2){this.cstring[strip(elist[i])]=elist[i+1];}}}
 return ret;}
 _f.Frm.prototype.copy_doc=function(onload,from_amend){if(!this.perm[0][CREATE]){msgprint('You are not allowed to create '+this.meta.name);return;}
-var dn=this.docname;var newdoc=LocalDB.copy(this.doctype,dn,from_amend);if(this.meta.allow_attach&&newdoc.file_list)
+var dn=this.docname;var newdoc=LocalDB.copy(this.doctype,dn,from_amend);if(this.meta.allow_attach&&newdoc.file_list&&!from_amend)
 newdoc.file_list=null;var dl=make_doclist(this.doctype,dn);var tf_dict={};for(var d in dl){d1=dl[d];if(!tf_dict[d1.parentfield]){tf_dict[d1.parentfield]=get_field(d1.parenttype,d1.parentfield);}
 if(d1.parent==dn&&cint(tf_dict[d1.parentfield].no_copy)!=1){var ch=LocalDB.copy(d1.doctype,d1.name,from_amend);ch.parent=newdoc.name;ch.docstatus=0;ch.owner=user;ch.creation='';ch.modified_by=user;ch.modified='';}}
 newdoc.__islocal=1;newdoc.docstatus=0;newdoc.owner=user;newdoc.creation='';newdoc.modified_by=user;newdoc.modified='';if(onload)onload(newdoc);loaddoc(newdoc.doctype,newdoc.name);}
 _f.Frm.prototype.reload_doc=function(){this.check_doctype_conflict(this.docname);var me=this;var ret_fn=function(r,rtxt){me.runclientscript('setup',me.doctype,me.docname);me.refresh();}
-if(me.doc.__islocal){$c('webnotes.widgets.form.load.getdoctype',{'doctype':me.doctype},ret_fn,null,null,'Refreshing '+me.doctype+'...');}else{var gl=me.grids;for(var i=0;i<gl.length;i++){var dt=gl[i].df.options;for(var dn in locals[dt]){if(locals[dt][dn].__islocal&&locals[dt][dn].parent==me.docname){var d=locals[dt][dn];d.parent='';d.docstatus=2;d.__deleted=1;}}}
-$c('webnotes.widgets.form.load.getdoc',{'name':me.docname,'doctype':me.doctype,'getdoctype':1,'user':user},ret_fn,null,null,'Refreshing '+me.docname+'...');}}
+if(me.doc.__islocal){$c('webnotes.widgets.form.load.getdoctype',{'doctype':me.doctype},ret_fn,null,null,'Refreshing '+me.doctype+'...');}else{$c('webnotes.widgets.form.load.getdoc',{'name':me.docname,'doctype':me.doctype,'getdoctype':1,'user':user},ret_fn,null,null,'Refreshing '+me.docname+'...');}}
 _f.Frm.prototype.savedoc=function(save_action,onsave,onerr){this.error_in_section=0;save_doclist(this.doctype,this.docname,save_action,onsave,onerr);}
 _f.Frm.prototype.saveupdate=function(){this.save('Update');}
 _f.Frm.prototype.savesubmit=function(){var answer=confirm("Permanently Submit "+this.docname+"?");var me=this;if(answer){this.save('Submit',function(r){if(!r.exc&&me.cscript.on_submit){me.runclientscript('on_submit',me.doctype,me.docname);}});}}
 _f.Frm.prototype.savecancel=function(){var answer=confirm("Permanently Cancel "+this.docname+"?");if(answer)this.save('Cancel');}
-_f.Frm.prototype.savetrash=function(){var me=this;var answer=confirm("Permanently Delete "+this.docname+"? This action cannot be reversed");if(answer){$c('webnotes.model.delete_doc',{dt:this.doctype,dn:this.docname},function(r,rt){if(r.message=='okay'){LocalDB.delete_doc(me.doctype,me.docname);if(wn.ui.toolbar.recent)wn.ui.toolbar.recent.remove(me.doctype,me.docname);window.back();}})}}
+_f.Frm.prototype.savetrash=function(){var me=this;var answer=confirm("Permanently Delete "+this.docname+"? This action cannot be reversed");if(answer){$c('webnotes.model.delete_doc',{dt:this.doctype,dn:this.docname},function(r,rt){if(r.message=='okay'){LocalDB.delete_doc(me.doctype,me.docname);if(wn.ui.toolbar.recent)wn.ui.toolbar.recent.remove(me.doctype,me.docname);window.history.back();}})}}
 _f.Frm.prototype.amend_doc=function(){if(!this.fields_dict['amended_from']){alert('"amended_from" field must be present to do an amendment.');return;}
 var me=this;var fn=function(newdoc){newdoc.amended_from=me.docname;if(me.fields_dict&&me.fields_dict['amendment_date'])
 newdoc.amendment_date=dateutil.obj_to_str(new Date());}
@@ -1849,13 +1851,13 @@ cur_frm.comments.list.dt=cur_frm.doctype;cur_frm.comments.list.dn=cur_frm.docnam
  *	lib/js/legacy/widgets/form/form_fields.js
  */
 _f.ColumnBreak=function(){this.set_input=function(){};}
-_f.ColumnBreak.prototype.make_body=function(){if((!this.perm[this.df.permlevel])||(!this.perm[this.df.permlevel][READ])||this.df.hidden){return;}
+_f.ColumnBreak.prototype.make_body=function(){if((!this.perm[this.df.permlevel])||(!this.perm[this.df.permlevel][READ])){return;}
 this.cell=this.frm.layout.addcell(this.df.width);$y(this.cell.wrapper,{padding:'8px'});_f.cur_col_break_width=this.df.width;var fn=this.df.fieldname?this.df.fieldname:this.df.label;if(this.df&&this.df.label){this.label=$a(this.cell.wrapper,'div','','',this.df.label);}}
 _f.ColumnBreak.prototype.refresh=function(layout){if(!this.cell)return;if(this.set_hidden!=this.df.hidden){if(this.df.hidden)
 this.cell.hide();else
 this.cell.show();this.set_hidden=this.df.hidden;}}
 _f.SectionBreak=function(){this.fields=[];this.set_input=function(){};this.make_row=function(){this.row=this.df.label?this.frm.layout.addrow():this.frm.layout.addsubrow();}}
-_f.SectionBreak.prototype.make_body=function(){var me=this;if((!this.perm[this.df.permlevel])||(!this.perm[this.df.permlevel][READ])||this.df.hidden){return;}
+_f.SectionBreak.prototype.make_body=function(){var me=this;if((!this.perm[this.df.permlevel])||(!this.perm[this.df.permlevel][READ])){return;}
 this.make_row();if(this.df.label){if(!this.df.description)
 this.df.description='';$(this.row.main_head).html(repl('<div class="form-section-head">\
     <h3 class="head">%(label)s</h3>\
@@ -1872,7 +1874,7 @@ _f.SectionBreak.prototype.has_data=function(){var me=this;for(var i in me.fields
 if(f.df.reqd&&!v){return true;}
 if(f.df.fieldtype=='Table'){if(f.grid.get_children().length||f.df.reqd){return true;}}}
 return false;}
-_f.SectionBreak.prototype.refresh=function(from_form){if(this.df.hidden){if(this.row)this.row.hide();}else{if(this.collapsible){}}}
+_f.SectionBreak.prototype.refresh=function(from_form){if(this.df.hidden){if(this.row)this.row.hide();}else{if(this.row)this.row.show();}}
 _f.ImageField=function(){this.images={};}
 _f.ImageField.prototype=new Field();_f.ImageField.prototype.onmake=function(){this.no_img=$a(this.wrapper,'div','no_img');this.no_img.innerHTML="No Image";$dh(this.no_img);}
 _f.ImageField.prototype.get_image_src=function(doc){if(doc.file_list){file=doc.file_list.split(',');extn=file[0].split('.');extn=extn[extn.length-1].toLowerCase();var img_extn_list=['gif','jpg','bmp','jpeg','jp2','cgm','ief','jpm','jpx','png','tiff','jpe','tif'];if(in_list(img_extn_list,extn)){var src=wn.request.url+"?cmd=downloadfile&file_id="+file[1];}}else{var src="";}
@@ -1892,7 +1894,7 @@ if(cur_frm.editable&&cur_frm.doc.docstatus>0){if(this.df.allow_on_submit&&cur_fr
 if(this.df['default'].toLowerCase()=='no add rows'){this.grid.can_add_rows=false;}}
 if(st=='Write'){this.grid.show();}else if(st=='Read'){this.grid.show();}else{this.grid.hide();}
 this.grid.refresh();}
-_f.TableField.prototype.set=function(v){};_f.TableField.prototype.set_input=function(v){};_f.CodeField=function(){};_f.CodeField.prototype=new Field();_f.CodeField.prototype.make_input=function(){var me=this;this.label_span.innerHTML=this.df.label;if(this.df.fieldtype=='Text Editor'){this.input=$a(this.input_area,'text_area','',{fontSize:'12px'});this.myid=wn.dom.set_unique_id(this.input);$(me.input).tinymce({script_url:'js/lib/tiny_mce_33/tiny_mce.js',theme:"advanced",plugins:"style,inlinepopups,table",extended_valid_elements:"div[id|dir|class|align|style]",width:'100%',height:'360px',theme_advanced_buttons1:"bold,italic,underline,strikethrough,hr,|,justifyleft,justifycenter,justifyright,|,formatselect,fontselect,fontsizeselect",theme_advanced_buttons2:"bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,code,|,forecolor,backcolor,|,tablecontrols",theme_advanced_buttons3:"",theme_advanced_toolbar_location:"top",theme_advanced_toolbar_align:"left",content_css:"js/lib/tiny_mce_33/custom_content.css",oninit:function(){me.init_editor();}});this.input.set_input=function(v){if(me.editor){me.editor.setContent(v);}else{$(me.input).val(v);}}
+_f.TableField.prototype.set=function(v){};_f.TableField.prototype.set_input=function(v){};_f.CodeField=function(){};_f.CodeField.prototype=new Field();_f.CodeField.prototype.make_input=function(){var me=this;this.label_span.innerHTML=this.df.label;if(this.df.fieldtype=='Text Editor'){this.input=$a(this.input_area,'text_area','',{fontSize:'12px'});this.myid=wn.dom.set_unique_id(this.input);$(me.input).tinymce({script_url:'js/lib/tiny_mce_33/tiny_mce.js',theme:"advanced",plugins:"style,inlinepopups,table,advimage",extended_valid_elements:"div[id|dir|class|align|style]",width:'100%',height:'360px',theme_advanced_buttons1:"bold,italic,underline,strikethrough,hr,|,justifyleft,justifycenter,justifyright,|,formatselect,fontselect,fontsizeselect,|,image",theme_advanced_buttons2:"bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,code,|,forecolor,backcolor,|,tablecontrols",theme_advanced_buttons3:"",theme_advanced_toolbar_location:"top",theme_advanced_toolbar_align:"left",content_css:"js/lib/tiny_mce_33/custom_content.css?q=1",oninit:function(){me.init_editor();}});this.input.set_input=function(v){if(me.editor){me.editor.setContent(v);}else{$(me.input).val(v);}}
 this.input.onchange=function(){me.set(me.editor.getContent());me.run_trigger();}
 this.get_value=function(){return me.editor.getContent();}}else{wn.require('js/lib/ace/ace.js');$(this.input_area).css('border','1px solid #aaa');this.pre=$a(this.input_area,'pre','',{position:'relative',height:'400px',width:'100%'});this.input={};this.myid=wn.dom.set_unique_id(this.pre);this.editor=ace.edit(this.myid);if(me.df.options=='Markdown'||me.df.options=='HTML'){wn.require('js/lib/ace/mode-html.js');var HTMLMode=require("ace/mode/html").Mode;me.editor.getSession().setMode(new HTMLMode());}
 else if(me.df.options=='Javascript'){wn.require('js/lib/ace/mode-javascript.js');var JavascriptMode=require("ace/mode/javascript").Mode;me.editor.getSession().setMode(new JavascriptMode());}
@@ -1928,7 +1930,7 @@ cell.div.cell=cell;cell.div.onclick=function(e){me.cell_select(this.cell);}
 if(odd){$bg(cell,this.alt_row_bg);cell.is_odd=1;cell.div.style.border='2px solid '+this.alt_row_bg;}else $bg(cell,'#FFF');if(!hc.fieldname)cell.div.style.cursor='default';}
 this.set_ht();return row;}
 _f.Grid.prototype.refresh_cell=function(docname,fieldname){for(var r=0;r<this.tab.rows.length;r++){if(this.tab.rows[r].docname==docname){for(var c=0;c<this.head_row.cells.length;c++){var hc=this.head_row.cells[c];if(hc.fieldname==fieldname){this.set_cell_value(this.tab.rows[r].cells[c]);}}}}}
-_f.cur_grid;_f.cur_grid_ridx;_f.Grid.prototype.set_cell_value=function(cell){if(cell.row.is_newrow)return;var hc=this.head_row.cells[cell.cellIndex];if(hc.fieldname){var v=locals[hc.doctype][cell.row.docname][hc.fieldname];}else{var v=(cell.row.rowIndex+1);}
+_f.cur_grid;_f.cur_grid_ridx;_f.Grid.prototype.set_cell_value=function(cell){if(cell.row.is_newrow)return;var hc=this.head_row.cells[cell.cellIndex];if(hc.fieldname&&locals[hc.doctype][cell.row.docname]){var v=locals[hc.doctype][cell.row.docname][hc.fieldname];}else{var v=(cell.row.rowIndex+1);}
 if(v==null){v='';}
 var me=this;if(cell.cellIndex){var ft=hc.fieldtype;if(ft=='Link'&&cur_frm.doc.docstatus<1)ft='Data';$s(cell.div,v,ft,hc.options);}else{cell.div.style.padding='2px';cell.div.style.textAlign='left';cell.innerHTML='';var t=make_table(cell,1,3,'60px',['20px','20px','20px'],{verticalAlign:'middle',padding:'2px'});$y($td(t,0,0),{paddingLeft:'4px'});$td(t,0,0).innerHTML=cell.row.rowIndex+1;if(cur_frm.editable&&this.can_edit){var ed=$a($td(t,0,1),'i','icon-edit',{cursor:'pointer'});ed.cell=cell;ed.title='Edit Row';ed.onclick=function(){_f.cur_grid=me;_f.cur_grid_ridx=this.cell.row.rowIndex;_f.edit_record(me.doctype,this.cell.row.docname,1);}}else{cell.div.innerHTML=(cell.row.rowIndex+1);cell.div.style.cursor='default';cell.div.onclick=function(){}}}}
 $(document).bind('click',function(e){var me=this;var is_target_toolbar=function(){return $(e.target).parents('.grid_tbarlinks').length;}
@@ -2114,7 +2116,7 @@ $c_get_values=function(args,doc,dt,dn,user_callback){var call_back=function(r,rt
 refresh_field(fl[i],dn,args.table_field);else
 refresh_field(fl[i]);}}
 $c('webnotes.widgets.form.utils.get_fields',args,call_back);}
-get_server_fields=function(method,arg,table_field,doc,dt,dn,allow_edit,call_back){if(!allow_edit)freeze('Fetching Data...');$c('runserverobj',args={'method':method,'docs':compress_doclist([doc]),'arg':arg},function(r,rt){if(r.message){var d=locals[dt][dn];var field_dict=r.message;for(var key in field_dict){d[key]=field_dict[key];if(table_field)refresh_field(key,d.name,table_field);else refresh_field(key);}}
+get_server_fields=function(method,arg,table_field,doc,dt,dn,allow_edit,call_back){if(!allow_edit)freeze('Fetching Data...');$c('runserverobj',args={'method':method,'docs':compress_doclist(make_doclist(doc.doctype,doc.name)),'arg':arg},function(r,rt){if(r.message){var d=locals[dt][dn];var field_dict=r.message;for(var key in field_dict){d[key]=field_dict[key];if(table_field)refresh_field(key,d.name,table_field);else refresh_field(key);}}
 if(call_back){doc=locals[doc.doctype][doc.name];call_back(doc,dt,dn);}
 if(!allow_edit)unfreeze();});}
 set_multiple=function(dt,dn,dict,table_field){var d=locals[dt][dn];for(var key in dict){d[key]=dict[key];if(table_field)refresh_field(key,d.name,table_field);else refresh_field(key);}}
@@ -2127,13 +2129,12 @@ _f.frm_dialog.cur_frm.fields_dict[n].refresh();}else{var g=_f.cur_grid_cell;if(g
 cur_frm.fields_dict[n].refresh();}}
 set_field_options=function(n,txt){var df=get_field(cur_frm.doctype,n,cur_frm.docname);if(df)df.options=txt;refresh_field(n);}
 set_field_permlevel=function(n,level){var df=get_field(cur_frm.doctype,n,cur_frm.docname);if(df)df.permlevel=level;refresh_field(n);}
-hide_field=function(n){function _hide_field(n,hidden){var df=get_field(cur_frm.doctype,n,cur_frm.docname);if(df){df.hidden=hidden;refresh_field(n);}
-else{console.log("hide_field cannot find field "+n);}}
-if(cur_frm){if(n.substr)_hide_field(n,1);else{for(var i in n)_hide_field(n[i],1)}}}
-unhide_field=function(n){function _hide_field(n,hidden){var df=get_field(cur_frm.doctype,n,cur_frm.docname);if(df){df.hidden=hidden;refresh_field(n);}
-else{console.log("unhide_field cannot find field "+n);}}
-if(cur_frm){if(n.substr)_hide_field(n,0);else{for(var i in n)_hide_field(n[i],0)}}}
+toggle_field=function(n,hidden){var df_obj=get_field_obj(n);var df=get_field(cur_frm.doctype,n,cur_frm.docname);if(df){if(df_obj.df.fieldtype==="Section Break"){$(df_obj.row.wrapper).toggle(hidden?false:true);}else if(df_obj.df.fieldtype==="Column Break"){$(df_obj.cell.wrapper).toggle(hidden?false:true);}else{df.hidden=hidden;refresh_field(n);}}
+else{console.log((hidden?"hide_field":"unhide_field")+" cannot find field "+n);}}
+hide_field=function(n){if(cur_frm){if(n.substr)toggle_field(n,1);else{for(var i in n)toggle_field(n[i],1)}}}
+unhide_field=function(n){if(cur_frm){if(n.substr)toggle_field(n,0);else{for(var i in n)toggle_field(n[i],0)}}}
 get_field_obj=function(fn){return cur_frm.fields_dict[fn];}
+set_missing_values=function(doc,dict){var fields_to_set={};$.each(dict,function(i,v){if(!doc[i]){fields_to_set[i]=v;}});if(fields_to_set){set_multiple(doc.doctype,doc.name,fields_to_set);}}
 /*
  *	lib/js/legacy/widgets/form/form_comments.js
  */
@@ -2165,7 +2166,7 @@ CommentItem.prototype.cmt_delete=function(cell,ri,ci,d){var me=this;if(d[ri][2]=
 /*
  *	lib/js/legacy/wn/widgets/form/sidebar.js
  */
-wn.widgets.form.sidebar={Sidebar:function(form){var me=this;this.form=form;this.opts={sections:[{title:'Actions',items:[{type:'link',label:'New',icon:'icon-plus',display:function(){return in_list(profile.can_create,form.doctype)},onclick:function(){new_doc(me.form.doctype)}},{type:'link',label:'List',icon:'icon-list',display:function(){return!me.form.meta.issingle;},onclick:function(){window.location.href="#!List/"+me.form.doctype}},{type:'link',label:'Refresh',icon:'icon-refresh',onclick:function(){me.form.reload_doc()}},{type:'link',label:'Print',display:function(){return!(me.form.doc.__islocal||me.form.meta.allow_print);},icon:'icon-print',onclick:function(){me.form.print_doc()}},{type:'link',label:'Email',display:function(){return!(me.form.doc.__islocal||me.form.meta.allow_email);},icon:'icon-envelope',onclick:function(){me.form.email_doc()}},{type:'link',label:'Copy',display:function(){return in_list(profile.can_create,me.form.doctype)&&!me.form.meta.allow_copy},icon:'icon-file',onclick:function(){me.form.copy_doc()}},{type:'link',label:'Delete',display:function(){return me.form.meta.allow_trash&&cint(me.form.doc.docstatus)!=2&&(!me.form.doc.__islocal)&&me.form.perm[0][CANCEL]},icon:'icon-remove-sign',onclick:function(){me.form.savetrash()}}]},{title:'Assign To',render:function(wrapper){me.form.assign_to=new wn.widgets.form.sidebar.AssignTo(wrapper,me,me.form.doctype,me.form.docname);},display:function(){if(me.form.doc.__local)return false;else return true;}},{title:'Attachments',render:function(wrapper){me.form.attachments=new wn.widgets.form.sidebar.Attachments(wrapper,me,me.form.doctype,me.form.docname);},display:function(){return me.form.meta.allow_attach}},{title:'Comments',render:function(wrapper){new wn.widgets.form.sidebar.Comments(wrapper,me,me.form.doctype,me.form.docname);},display:function(){return!me.form.doc.__islocal}},{title:'Tags',render:function(wrapper){me.form.taglist=new TagList(wrapper,me.form.doc._user_tags?me.form.doc._user_tags.split(','):[],me.form.doctype,me.form.docname,0,function(){});},display:function(){return!me.form.doc.__islocal}},{title:'Users',render:function(wrapper){var doc=cur_frm.doc;var scrub_date=function(d){if(d)t=d.split(' ');else return'';return dateutil.str_to_user(t[0])+' '+t[1];}
+wn.widgets.form.sidebar={Sidebar:function(form){var me=this;this.form=form;this.opts={sections:[{title:'Actions',items:[{type:'link',label:'New',icon:'icon-plus',display:function(){return in_list(profile.can_create,form.doctype)},onclick:function(){new_doc(me.form.doctype)}},{type:'link',label:'List',icon:'icon-list',display:function(){return!me.form.meta.issingle;},onclick:function(){window.location.href="#!List/"+me.form.doctype}},{type:'link',label:'Refresh',icon:'icon-refresh',onclick:function(){me.form.reload_doc()}},{type:'link',label:'Print',display:function(){return!(me.form.doc.__islocal||me.form.meta.allow_print);},icon:'icon-print',onclick:function(){me.form.print_doc()}},{type:'link',label:'Email',display:function(){return!(me.form.doc.__islocal||me.form.meta.allow_email);},icon:'icon-envelope',onclick:function(){me.form.email_doc()}},{type:'link',label:'Copy',display:function(){return in_list(profile.can_create,me.form.doctype)&&!me.form.meta.allow_copy},icon:'icon-file',onclick:function(){me.form.copy_doc()}},{type:'link',label:'Delete',display:function(){return(cint(me.form.doc.docstatus)!=1)&&!me.form.doc.__islocal&&wn.model.can_delete(me.form.doctype);},icon:'icon-remove-sign',onclick:function(){me.form.savetrash()}}]},{title:'Assign To',render:function(wrapper){me.form.assign_to=new wn.widgets.form.sidebar.AssignTo(wrapper,me,me.form.doctype,me.form.docname);},display:function(){return!me.form.doc.__islocal}},{title:'Attachments',render:function(wrapper){me.form.attachments=new wn.widgets.form.sidebar.Attachments(wrapper,me,me.form.doctype,me.form.docname);},display:function(){return me.form.meta.allow_attach}},{title:'Comments',render:function(wrapper){new wn.widgets.form.sidebar.Comments(wrapper,me,me.form.doctype,me.form.docname);},display:function(){return!me.form.doc.__islocal}},{title:'Tags',render:function(wrapper){me.form.taglist=new TagList(wrapper,me.form.doc._user_tags?me.form.doc._user_tags.split(','):[],me.form.doctype,me.form.docname,0,function(){});},display:function(){return!me.form.doc.__islocal}},{title:'Users',render:function(wrapper){var doc=cur_frm.doc;var scrub_date=function(d){if(d)t=d.split(' ');else return'';return dateutil.str_to_user(t[0])+' '+t[1];}
 $(wrapper).html(repl('<p>Created:<br> <span class="avatar-small">\
        <img title="%(created_by)s" src="%(avatar_created)s" /></span> \
        <span class="help small">%(creation)s</span></p>\
@@ -2256,7 +2257,7 @@ $('body').append('<a class="erpnext-logo" title="Powered by ERPNext" \
   href="http://erpnext.com" target="_blank"></a>')}
 erpnext.update_messages=function(reset){if(inList(['Guest'],user)||!wn.session_alive){return;}
 if(!reset){var set_messages=function(r){if(!r.exc){erpnext.toolbar.set_new_comments(r.message.unread_messages);var show_in_circle=function(parent_id,msg){var parent=$('#'+parent_id);if(parent){if(msg){parent.find('span:first').text(msg);parent.toggle(true);}else{parent.toggle(false);}}}
-show_in_circle('unread_messages',r.message.unread_messages.length);show_in_circle('open_support_tickets',r.message.open_support_tickets);show_in_circle('things_todo',r.message.things_todo);show_in_circle('todays_events',r.message.todays_events);show_in_circle('open_tasks',r.message.open_tasks);}else{clearInterval(wn.updates.id);}}
+show_in_circle('unread_messages',r.message.unread_messages.length);show_in_circle('open_support_tickets',r.message.open_support_tickets);show_in_circle('things_todo',r.message.things_todo);show_in_circle('todays_events',r.message.todays_events);show_in_circle('open_tasks',r.message.open_tasks);show_in_circle('unanswered_questions',r.message.unanswered_questions);}else{clearInterval(wn.updates.id);}}
 wn.call({method:'startup.startup.get_global_status_messages',callback:set_messages});}else{erpnext.toolbar.set_new_comments(0);$('#unread_messages').toggle(false);}}
 erpnext.startup.set_periodic_updates=function(){wn.updates={};if(wn.updates.id){clearInterval(wn.updates.id);}
 wn.updates.id=setInterval(erpnext.update_messages,60000);}
@@ -2286,7 +2287,7 @@ wn.provide('erpnext.toolbar');erpnext.toolbar.setup=function(){erpnext.toolbar.a
    onclick="return false;">Help<b class="caret"></b></a>\
   <ul class="dropdown-menu" id="toolbar-help">\
   </ul></li>')
-$('#toolbar-help').append('<li><a href="http://erpnext.blogspot.com/2011/03/erpnext-help.html" target="_blank">\
+$('#toolbar-help').append('<li><a href="https://erpnext.com/manual" target="_blank">\
   Documentation</a></li>')
 $('#toolbar-help').append('<li><a href="http://groups.google.com/group/erpnext-user-forum" target="_blank">\
   Forum</a></li>')

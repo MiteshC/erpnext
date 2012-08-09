@@ -87,7 +87,7 @@ cur_frm.cscript.item_code=function(doc,cdt,cdn){
 // ===============================================================
 cur_frm.cscript['Create Customer'] = function(){
 	var doc = cur_frm.doc;
-	$c('runserverobj',args={ 'method':'check_status', 'docs':compress_doclist([doc])},
+	$c('runserverobj',args={ 'method':'check_status', 'docs':compress_doclist(make_doclist(doc.doctype, doc.name))},
 		function(r,rt){
 			if(r.message == 'Converted'){
 				msgprint("This lead is already converted to customer");
@@ -110,21 +110,11 @@ cur_frm.cscript['Create Customer'] = function(){
 	);
 }
 
-// send email
-// ===============================================================
-cur_frm.cscript.send_email = function(doc,cdt,cdn){
-	if(doc.__islocal != 1){
-		$c_obj(make_doclist(doc.doctype, doc.name),'send_mail','',function(r,rt){});
-	}else{
-		msgprint("Please save lead first before sending email")
-	}
-}
-
 // Create New Opportunity
 // ===============================================================
 cur_frm.cscript['Create Opportunity'] = function(){
 	var doc = cur_frm.doc;
-	$c('runserverobj',args={ 'method':'check_status', 'docs':compress_doclist([doc])},
+	$c('runserverobj',args={ 'method':'check_status', 'docs':compress_doclist(make_doclist(doc.doctype, doc.name))},
 		function(r,rt){
 			if(r.message == 'Converted'){
 				msgprint("This lead is now converted to customer. Please create enquiry on behalf of customer");

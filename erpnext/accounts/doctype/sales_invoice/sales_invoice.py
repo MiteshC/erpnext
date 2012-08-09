@@ -140,13 +140,13 @@ class DocType(TransactionBase):
 		# Delivery Note
 		if self.doc.delivery_note_main:
 			self.validate_prev_docname('delivery note')
-			self.doc.clear_table(self.doclist,'other_charges')			
+			self.doclist = self.doc.clear_table(self.doclist,'other_charges')			
 			self.doclist = get_obj('DocType Mapper', 'Delivery Note-Sales Invoice').dt_map('Delivery Note', 'Sales Invoice', self.doc.delivery_note_main, self.doc, self.doclist, "[['Delivery Note', 'Sales Invoice'],['Delivery Note Item', 'Sales Invoice Item'],['Sales Taxes and Charges','Sales Taxes and Charges'],['Sales Team','Sales Team']]")			
 			self.get_income_account('entries')
 		# Sales Order
 		elif self.doc.sales_order_main:
 			self.validate_prev_docname('sales order')
-			self.doc.clear_table(self.doclist,'other_charges')
+			self.doclist = self.doc.clear_table(self.doclist,'other_charges')
 			get_obj('DocType Mapper', 'Sales Order-Sales Invoice').dt_map('Sales Order', 'Sales Invoice', self.doc.sales_order_main, self.doc, self.doclist, "[['Sales Order', 'Sales Invoice'],['Sales Order Item', 'Sales Invoice Item'],['Sales Taxes and Charges','Sales Taxes and Charges'], ['Sales Team', 'Sales Team']]")
 			self.get_income_account('entries')
 			
@@ -240,18 +240,17 @@ class DocType(TransactionBase):
 	# Load Default Charges
 	# ----------------------------------------------------------
 	def load_default_taxes(self):
-		return get_obj('Sales Common').load_default_taxes(self)
+		self.doclist = get_obj('Sales Common').load_default_taxes(self)
 
 	# Get Sales Taxes and Charges Master Details
 	# --------------------------
 	def get_other_charges(self):
-		return get_obj('Sales Common').get_other_charges(self)
-		
+		self.doclist = get_obj('Sales Common').get_other_charges(self)
 
 	# Get Advances
 	# -------------
 	def get_advances(self):
-		get_obj('GL Control').get_advances(self, self.doc.debit_to, 'Sales Invoice Advance', 'advance_adjustment_details', 'credit')
+		self.doclist = get_obj('GL Control').get_advances(self, self.doc.debit_to, 'Sales Invoice Advance', 'advance_adjustment_details', 'credit')
 
 	#pull project customer
 	#-------------------------
@@ -405,14 +404,13 @@ class DocType(TransactionBase):
 
 	#check in manage account if sales order / delivery note required or not.
 	def so_dn_required(self):
-		dict = {'Sales Order':'so_required','Delivery Note':'dn_required'}
-		for i in dict:	
-			res = webnotes.conn.sql("select value from `tabSingles` where doctype = 'Global Defaults' and field = '%s'"%dict[i])
-			if res and res[0][0] == 'Yes':
+		dic = {'Sales Order':'so_required','Delivery Note':'dn_required'}
+		for i in dic:	
+			if webnotes.conn.get_value('Global Defaults', 'Global Defaults', dic[i]) == 'Yes':
 				for d in getlist(self.doclist,'entries'):
-					if not d.fields[i.lower().replace(' ','_')]:
-						msgprint("%s No. required against item %s"%(i,d.item_code))
-						raise Exception
+					if webnotes.conn.get_value('Item', d.item_code, 'is_stock_item') == 'Yes' \
+						and not d.fields[i.lower().replace(' ','_')]:
+						msgprint("%s is mandatory for stock item which is not mentioed against item: %s"%(i,d.item_code), raise_exception=1)
 
 	#check for does customer belong to same project as entered..
 	#-------------------------------------------------------------------------------------------------
@@ -680,12 +678,39 @@ class DocType(TransactionBase):
 		webnotes.conn.set(self.doc,'outstanding_amount',flt(self.doc.grand_total) - flt(self.doc.total_advance) - flt(self.doc.paid_amount) - flt(self.doc.write_off_amount))
 
 	#-------------------------------------------------------------------------------------
+
+	def set_default_recurring_values(self):
+		from webnotes.utils import cstr
+
+		owner_email = self.doc.owner
+		if owner_email.lower() == 'administrator':
+			owner_email = cstr(webnotes.conn.get_value("Profile", "Administrator", "email"))
+		
+		ret = {
+			'repeat_on_day_of_month' : getdate(self.doc.posting_date).day,
+			'notification_email_address' : ', '.join([owner_email, cstr(self.doc.contact_email)]),
+		}
+		return ret
+		
+	def validate_notification_email_id(self):
+		if self.doc.notification_email_address:
+			from webnotes.utils import validate_email_add
+			for add in self.doc.notification_email_address.replace('\n', '').replace(' ', '').split(","):
+				if add and not validate_email_add(add):
+					msgprint("%s is not a valid email address" % add, raise_exception=1)
+		else:
+			msgprint("Notification Email Addresses not specified for recurring invoice",
+				raise_exception=1)
+		
+		
 	def on_update_after_submit(self):
 		self.convert_into_recurring()
 		
-
+		
 	def convert_into_recurring(self):
 		if self.doc.convert_into_recurring_invoice:
+			self.validate_notification_email_id()
+			
 			if not self.doc.recurring_type:
 				msgprint("Please select recurring type", raise_exception=1)
 			elif not self.doc.invoice_period_from_date or not self.doc.invoice_period_to_date:

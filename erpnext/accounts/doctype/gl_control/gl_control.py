@@ -23,6 +23,7 @@ from webnotes.model.doc import Document, addchild, getchildren, make_autoname
 from webnotes.model.doclist import getlist, copy_doclist, clone
 from webnotes.model.code import get_obj
 from webnotes import session, form, is_testing, msgprint, errprint
+from webnotes.utils.email_lib import sendmail
 
 in_transaction = webnotes.conn.in_transaction
 convert_to_lists = webnotes.conn.convert_to_lists
@@ -289,7 +290,7 @@ class DocType:
 	def get_advances(self, obj, account_head, table_name,table_field_name, dr_or_cr):
 		jv_detail = webnotes.conn.sql("select t1.name, t1.remark, t2.%s, t2.name, t1.ded_amount from `tabJournal Voucher` t1, `tabJournal Voucher Detail` t2 where t1.name = t2.parent and (t2.against_voucher is null or t2.against_voucher = '') and (t2.against_invoice is null or t2.against_invoice = '') and (t2.against_jv is null or t2.against_jv = '') and t2.account = '%s' and t2.is_advance = 'Yes' and t1.docstatus = 1 order by t1.voucher_date " % (dr_or_cr,account_head))
 		# clear advance table
-		obj.doc.clear_table(obj.doclist,table_field_name)
+		obj.doclist = obj.doc.clear_table(obj.doclist,table_field_name)
 		# Create advance table
 		for d in jv_detail:
 			add = addchild(obj.doc, table_field_name, table_name, 1, obj.doclist)
@@ -300,6 +301,8 @@ class DocType:
 			add.allocate_amount = 0
 			if table_name == 'Purchase Invoice Advance':
 				add.tds_amount = flt(d[4])
+				
+		return obj.doclist
 
 	# Clear rows which is not adjusted
 	#-------------------------------------
@@ -487,14 +490,81 @@ def manage_recurring_invoices():
 	rv = webnotes.conn.sql("""select name, recurring_id from `tabSales Invoice` \
 		where ifnull(convert_into_recurring_invoice, 0) = 1 and next_date = %s \
 		and next_date <= ifnull(end_date, '2199-12-31') and docstatus=1""", nowdate())
-			
+	
+	
+	exception_list = []
 	for d in rv:
 		if not webnotes.conn.sql("""select name from `tabSales Invoice` \
 			where posting_date = %s and recurring_id = %s and docstatus=1""", (nowdate(), d[1])):
-			prev_rv = get_obj('Sales Invoice', d[0], with_children=1)
-			new_rv = create_new_invoice(prev_rv)
+			try:
+				prev_rv = get_obj('Sales Invoice', d[0], with_children=1)
+				new_rv = create_new_invoice(prev_rv)
 
-			send_notification(new_rv)
+				send_notification(new_rv)
+				webnotes.conn.commit()
+			except Exception, e:
+				webnotes.conn.rollback()
+
+				webnotes.conn.begin()
+				webnotes.conn.sql("update `tabSales Invoice` set \
+					convert_into_recurring_invoice = 0 where name = %s", d[0])
+				notify_errors(d[0], prev_rv.doc.owner)
+				webnotes.conn.commit()
+
+				exception_list.append(e)
+			finally:
+				webnotes.conn.begin()
+			
+	if exception_list:
+		exception_message = "\n\n".join([cstr(d) for d in exception_list])
+		raise Exception, exception_message
+		
+		
+def notify_errors(inv, owner):
+	exception_msg = """
+		Dear User,
+
+		An error occured while creating recurring invoice from %s.
+
+		May be there are some invalid email ids mentioned in the invoice.
+
+		To stop sending repetitive error notifications from the system, we have unchecked \
+		"Convert into Recurring" field in the invoice %s.
+
+
+		Please correct the invoice and make the invoice recurring again. 
+
+		<b>It is necessary to take this action today itself for the above mentioned recurring invoice \
+		to be generated. If delayed, you will have to manually change the "Repeat on Day of Month" field \
+		of this invoice for generating the recurring invoice.</b>
+
+		Regards,
+		Administrator
+		
+	""" % (inv, inv)
+	subj = "[Urgent] Error while creating recurring invoice from %s" % inv
+	import webnotes.utils
+	recipients = webnotes.utils.get_system_managers_list()
+	recipients += ['support@erpnext.com', owner]
+	assign_task_to_owner(inv, exception_msg, recipients)
+	sendmail(recipients, subject=subj, msg = exception_msg)
+	
+	
+
+def assign_task_to_owner(inv, msg, users):
+	for d in users:
+		if d.lower() == 'administrator':
+			d = webnotes.conn.sql("select ifnull(email_id, '') \
+				from `tabProfile` where name = 'Administrator'")[0][0]
+		from webnotes.widgets.form import assign_to
+		args = {
+			'assign_to' 	:	d,
+			'doctype'		:	'Sales Invoice',
+			'name'			:	inv,
+			'description'	:	msg,
+			'priority'		:	'Urgent'
+		}
+		assign_to.add(args)
 
 
 def create_new_invoice(prev_rv):
@@ -592,5 +662,5 @@ def send_notification(new_rv):
 
 
 	msg = hd + tbl + totals
-	from webnotes.utils.email_lib import sendmail
-	sendmail(new_rv.doc.notification_email_address.split(", "), subject=subject, msg = msg)
+	recipients = new_rv.doc.notification_email_address.replace('\n', '').replace(' ', '').split(",")
+	sendmail(recipients, subject=subject, msg = msg)

@@ -28,7 +28,6 @@
 }
 
 .todoitem .description {
-	cursor: pointer;
 	padding: 3px 0px;
 	display: inline-block;
 	width: 80%;
@@ -47,4 +46,9 @@
 
 .todo-content {
 	padding-right: 15px;
+}
+
+.todo-layout {
+	background-color: #FFFDC9;
+	min-height: 300px;
 }
