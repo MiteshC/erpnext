@@ -521,4 +521,28 @@ patch_list = [
 		'patch_module': 'patches.august_2012',
 		'patch_file': 'report_supplier_quotations',
 	},
+	{
+		'patch_module': 'patches.august_2012',
+		'patch_file': 'changed_blog_date_format',
+	},
+	{
+		'patch_module': 'patches.august_2012',
+		'patch_file': 'repost_billed_amt',
+	},
+	{
+		'patch_module': 'patches.august_2012',
+		'patch_file': 'remove_cash_flow_statement',
+	},
+	{
+		'patch_module': 'patches.september_2012',
+		'patch_file': 'stock_report_permissions_for_accounts',
+	},
+	{
+		'patch_module': 'patches.september_2012',
+		'patch_file': 'communication_delete_permission',
+	},
+	{
+		'patch_module': 'patches.september_2012',
+		'patch_file': 'reload_criteria_stock_ledger',
+	},
 ]
