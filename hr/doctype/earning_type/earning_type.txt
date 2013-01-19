@@ -1,0 +1,112 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:54", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:54"
+ }, 
+ {
+  "section_style": "Simple", 
+  "module": "HR", 
+  "server_code_error": " ", 
+  "allow_trash": 1, 
+  "doctype": "DocType", 
+  "autoname": "field:earning_name", 
+  "document_type": "Master", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "show_in_menu": 0, 
+  "version": 13
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Earning Type", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Earning Type", 
+  "read": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "cancel": 1, 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Earning Type", 
+  "doctype": "DocType"
+ }, 
+ {
+  "role": "System Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR User", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Name", 
+  "oldfieldname": "earning_name", 
+  "fieldname": "earning_name", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Taxable", 
+  "oldfieldname": "taxable", 
+  "trigger": "Client", 
+  "fieldname": "taxable", 
+  "fieldtype": "Select", 
+  "reqd": 1, 
+  "options": "\nYes\nNo", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Exemption Limit", 
+  "oldfieldname": "exemption_limit", 
+  "fieldname": "exemption_limit", 
+  "fieldtype": "Currency", 
+  "depends_on": "eval:doc.taxable=='No'", 
+  "hidden": 1, 
+  "permlevel": 0
+ }
+]

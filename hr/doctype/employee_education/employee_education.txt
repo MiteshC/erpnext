@@ -1,0 +1,82 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:54", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:54"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "show_in_menu": 0, 
+  "version": 5, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Employee Education", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Employee Education", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "School/University", 
+  "oldfieldname": "school_univ", 
+  "fieldname": "school_univ", 
+  "fieldtype": "Small Text"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Qualification", 
+  "oldfieldname": "qualification", 
+  "width": "100px", 
+  "fieldname": "qualification", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Level", 
+  "oldfieldname": "level", 
+  "fieldname": "level", 
+  "fieldtype": "Select", 
+  "options": "Graduate\nPost Graduate\nUnder Graduate"
+ }, 
+ {
+  "oldfieldtype": "Int", 
+  "doctype": "DocField", 
+  "label": "Year of Passing", 
+  "oldfieldname": "year_of_passing", 
+  "fieldname": "year_of_passing", 
+  "fieldtype": "Int"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Class / Percentage", 
+  "oldfieldname": "class_per", 
+  "fieldname": "class_per", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Major/Optional Subjects", 
+  "oldfieldname": "maj_opt_subj", 
+  "fieldname": "maj_opt_subj", 
+  "fieldtype": "Text"
+ }
+]

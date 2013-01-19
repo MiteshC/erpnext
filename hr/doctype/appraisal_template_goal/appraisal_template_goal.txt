@@ -1,0 +1,53 @@
+[
+ {
+  "owner": "ashwini@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:58", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:58"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "server_code_error": " ", 
+  "version": 6, 
+  "doctype": "DocType", 
+  "autoname": "KSHEET.#####"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Appraisal Template Goal", 
+  "doctype": "DocField", 
+  "reqd": 1, 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Appraisal Template Goal", 
+  "doctype": "DocType"
+ }, 
+ {
+  "description": "Key Performance Area", 
+  "oldfieldtype": "Small Text", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "KRA", 
+  "oldfieldname": "kra", 
+  "width": "200px", 
+  "fieldname": "kra", 
+  "fieldtype": "Small Text"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Weightage (%)", 
+  "oldfieldname": "per_weightage", 
+  "width": "100px", 
+  "fieldname": "per_weightage", 
+  "fieldtype": "Currency"
+ }
+]

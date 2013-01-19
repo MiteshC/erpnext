@@ -1,0 +1,40 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-09-18 11:05:48", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 17:01:47"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Trial Balance", 
+  "module": "Accounts", 
+  "doctype": "Page", 
+  "page_name": "trial-balance", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "trial-balance", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "trial-balance", 
+  "doctype": "Page"
+ }, 
+ {
+  "role": "Analytics", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Accounts Manager", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Accounts User", 
+  "doctype": "Page Role"
+ }
+]

@@ -1,0 +1,80 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:22", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:22"
+ }, 
+ {
+  "section_style": "Simple", 
+  "search_fields": "print_heading", 
+  "module": "Setup", 
+  "doctype": "DocType", 
+  "allow_trash": 1, 
+  "document_type": "Master", 
+  "autoname": "field:print_heading", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "_last_update": "1294312215", 
+  "server_code_error": " ", 
+  "version": 27
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Print Heading", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "parent": "Print Heading", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "cancel": 1, 
+  "name": "__common__", 
+  "create": 1, 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "role": "All", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Print Heading", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocPerm"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Print Heading", 
+  "oldfieldname": "print_heading", 
+  "fieldname": "print_heading", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }
+]

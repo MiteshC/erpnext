@@ -1,0 +1,83 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:00", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:00"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "show_in_menu": 0, 
+  "version": 9, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Salary Slip Deduction", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "parent": "Salary Slip Deduction", 
+  "read": 1, 
+  "name": "__common__", 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "role": "System Manager", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Salary Slip Deduction", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocPerm"
+ }, 
+ {
+  "permlevel": 0, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Type", 
+  "oldfieldname": "d_type", 
+  "width": "200px", 
+  "fieldname": "d_type", 
+  "fieldtype": "Link", 
+  "options": "Deduction Type"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Amount", 
+  "oldfieldname": "d_amount", 
+  "fieldname": "d_amount", 
+  "fieldtype": "Currency", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Modified Amount", 
+  "trigger": "Client", 
+  "fieldname": "d_modified_amount", 
+  "fieldtype": "Currency", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Depends on LWP", 
+  "trigger": "Client", 
+  "fieldname": "d_depends_on_lwp", 
+  "fieldtype": "Check", 
+  "permlevel": 0
+ }
+]

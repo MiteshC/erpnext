@@ -1,0 +1,120 @@
+[
+ {
+  "owner": "harshada@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:26", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:26"
+ }, 
+ {
+  "section_style": "Simple", 
+  "module": "Stock", 
+  "server_code_error": " ", 
+  "allow_trash": 1, 
+  "doctype": "DocType", 
+  "autoname": "field:batch_id", 
+  "document_type": "Master", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "version": 12
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Batch", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Batch", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "role": "Material Master Manager", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Batch", 
+  "doctype": "DocType"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "permlevel": 1, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Batch ID", 
+  "oldfieldname": "batch_id", 
+  "fieldname": "batch_id", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Batch Started Date", 
+  "oldfieldname": "start_date", 
+  "fieldname": "start_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Batch Finished Date", 
+  "oldfieldname": "finished_date", 
+  "fieldname": "finished_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Expiry Date", 
+  "oldfieldname": "expiry_date", 
+  "fieldname": "expiry_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Item", 
+  "oldfieldname": "item", 
+  "permlevel": 0, 
+  "fieldname": "item", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }
+]

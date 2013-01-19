@@ -1,0 +1,35 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-06-14 15:07:28", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 17:04:05"
+ }, 
+ {
+  "name": "__common__", 
+  "module": "Accounts", 
+  "page_name": "Financial Statements", 
+  "doctype": "Page", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Financial Statements", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "Financial Statements", 
+  "doctype": "Page"
+ }, 
+ {
+  "role": "Accounts User", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Accounts Manager", 
+  "doctype": "Page Role"
+ }
+]

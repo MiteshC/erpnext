@@ -1,0 +1,106 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:25", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:25"
+ }, 
+ {
+  "section_style": "Simple", 
+  "in_create": 0, 
+  "allow_print": 1, 
+  "module": "Setup", 
+  "doctype": "DocType", 
+  "read_only": 0, 
+  "allow_email": 1, 
+  "issingle": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "_last_update": "1306304974", 
+  "show_in_menu": 0, 
+  "version": 16, 
+  "allow_copy": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "SMS Settings", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "SMS Settings", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "role": "System Manager", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "SMS Settings", 
+  "doctype": "DocType"
+ }, 
+ {
+  "write": 1, 
+  "create": 1, 
+  "permlevel": 0, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "permlevel": 1, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "width": "50%", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "doctype": "DocField"
+ }, 
+ {
+  "description": "Eg. smsgateway.com/api/send_sms.cgi", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "SMS Gateway URL", 
+  "fieldname": "sms_gateway_url", 
+  "fieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "description": "Enter url parameter for message", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Message Parameter", 
+  "fieldname": "message_parameter", 
+  "fieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "description": "Enter url parameter for receiver nos", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Receiver Parameter", 
+  "fieldname": "receiver_parameter", 
+  "fieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Static Parameters", 
+  "width": "50%", 
+  "fieldname": "static_parameters", 
+  "fieldtype": "Column Break"
+ }, 
+ {
+  "description": "Enter static url parameters here (Eg. sender=ERPNext, username=ERPNext, password=1234 etc.)", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "SMS Parameters", 
+  "fieldname": "static_parameter_details", 
+  "fieldtype": "Table", 
+  "options": "SMS Parameter"
+ }
+]

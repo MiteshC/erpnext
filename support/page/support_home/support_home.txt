@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-02-21 13:23:35", 
+  "modified_by": "Administrator", 
+  "modified": "2012-02-21 13:23:35"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Support Home", 
+  "module": "Support", 
+  "doctype": "Page", 
+  "page_name": "support-home", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "support-home", 
+  "doctype": "Page"
+ }
+]

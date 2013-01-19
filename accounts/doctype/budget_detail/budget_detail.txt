@@ -1,0 +1,77 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:41", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:41"
+ }, 
+ {
+  "section_style": "Tray", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Accounts", 
+  "doctype": "DocType", 
+  "version": 6, 
+  "autoname": "CBD/.######", 
+  "show_in_menu": 0
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Budget Detail", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Budget Detail", 
+  "doctype": "DocType"
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Account", 
+  "oldfieldname": "account", 
+  "trigger": "Client", 
+  "fieldname": "account", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Account", 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Budget Allocated", 
+  "oldfieldname": "budget_allocated", 
+  "fieldname": "budget_allocated", 
+  "fieldtype": "Currency", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Actual", 
+  "oldfieldname": "actual", 
+  "fieldname": "actual", 
+  "fieldtype": "Currency", 
+  "permlevel": 1
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Fiscal Year", 
+  "oldfieldname": "fiscal_year", 
+  "options": "link:Fiscal Year", 
+  "fieldname": "fiscal_year", 
+  "fieldtype": "Select", 
+  "oldfieldtype": "Select", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }
+]

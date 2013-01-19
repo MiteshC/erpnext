@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-02-21 13:22:54", 
+  "modified_by": "Administrator", 
+  "modified": "2012-02-21 13:22:54"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Buying Home", 
+  "module": "Buying", 
+  "doctype": "Page", 
+  "page_name": "buying-home", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "buying-home", 
+  "doctype": "Page"
+ }
+]

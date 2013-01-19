@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-02-29 11:59:13", 
+  "modified_by": "Administrator", 
+  "modified": "2012-02-29 12:11:46"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Activity", 
+  "module": "Home", 
+  "doctype": "Page", 
+  "page_name": "activity", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "activity", 
+  "doctype": "Page"
+ }
+]

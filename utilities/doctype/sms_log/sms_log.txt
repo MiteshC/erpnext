@@ -1,0 +1,94 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:47", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:47"
+ }, 
+ {
+  "section_style": "Simple", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Utilities", 
+  "doctype": "DocType", 
+  "version": 3, 
+  "autoname": "SMSLOG/.########", 
+  "show_in_menu": 0
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "SMS Log", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "parent": "SMS Log", 
+  "read": 1, 
+  "name": "__common__", 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "parenttype": "DocType", 
+  "role": "System Manager", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "SMS Log", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocPerm"
+ }, 
+ {
+  "width": "50%", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "doctype": "DocField"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "sender_name", 
+  "fieldtype": "Data", 
+  "label": "Sender Name"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "sent_on", 
+  "fieldtype": "Date", 
+  "label": "Sent On"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "receiver_list", 
+  "fieldtype": "Small Text", 
+  "label": "Receiver List"
+ }, 
+ {
+  "width": "50%", 
+  "fieldname": "column_break1", 
+  "fieldtype": "Column Break", 
+  "doctype": "DocField"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "no_of_requested_sms", 
+  "fieldtype": "Int", 
+  "label": "No of Requested SMS"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "no_of_sent_sms", 
+  "fieldtype": "Int", 
+  "label": "No of Sent SMS"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "message", 
+  "fieldtype": "Small Text", 
+  "label": "Message"
+ }
+]

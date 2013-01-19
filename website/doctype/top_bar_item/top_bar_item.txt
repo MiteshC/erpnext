@@ -1,0 +1,58 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-04-02 16:02:43", 
+  "modified_by": "Administrator", 
+  "modified": "2012-05-07 15:21:00"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Website", 
+  "doctype": "DocType", 
+  "version": 1, 
+  "show_in_menu": 0
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Top Bar Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Top Bar Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Label", 
+  "width": "120px", 
+  "fieldname": "label", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "URL", 
+  "width": "200px", 
+  "fieldname": "url", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Target", 
+  "fieldname": "target", 
+  "fieldtype": "Select", 
+  "options": "\ntarget = \"_blank\""
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "parent_label", 
+  "fieldtype": "Select", 
+  "label": "Parent Label"
+ }
+]

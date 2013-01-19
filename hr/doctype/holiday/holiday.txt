@@ -1,0 +1,47 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:57", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:57"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "show_in_menu": 0, 
+  "version": 2, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Holiday", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Holiday", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text"
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Date", 
+  "oldfieldname": "holiday_date", 
+  "fieldname": "holiday_date", 
+  "fieldtype": "Date"
+ }
+]

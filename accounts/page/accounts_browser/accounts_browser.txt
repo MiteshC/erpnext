@@ -1,0 +1,35 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-06-14 15:07:28", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 16:57:27"
+ }, 
+ {
+  "name": "__common__", 
+  "module": "Accounts", 
+  "page_name": "Accounts Browser", 
+  "doctype": "Page", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Accounts Browser", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "Accounts Browser", 
+  "doctype": "Page"
+ }, 
+ {
+  "role": "Accounts User", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Accounts Manager", 
+  "doctype": "Page Role"
+ }
+]

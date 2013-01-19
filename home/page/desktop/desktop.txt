@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-02-24 11:37:43", 
+  "modified_by": "Administrator", 
+  "modified": "2012-02-24 11:37:43"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Desktop", 
+  "module": "Home", 
+  "doctype": "Page", 
+  "page_name": "desktop", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "desktop", 
+  "doctype": "Page"
+ }
+]

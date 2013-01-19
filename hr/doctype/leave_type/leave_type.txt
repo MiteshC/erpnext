@@ -1,0 +1,114 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:59", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:59"
+ }, 
+ {
+  "section_style": "Simple", 
+  "module": "HR", 
+  "server_code_error": " ", 
+  "allow_trash": 1, 
+  "doctype": "DocType", 
+  "autoname": "field:leave_type_name", 
+  "document_type": "Master", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "show_in_menu": 0, 
+  "version": 23
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Leave Type", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Leave Type", 
+  "read": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "cancel": 1, 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Leave Type", 
+  "doctype": "DocType"
+ }, 
+ {
+  "role": "System Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR User", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Leave Type Name", 
+  "oldfieldname": "leave_type_name", 
+  "fieldname": "leave_type_name", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Max Days Leave Allowed", 
+  "oldfieldname": "max_days_allowed", 
+  "fieldname": "max_days_allowed", 
+  "fieldtype": "Data", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Check", 
+  "doctype": "DocField", 
+  "label": "Is Carry Forward", 
+  "oldfieldname": "is_carry_forward", 
+  "fieldname": "is_carry_forward", 
+  "fieldtype": "Check", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "oldfieldtype": "Check", 
+  "doctype": "DocField", 
+  "label": "Is Encash", 
+  "oldfieldname": "is_encash", 
+  "fieldname": "is_encash", 
+  "fieldtype": "Check", 
+  "hidden": 1, 
+  "permlevel": 0, 
+  "report_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Is LWP", 
+  "fieldname": "is_lwp", 
+  "fieldtype": "Check", 
+  "permlevel": 0
+ }
+]

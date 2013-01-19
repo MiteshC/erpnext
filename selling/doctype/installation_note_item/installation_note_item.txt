@@ -1,0 +1,127 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:10", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:10"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "module": "Selling", 
+  "server_code_error": " ", 
+  "doctype": "DocType", 
+  "autoname": "IID/.#####", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "show_in_menu": 0, 
+  "version": 25
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Installation Note Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Installation Note Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "permlevel": 0, 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "print_hide": 0, 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Delivery Date", 
+  "oldfieldname": "prevdoc_date", 
+  "fieldname": "prevdoc_date", 
+  "fieldtype": "Date", 
+  "hidden": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "oldfieldname": "serial_no", 
+  "width": "180px", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Against Document Detail No", 
+  "oldfieldname": "prevdoc_detail_docname", 
+  "width": "150px", 
+  "fieldname": "prevdoc_detail_docname", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Against Document No", 
+  "oldfieldname": "prevdoc_docname", 
+  "width": "150px", 
+  "fieldname": "prevdoc_docname", 
+  "fieldtype": "Data", 
+  "search_index": 1, 
+  "hidden": 1, 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Document Type", 
+  "oldfieldname": "prevdoc_doctype", 
+  "width": "150px", 
+  "fieldname": "prevdoc_doctype", 
+  "fieldtype": "Data", 
+  "search_index": 1, 
+  "hidden": 1, 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Installed Qty", 
+  "oldfieldname": "qty", 
+  "fieldname": "qty", 
+  "fieldtype": "Currency", 
+  "reqd": 1, 
+  "permlevel": 0
+ }
+]

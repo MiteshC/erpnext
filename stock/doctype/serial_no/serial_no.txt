@@ -1,0 +1,597 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:43", 
+  "modified_by": "Administrator", 
+  "modified": "2012-12-03 11:39:34"
+ }, 
+ {
+  "allow_attach": 1, 
+  "search_fields": "item_code,status", 
+  "module": "Stock", 
+  "document_type": "Master", 
+  "description": "Distinct unit of an Item", 
+  "autoname": "field:serial_no", 
+  "name": "__common__", 
+  "allow_rename": 1, 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Serial No", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Serial No", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Serial No", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Details", 
+  "fieldname": "details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "permlevel": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Status", 
+  "oldfieldname": "status", 
+  "default": "In Store", 
+  "fieldname": "status", 
+  "fieldtype": "Select", 
+  "search_index": 1, 
+  "reqd": 1, 
+  "options": "\nIn Store\nDelivered\nNot in Use\nPurchase Returned", 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "oldfieldname": "serial_no", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Data", 
+  "search_index": 1, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "options": "Item", 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "column_break1", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Item Name", 
+  "fieldname": "item_name", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Text", 
+  "search_index": 0, 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Item Group", 
+  "oldfieldname": "item_group", 
+  "options": "Item Group", 
+  "fieldname": "item_group", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "permlevel": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Brand", 
+  "oldfieldname": "brand", 
+  "options": "Brand", 
+  "fieldname": "brand", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "reqd": 0, 
+  "permlevel": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Purchase Details", 
+  "fieldname": "purchase_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break2", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Purchase Document Type", 
+  "options": "\nPurchase Receipt\nStock Entry", 
+  "fieldname": "purchase_document_type", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Purchase Document No", 
+  "fieldname": "purchase_document_no", 
+  "fieldtype": "Data", 
+  "hidden": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Date", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Purchase Date", 
+  "oldfieldname": "purchase_date", 
+  "trigger": "Client", 
+  "fieldname": "purchase_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Incoming Time", 
+  "fieldname": "purchase_time", 
+  "fieldtype": "Time", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Incoming Rate", 
+  "oldfieldname": "purchase_rate", 
+  "fieldname": "purchase_rate", 
+  "fieldtype": "Currency", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break3", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Warehouse", 
+  "oldfieldname": "warehouse", 
+  "permlevel": 0, 
+  "fieldname": "warehouse", 
+  "fieldtype": "Link", 
+  "search_index": 1, 
+  "reqd": 0, 
+  "options": "Warehouse", 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Supplier", 
+  "options": "Supplier", 
+  "fieldname": "supplier", 
+  "fieldtype": "Link", 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Supplier Name", 
+  "fieldname": "supplier_name", 
+  "fieldtype": "Data", 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Supplier Address", 
+  "fieldname": "address_display", 
+  "fieldtype": "Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Column Break", 
+  "doctype": "DocField", 
+  "label": "Delivery Details", 
+  "fieldname": "delivery_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break4", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Delivery Document Type", 
+  "options": "\nDelivery Note\nSales Invoice\nStock Entry", 
+  "fieldname": "delivery_document_type", 
+  "fieldtype": "Select", 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Delivery Document No", 
+  "fieldname": "delivery_document_no", 
+  "fieldtype": "Data", 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Customer Address", 
+  "oldfieldname": "customer_address", 
+  "fieldname": "customer_address", 
+  "fieldtype": "Text", 
+  "permlevel": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Delivery Date", 
+  "oldfieldname": "delivery_date", 
+  "fieldname": "delivery_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Delivery Time", 
+  "fieldname": "delivery_time", 
+  "fieldtype": "Time", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Is Cancelled", 
+  "oldfieldname": "is_cancelled", 
+  "options": "\nYes\nNo", 
+  "fieldname": "is_cancelled", 
+  "fieldtype": "Select", 
+  "hidden": 1, 
+  "permlevel": 0, 
+  "report_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break5", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Customer", 
+  "oldfieldname": "customer", 
+  "permlevel": 1, 
+  "trigger": "Client", 
+  "fieldname": "customer", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "options": "Customer", 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Customer Name", 
+  "oldfieldname": "customer_name", 
+  "fieldname": "customer_name", 
+  "fieldtype": "Data", 
+  "search_index": 0, 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Delivery Address", 
+  "fieldname": "delivery_address", 
+  "fieldtype": "Text", 
+  "permlevel": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Territory", 
+  "oldfieldname": "territory", 
+  "permlevel": 1, 
+  "fieldname": "territory", 
+  "fieldtype": "Link", 
+  "options": "Territory", 
+  "report_hide": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Warranty / AMC Details", 
+  "fieldname": "warranty_amc_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break6", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "permlevel": 0, 
+  "no_copy": 0, 
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Maintenance Status", 
+  "oldfieldname": "maintenance_status", 
+  "width": "150px", 
+  "fieldname": "maintenance_status", 
+  "fieldtype": "Select", 
+  "search_index": 1, 
+  "options": "\nUnder Warranty\nOut of Warranty\nUnder AMC\nOut of AMC", 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Int", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Warranty Period (Days)", 
+  "oldfieldname": "warranty_period", 
+  "width": "150px", 
+  "trigger": "Client", 
+  "fieldname": "warranty_period", 
+  "fieldtype": "Int", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break7", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Warranty Expiry Date", 
+  "oldfieldname": "warranty_expiry_date", 
+  "width": "150px", 
+  "fieldname": "warranty_expiry_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "AMC Expiry Date", 
+  "oldfieldname": "amc_expiry_date", 
+  "width": "150px", 
+  "fieldname": "amc_expiry_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "More Info", 
+  "fieldname": "more_info", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Serial No Details", 
+  "fieldname": "serial_no_details", 
+  "fieldtype": "Text Editor", 
+  "permlevel": 0
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Company", 
+  "options": "link:Company", 
+  "fieldname": "company", 
+  "fieldtype": "Select", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Fiscal Year", 
+  "options": "link:Fiscal Year", 
+  "fieldname": "fiscal_year", 
+  "fieldtype": "Select", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "File List", 
+  "fieldname": "file_list", 
+  "fieldtype": "Text", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "SLE Exists", 
+  "fieldname": "sle_exists", 
+  "fieldtype": "Check", 
+  "hidden": 1, 
+  "permlevel": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material Manager", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "System Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Master Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocPerm", 
+  "role": "System Manager", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocPerm", 
+  "role": "Sales Master Manager", 
+  "permlevel": 1
+ }
+]

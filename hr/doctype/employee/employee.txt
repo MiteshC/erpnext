@@ -1,0 +1,887 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2013-01-02 16:17:01", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-09 14:46:42"
+ }, 
+ {
+  "autoname": "naming_series:", 
+  "allow_attach": 1, 
+  "search_fields": "employee_name", 
+  "module": "HR", 
+  "doctype": "DocType", 
+  "document_type": "Master", 
+  "name": "__common__"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Employee", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Employee", 
+  "amend": 0, 
+  "submit": 0, 
+  "doctype": "DocPerm", 
+  "read": 1, 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Employee", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Basic Information", 
+  "fieldname": "basic_information", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Image View", 
+  "options": "image", 
+  "fieldname": "image_view", 
+  "fieldtype": "Image", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Employee", 
+  "fieldname": "employee", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 0, 
+  "report_hide": 1
+ }, 
+ {
+  "description": "<span class=\"sys_manager\">To setup, please go to Setup > Naming Series</span>", 
+  "no_copy": 1, 
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Naming Series", 
+  "oldfieldname": "naming_series", 
+  "options": "EMP/", 
+  "fieldname": "naming_series", 
+  "fieldtype": "Select", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Salutation", 
+  "oldfieldname": "salutation", 
+  "options": "\nMr\nMs", 
+  "fieldname": "salutation", 
+  "fieldtype": "Select", 
+  "search_index": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Full Name", 
+  "oldfieldname": "employee_name", 
+  "fieldname": "employee_name", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Image", 
+  "options": "attach_files:", 
+  "fieldname": "image", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break1", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "System User (login) ID. If set, it will become default for all HR forms.", 
+  "doctype": "DocField", 
+  "label": "User ID", 
+  "options": "Profile", 
+  "fieldname": "user_id", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Employee Number", 
+  "oldfieldname": "employee_number", 
+  "fieldname": "employee_number", 
+  "fieldtype": "Data", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Date of Joining", 
+  "oldfieldname": "date_of_joining", 
+  "fieldname": "date_of_joining", 
+  "fieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "description": "You can enter any date manually", 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Date of Birth", 
+  "oldfieldname": "date_of_birth", 
+  "fieldname": "date_of_birth", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Gender", 
+  "oldfieldname": "gender", 
+  "options": "\nMale\nFemale", 
+  "fieldname": "gender", 
+  "fieldtype": "Select", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Company", 
+  "options": "link:Company", 
+  "fieldname": "company", 
+  "fieldtype": "Select", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Employment Details", 
+  "fieldname": "employment_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "col_break_21", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "default": "Active", 
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Status", 
+  "oldfieldname": "status", 
+  "permlevel": 0, 
+  "fieldname": "status", 
+  "fieldtype": "Select", 
+  "search_index": 1, 
+  "reqd": 1, 
+  "options": "\nActive\nLeft", 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Employment Type", 
+  "oldfieldname": "employment_type", 
+  "options": "Employment Type", 
+  "fieldname": "employment_type", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "description": "Applicable Holiday List", 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Holiday List", 
+  "oldfieldname": "holiday_list", 
+  "options": "Holiday List", 
+  "fieldname": "holiday_list", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "col_break_22", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Scheduled Confirmation Date", 
+  "oldfieldname": "scheduled_confirmation_date", 
+  "fieldname": "scheduled_confirmation_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Final Confirmation Date", 
+  "oldfieldname": "final_confirmation_date", 
+  "fieldname": "final_confirmation_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Contract End Date", 
+  "oldfieldname": "contract_end_date", 
+  "fieldname": "contract_end_date", 
+  "fieldtype": "Date", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Date Of Retirement", 
+  "oldfieldname": "date_of_retirement", 
+  "fieldname": "date_of_retirement", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Job Profile", 
+  "fieldname": "job_profile", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break2", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Branch", 
+  "oldfieldname": "branch", 
+  "options": "Branch", 
+  "fieldname": "branch", 
+  "fieldtype": "Link", 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Department", 
+  "oldfieldname": "department", 
+  "options": "Department", 
+  "fieldname": "department", 
+  "fieldtype": "Link", 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Designation", 
+  "oldfieldname": "designation", 
+  "options": "Designation", 
+  "fieldname": "designation", 
+  "fieldtype": "Link", 
+  "search_index": 1, 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Grade", 
+  "oldfieldname": "grade", 
+  "options": "Grade", 
+  "fieldname": "grade", 
+  "fieldtype": "Link", 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Reports to", 
+  "oldfieldname": "reports_to", 
+  "options": "Employee", 
+  "fieldname": "reports_to", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Provide email id registered in company", 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Email (By company)", 
+  "oldfieldname": "company_email", 
+  "fieldname": "company_email", 
+  "fieldtype": "Data", 
+  "reqd": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Salary Information", 
+  "width": "50%", 
+  "fieldname": "salary_information", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Salary Mode", 
+  "oldfieldname": "salary_mode", 
+  "options": "\nBank\nCash\nCheque", 
+  "fieldname": "salary_mode", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Bank Name", 
+  "oldfieldname": "bank_name", 
+  "options": "Suggest", 
+  "fieldname": "bank_name", 
+  "fieldtype": "Data", 
+  "depends_on": "eval:doc.salary_mode == 'Bank'", 
+  "hidden": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Bank A/C No.", 
+  "oldfieldname": "bank_ac_no", 
+  "fieldname": "bank_ac_no", 
+  "fieldtype": "Data", 
+  "depends_on": "eval:doc.salary_mode == 'Bank'", 
+  "hidden": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "ESIC CARD No", 
+  "oldfieldname": "esic_card_no", 
+  "fieldname": "esic_card_no", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "PF Number", 
+  "oldfieldname": "pf_number", 
+  "fieldname": "pf_number", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Gratuity LIC ID", 
+  "oldfieldname": "gratuity_lic_id", 
+  "fieldname": "gratuity_lic_id", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Contact Details", 
+  "fieldname": "contact_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break3", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Cell Number", 
+  "fieldname": "cell_number", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Personal Email", 
+  "fieldname": "personal_email", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Int", 
+  "doctype": "DocField", 
+  "label": "Notice - Number of Days", 
+  "oldfieldname": "notice_number_of_days", 
+  "fieldname": "notice_number_of_days", 
+  "fieldtype": "Int", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Emergency Contact Details", 
+  "options": "<b>Emergency Contact Details</b>", 
+  "fieldname": "emergency_contact_details", 
+  "fieldtype": "HTML", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Person To Be Contacted", 
+  "fieldname": "person_to_be_contacted", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Relation", 
+  "fieldname": "relation", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Emergency Phone Number", 
+  "fieldname": "emergency_phone_number", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break4", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Permanent Accommodation Type", 
+  "options": "\nRented\nOwned", 
+  "fieldname": "permanent_accommodation_type", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Permanent Address", 
+  "fieldname": "permanent_address", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Current Accommodation Type", 
+  "options": "\nRented\nOwned", 
+  "fieldname": "current_accommodation_type", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Current Address", 
+  "fieldname": "current_address", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Bio", 
+  "fieldname": "sb53", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Short biography for website and other publications.", 
+  "doctype": "DocField", 
+  "label": "Bio", 
+  "fieldname": "bio", 
+  "fieldtype": "Text Editor", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Personal Details", 
+  "fieldname": "personal_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break5", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "PAN Number", 
+  "fieldname": "pan_number", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Passport Number", 
+  "fieldname": "passport_number", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Date of Issue", 
+  "fieldname": "date_of_issue", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Valid Upto", 
+  "fieldname": "valid_upto", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Button", 
+  "doctype": "DocField", 
+  "label": "Salary Structure", 
+  "fieldname": "salary_structure", 
+  "fieldtype": "Button", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Place of Issue", 
+  "fieldname": "place_of_issue", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Marital Status", 
+  "options": "\nSingle\nMarried\nDivorced\nWidowed", 
+  "fieldname": "marital_status", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Blood Group", 
+  "options": "\nA+\nA-\nB+\nB-\nAB+\nAB-\nO+\nO-", 
+  "fieldname": "blood_group", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break6", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Here you can maintain family details like name and occupation of parent, spouse and children", 
+  "doctype": "DocField", 
+  "label": "Family Background", 
+  "fieldname": "family_background", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Here you can maintain height, weight, allergies, medical concerns etc", 
+  "doctype": "DocField", 
+  "label": "Health Details", 
+  "fieldname": "health_details", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Educational Qualification", 
+  "fieldname": "educational_qualification", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Educational Qualification Details", 
+  "options": "Employee Education", 
+  "fieldname": "educational_qualification_details", 
+  "fieldtype": "Table", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Career History", 
+  "fieldname": "career_history", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Previous Work Experience", 
+  "options": "Simple", 
+  "fieldname": "previous_work_experience", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Employee External Work History", 
+  "options": "Employee External Work History", 
+  "fieldname": "previous_experience_details", 
+  "fieldtype": "Table", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "History In Company", 
+  "options": "Simple", 
+  "fieldname": "history_in_company", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Employee Internal Work Historys", 
+  "options": "Employee Internal Work History", 
+  "fieldname": "experience_in_company_details", 
+  "fieldtype": "Table", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Exit", 
+  "fieldname": "exit", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break7", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Resignation Letter Date", 
+  "oldfieldname": "resignation_letter_date", 
+  "fieldname": "resignation_letter_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Relieving Date", 
+  "oldfieldname": "relieving_date", 
+  "fieldname": "relieving_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Reason for Leaving", 
+  "oldfieldname": "reason_for_leaving", 
+  "fieldname": "reason_for_leaving", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Leave Encashed?", 
+  "oldfieldname": "leave_encashed", 
+  "options": "\nYes\nNo", 
+  "fieldname": "leave_encashed", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Encashment Date", 
+  "oldfieldname": "encashment_date", 
+  "fieldname": "encashment_date", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Column Break", 
+  "doctype": "DocField", 
+  "label": "Exit Interview Details", 
+  "oldfieldname": "col_brk6", 
+  "width": "50%", 
+  "fieldname": "exit_interview_details", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Held On", 
+  "oldfieldname": "held_on", 
+  "fieldname": "held_on", 
+  "fieldtype": "Date", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Reason for Resignation", 
+  "oldfieldname": "reason_for_resignation", 
+  "options": "\nBetter Prospects\nHealth Concerns", 
+  "fieldname": "reason_for_resignation", 
+  "fieldtype": "Select", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "New Workplace", 
+  "oldfieldname": "new_workplace", 
+  "fieldname": "new_workplace", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Feedback", 
+  "oldfieldname": "feedback", 
+  "fieldname": "feedback", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "File List", 
+  "fieldname": "file_list", 
+  "fieldtype": "Text", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Employee", 
+  "cancel": 0, 
+  "permlevel": 0, 
+  "match": "employee"
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Employee", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "HR User", 
+  "cancel": 1, 
+  "permlevel": 0, 
+  "match": "company"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "HR Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "HR User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "HR Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }
+]

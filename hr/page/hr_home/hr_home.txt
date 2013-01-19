@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-02-21 13:24:05", 
+  "modified_by": "Administrator", 
+  "modified": "2012-02-21 13:24:05"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Human Resources Home", 
+  "module": "HR", 
+  "doctype": "Page", 
+  "page_name": "hr-home", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "hr-home", 
+  "doctype": "Page"
+ }
+]

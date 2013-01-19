@@ -1,0 +1,102 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-11-30 18:14:18", 
+  "modified_by": "Administrator", 
+  "modified": "2012-12-06 16:33:36"
+ }, 
+ {
+  "allow_attach": 1, 
+  "doctype": "DocType", 
+  "module": "Website", 
+  "max_attachments": 5, 
+  "name": "__common__"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Blog", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Blog", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Blog", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Title", 
+  "fieldname": "title", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Published", 
+  "fieldname": "published", 
+  "fieldtype": "Check", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Content", 
+  "fieldname": "content", 
+  "fieldtype": "Text Editor", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Page Name", 
+  "fieldname": "page_name", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Email Sent", 
+  "fieldname": "email_sent", 
+  "fieldtype": "Check", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "File List", 
+  "fieldname": "file_list", 
+  "fieldtype": "Text", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Website Manager"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Blogger"
+ }, 
+ {
+  "write": 0, 
+  "role": "Guest", 
+  "doctype": "DocPerm"
+ }
+]

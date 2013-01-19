@@ -1,0 +1,83 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:46", 
+  "modified_by": "Administrator", 
+  "modified": "2012-07-11 18:56:27"
+ }, 
+ {
+  "section_style": "Tray", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Stock", 
+  "show_in_menu": 0, 
+  "version": 1, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales BOM Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Sales BOM Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Item", 
+  "oldfieldname": "item_code", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Qty", 
+  "oldfieldname": "qty", 
+  "fieldname": "qty", 
+  "fieldtype": "Currency", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Text", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Rate", 
+  "oldfieldname": "rate", 
+  "fieldname": "rate", 
+  "fieldtype": "Currency", 
+  "permlevel": 0
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "UOM", 
+  "oldfieldname": "uom", 
+  "permlevel": 1, 
+  "fieldname": "uom", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "options": "UOM"
+ }
+]

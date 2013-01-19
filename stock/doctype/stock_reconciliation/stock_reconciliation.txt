@@ -1,0 +1,126 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2013-01-15 12:28:57", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-16 13:59:28"
+ }, 
+ {
+  "allow_attach": 0, 
+  "is_submittable": 1, 
+  "allow_print": 1, 
+  "search_fields": "posting_date", 
+  "module": "Stock", 
+  "doctype": "DocType", 
+  "read_only_onload": 0, 
+  "autoname": "SR/.######", 
+  "description": "This tool helps you to update or fix the quantity and valuation of stock in the system. It is typically used to synchronise the system values and what actually exists in your warehouses.", 
+  "allow_email": 1, 
+  "name": "__common__", 
+  "max_attachments": 1, 
+  "allow_copy": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Stock Reconciliation", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "parent": "Stock Reconciliation", 
+  "read": 1, 
+  "cancel": 1, 
+  "name": "__common__", 
+  "amend": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "submit": 1, 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "role": "Material Manager", 
+  "report": 1, 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Stock Reconciliation", 
+  "doctype": "DocType"
+ }, 
+ {
+  "read_only": 0, 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Posting Date", 
+  "oldfieldname": "reconciliation_date", 
+  "fieldname": "posting_date", 
+  "fieldtype": "Date", 
+  "reqd": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "read_only": 0, 
+  "oldfieldtype": "Time", 
+  "doctype": "DocField", 
+  "label": "Posting Time", 
+  "oldfieldname": "reconciliation_time", 
+  "fieldname": "posting_time", 
+  "fieldtype": "Time", 
+  "reqd": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "read_only": 1, 
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Amended From", 
+  "fieldname": "amended_from", 
+  "fieldtype": "Link", 
+  "options": "Stock Reconciliation"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "col1", 
+  "fieldtype": "Column Break"
+ }, 
+ {
+  "read_only": 1, 
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Upload HTML", 
+  "fieldname": "upload_html", 
+  "fieldtype": "HTML"
+ }, 
+ {
+  "depends_on": "reconciliation_json", 
+  "doctype": "DocField", 
+  "label": "Reconciliation Data", 
+  "fieldname": "sb2", 
+  "fieldtype": "Section Break"
+ }, 
+ {
+  "read_only": 1, 
+  "print_hide": 0, 
+  "doctype": "DocField", 
+  "label": "Reconciliation HTML", 
+  "fieldname": "reconciliation_html", 
+  "fieldtype": "HTML", 
+  "hidden": 0
+ }, 
+ {
+  "read_only": 1, 
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "Reconciliation JSON", 
+  "fieldname": "reconciliation_json", 
+  "fieldtype": "Long Text", 
+  "hidden": 1
+ }, 
+ {
+  "doctype": "DocPerm"
+ }
+]

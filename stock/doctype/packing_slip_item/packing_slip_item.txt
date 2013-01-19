@@ -1,0 +1,90 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:34", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:34"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Stock", 
+  "doctype": "DocType", 
+  "version": 9, 
+  "autoname": "PSD/.#######", 
+  "show_in_menu": 0
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Packing Slip Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Packing Slip Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "permlevel": 0, 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "width": "100px", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Item Name", 
+  "width": "200px", 
+  "fieldname": "item_name", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Quantity", 
+  "width": "100px", 
+  "fieldname": "qty", 
+  "fieldtype": "Currency", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "UOM", 
+  "width": "100px", 
+  "fieldname": "stock_uom", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Net Weight", 
+  "width": "100px", 
+  "fieldname": "net_weight", 
+  "fieldtype": "Float", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Weight UOM", 
+  "width": "100px", 
+  "options": "UOM", 
+  "fieldname": "weight_uom", 
+  "fieldtype": "Link", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Page Break", 
+  "fieldname": "page_break", 
+  "fieldtype": "Check", 
+  "permlevel": 0
+ }
+]

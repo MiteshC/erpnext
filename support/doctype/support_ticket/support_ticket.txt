@@ -1,0 +1,295 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2013-01-10 16:34:31", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-14 14:15:37"
+ }, 
+ {
+  "autoname": "naming_series:", 
+  "allow_attach": 1, 
+  "search_fields": "status,customer,allocated_to,subject,raised_by", 
+  "module": "Support", 
+  "doctype": "DocType", 
+  "name": "__common__"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Support Ticket", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Support Ticket", 
+  "amend": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "read": 1, 
+  "parenttype": "DocType", 
+  "report": 1, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Support Ticket", 
+  "doctype": "DocType"
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Naming Series", 
+  "options": "SUP", 
+  "fieldname": "naming_series", 
+  "fieldtype": "Select", 
+  "reqd": 0, 
+  "hidden": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "permlevel": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Status", 
+  "oldfieldname": "status", 
+  "default": "Open", 
+  "fieldname": "status", 
+  "fieldtype": "Select", 
+  "search_index": 1, 
+  "reqd": 0, 
+  "options": "\nOpen\nTo Reply\nWaiting for Customer\nHold\nClosed", 
+  "in_filter": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Subject", 
+  "fieldname": "subject", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "cb00", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Raised By (Email)", 
+  "oldfieldname": "raised_by", 
+  "fieldname": "raised_by", 
+  "fieldtype": "Data", 
+  "depends_on": "eval:doc.__islocal", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "sb00", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "problem_description", 
+  "fieldname": "description", 
+  "fieldtype": "Text", 
+  "depends_on": "eval:doc.__islocal", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "depends_on": "eval:!doc.__islocal", 
+  "doctype": "DocField", 
+  "label": "Thread HTML", 
+  "fieldname": "thread_html", 
+  "fieldtype": "HTML", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Additional Info", 
+  "fieldname": "additional_info", 
+  "fieldtype": "Section Break", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Column Break", 
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "depends_on": "eval:!doc.__islocal", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Lead", 
+  "options": "Lead", 
+  "fieldname": "lead", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Contact", 
+  "options": "Contact", 
+  "fieldname": "contact", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Customer", 
+  "oldfieldname": "customer", 
+  "permlevel": 1, 
+  "fieldname": "customer", 
+  "fieldtype": "Link", 
+  "search_index": 1, 
+  "reqd": 0, 
+  "options": "Customer", 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Customer Name", 
+  "oldfieldname": "customer_name", 
+  "fieldname": "customer_name", 
+  "fieldtype": "Data", 
+  "search_index": 0, 
+  "reqd": 0, 
+  "permlevel": 2, 
+  "in_filter": 1
+ }, 
+ {
+  "default": "Today", 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Opening Date", 
+  "oldfieldname": "opening_date", 
+  "no_copy": 1, 
+  "fieldname": "opening_date", 
+  "fieldtype": "Date", 
+  "permlevel": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Time", 
+  "doctype": "DocField", 
+  "label": "Opening Time", 
+  "oldfieldname": "opening_time", 
+  "fieldname": "opening_time", 
+  "fieldtype": "Time", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Column Break", 
+  "doctype": "DocField", 
+  "fieldname": "column_break1", 
+  "fieldtype": "Column Break", 
+  "depends_on": "eval:!doc.__islocal", 
+  "permlevel": 1
+ }, 
+ {
+  "no_copy": 1, 
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Resolution Details", 
+  "oldfieldname": "resolution_details", 
+  "fieldname": "resolution_details", 
+  "fieldtype": "Small Text", 
+  "depends_on": "eval:!doc.__islocal", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "First Responded On", 
+  "fieldname": "first_responded_on", 
+  "fieldtype": "Datetime", 
+  "permlevel": 0
+ }, 
+ {
+  "no_copy": 1, 
+  "depends_on": "eval:!doc.__islocal", 
+  "doctype": "DocField", 
+  "label": "Resolution Date", 
+  "oldfieldname": "resolution_date", 
+  "fieldname": "resolution_date", 
+  "fieldtype": "Datetime", 
+  "search_index": 0, 
+  "oldfieldtype": "Date", 
+  "permlevel": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Content Type", 
+  "fieldname": "content_type", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "label": "File List", 
+  "fieldname": "file_list", 
+  "fieldtype": "Text", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Guest", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Customer", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Support Team", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Support Team", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Support Team", 
+  "cancel": 0, 
+  "permlevel": 2
+ }
+]

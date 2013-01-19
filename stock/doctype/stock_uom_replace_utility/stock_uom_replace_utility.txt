@@ -1,0 +1,118 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:40", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:40"
+ }, 
+ {
+  "section_style": "Simple", 
+  "in_create": 0, 
+  "module": "Stock", 
+  "server_code_error": " ", 
+  "doctype": "DocType", 
+  "issingle": 1, 
+  "read_only": 0, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "version": 25
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Stock UOM Replace Utility", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Stock UOM Replace Utility", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Stock UOM Replace Utility", 
+  "doctype": "DocType"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "System Manager", 
+  "permlevel": 0
+ }, 
+ {
+  "write": 0, 
+  "role": "System Manager", 
+  "permlevel": 1, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Master Manager", 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Manager", 
+  "permlevel": 0
+ }, 
+ {
+  "role": "Material Master Manager", 
+  "permlevel": 1, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "Material Manager", 
+  "permlevel": 1, 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Item", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "options": "Item"
+ }, 
+ {
+  "doctype": "DocField", 
+  "options": "UOM", 
+  "fieldname": "current_stock_uom", 
+  "fieldtype": "Link", 
+  "label": "Current Stock UOM", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "options": "UOM", 
+  "fieldname": "new_stock_uom", 
+  "fieldtype": "Link", 
+  "label": "New Stock UOM", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "options": "update_stock_uom", 
+  "fieldname": "update", 
+  "fieldtype": "Button", 
+  "label": "Update", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Conversion Factor", 
+  "fieldname": "conversion_factor", 
+  "fieldtype": "Currency", 
+  "permlevel": 0
+ }
+]

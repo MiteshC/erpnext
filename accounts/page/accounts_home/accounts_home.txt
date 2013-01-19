@@ -1,0 +1,21 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-06-14 15:07:28", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-05 16:30:46"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Accounts Home", 
+  "module": "Accounts", 
+  "doctype": "Page", 
+  "page_name": "accounts-home", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "accounts-home", 
+  "doctype": "Page"
+ }
+]

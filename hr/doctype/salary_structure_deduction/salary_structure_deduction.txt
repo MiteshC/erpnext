@@ -1,0 +1,59 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:54", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:54"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "show_in_menu": 0, 
+  "version": 14, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Salary Structure Deduction", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Salary Structure Deduction", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Type", 
+  "oldfieldname": "d_type", 
+  "width": "200px", 
+  "fieldname": "d_type", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Deduction Type"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Amount", 
+  "oldfieldname": "d_modified_amt", 
+  "fieldname": "d_modified_amt", 
+  "fieldtype": "Currency"
+ }, 
+ {
+  "oldfieldtype": "Check", 
+  "doctype": "DocField", 
+  "label": "Depend on LWP", 
+  "oldfieldname": "depend_on_lwp", 
+  "fieldname": "depend_on_lwp", 
+  "fieldtype": "Check"
+ }
+]

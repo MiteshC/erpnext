@@ -1,0 +1,32 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-10-02 18:51:49", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 17:04:18"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Voucher Import Tool", 
+  "module": "Accounts", 
+  "doctype": "Page", 
+  "page_name": "voucher-import-tool", 
+  "standard": "Yes"
+ }, 
+ {
+  "parent": "voucher-import-tool", 
+  "name": "__common__", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "role": "Accounts Manager", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "voucher-import-tool", 
+  "doctype": "Page"
+ }, 
+ {
+  "doctype": "Page Role"
+ }
+]

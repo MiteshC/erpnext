@@ -1,0 +1,131 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:44", 
+  "modified_by": "Administrator", 
+  "modified": "2012-07-12 18:00:16"
+ }, 
+ {
+  "section_style": "Simple", 
+  "description": "Aggregate group of **Items** into another **Item**. This is useful if you are bundling a certain **Items** into a package and you maintain stock of the packed **Items** and not the aggregate **Item**. \n\nThe package **Item** will have \"Is Stock Item\" as \"No\" and \"Is Sales Item\" as \"Yes\".\n\nFor Example: If you are selling Laptops and Backpacks separately and have a special price if the customer buys both, then the Laptop + Backpack will be a new Sales BOM Item.\n\nNote: BOM = Bill of Materials", 
+  "is_submittable": 0, 
+  "module": "Stock", 
+  "doctype": "DocType", 
+  "allow_trash": 1, 
+  "server_code_error": " ", 
+  "document_type": "Master", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "_last_update": "1322549701", 
+  "show_in_menu": 0, 
+  "version": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales BOM", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales BOM", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "amend": 0, 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Sales BOM", 
+  "doctype": "DocType"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Sales User", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "basic_section", 
+  "fieldtype": "Section Break", 
+  "label": "Sales BOM Item"
+ }, 
+ {
+  "description": "The Item that represents the Package. This Item must have \"Is Stock Item\" as \"No\" and \"Is Sales Item\" as \"Yes\"", 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Parent Item", 
+  "oldfieldname": "new_item_code", 
+  "fieldname": "new_item_code", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }, 
+ {
+  "description": "List items that form the package.", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Package Items", 
+  "fieldname": "item_section", 
+  "fieldtype": "Section Break"
+ }, 
+ {
+  "oldfieldtype": "Table", 
+  "doctype": "DocField", 
+  "label": "Sales BOM Items", 
+  "oldfieldname": "sales_bom_items", 
+  "fieldname": "sales_bom_items", 
+  "fieldtype": "Table", 
+  "reqd": 1, 
+  "options": "Sales BOM Item"
+ }
+]

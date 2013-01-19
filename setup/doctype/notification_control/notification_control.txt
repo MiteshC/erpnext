@@ -1,0 +1,208 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-12 23:29:45", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-10 12:22:45"
+ }, 
+ {
+  "allow_email": 1, 
+  "issingle": 1, 
+  "description": "Send automatic emails to Contacts on Submitting transactions.", 
+  "name": "__common__", 
+  "allow_print": 1, 
+  "doctype": "DocType", 
+  "module": "Setup", 
+  "allow_copy": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Notification Control", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Notification Control", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Notification Control", 
+  "doctype": "DocType"
+ }, 
+ {
+  "description": "When any of the checked transactions are \"Submitted\", an email pop-up automatically opened to send an email to the associated \"Contact\" in that transaction, with the transaction as an attachment. The user may or may not send the email.", 
+  "doctype": "DocField", 
+  "label": "Prompt for Email on Submission of", 
+  "fieldname": "send_autonotification_for", 
+  "fieldtype": "Section Break"
+ }, 
+ {
+  "print_width": "50%", 
+  "doctype": "DocField", 
+  "label": "Sales", 
+  "width": "50%", 
+  "fieldname": "sales", 
+  "fieldtype": "Column Break"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Quotation", 
+  "fieldname": "quotation", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Sales Order", 
+  "fieldname": "sales_order", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Delivery Note", 
+  "fieldname": "delivery_note", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Sales Invoice", 
+  "fieldname": "sales_invoice", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "print_width": "50%", 
+  "doctype": "DocField", 
+  "label": "Purchase", 
+  "width": "50%", 
+  "fieldname": "purchase", 
+  "fieldtype": "Column Break"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Purchase Order", 
+  "fieldname": "purchase_order", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Purchase Receipt", 
+  "fieldname": "purchase_receipt", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Expense Claim", 
+  "fieldname": "expense_claim", 
+  "fieldtype": "Check"
+ }, 
+ {
+  "description": "Customize the introductory text that goes as a part of that email. Each transaction has a separate introductory text.", 
+  "doctype": "DocField", 
+  "label": "Customize the Notification", 
+  "fieldname": "customize_the_notification", 
+  "fieldtype": "Section Break"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Select Transaction", 
+  "fieldname": "select_transaction", 
+  "fieldtype": "Select", 
+  "options": "\nQuotation\nSales Order\nDelivery Note\nSales Invoice\nPurchase Order\nPurchase Receipt\nExpense Claim\nExpense Claim Approved\nExpense Claim Rejected"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Custom Message", 
+  "fieldname": "custom_message", 
+  "fieldtype": "Text Editor"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Update", 
+  "fieldname": "update", 
+  "fieldtype": "Button", 
+  "options": "set_message"
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Quotation Message", 
+  "fieldname": "quotation_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Sales Order Message", 
+  "fieldname": "sales_order_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Delivery Note Message", 
+  "fieldname": "delivery_note_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Sales Invoice Message", 
+  "fieldname": "sales_invoice_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Purchase Order Message", 
+  "fieldname": "purchase_order_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Purchase Receipt Message", 
+  "fieldname": "purchase_receipt_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Expense Claim Approved Message", 
+  "fieldname": "expense_claim_approved_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "doctype": "DocField", 
+  "label": "Expense Claim Rejected Message", 
+  "fieldname": "expense_claim_rejected_message", 
+  "fieldtype": "Text", 
+  "hidden": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Guest"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "System Manager"
+ }
+]

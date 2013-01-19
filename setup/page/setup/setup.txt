@@ -1,0 +1,31 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-06-14 15:07:28", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 16:52:41"
+ }, 
+ {
+  "name": "__common__", 
+  "module": "Setup", 
+  "standard": "Yes", 
+  "page_name": "Setup", 
+  "doctype": "Page"
+ }, 
+ {
+  "parent": "Setup", 
+  "name": "__common__", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "role": "System Manager", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "Setup", 
+  "doctype": "Page"
+ }, 
+ {
+  "doctype": "Page Role"
+ }
+]

@@ -1,0 +1,222 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-12 23:29:44", 
+  "modified_by": "Administrator", 
+  "modified": "2012-12-06 10:30:15"
+ }, 
+ {
+  "autoname": "field:sales_person_name", 
+  "in_create": 1, 
+  "name": "__common__", 
+  "allow_rename": 1, 
+  "search_fields": "name,parent_sales_person", 
+  "module": "Setup", 
+  "doctype": "DocType", 
+  "document_type": "Master", 
+  "description": "All Sales Transactions can be tagged against multiple **Sales Persons** so that you can set and monitor targets."
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales Person", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales Person", 
+  "amend": 0, 
+  "submit": 0, 
+  "doctype": "DocPerm", 
+  "read": 1, 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Sales Person", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Sales Person Name", 
+  "oldfieldname": "sales_person_name", 
+  "fieldname": "sales_person_name", 
+  "fieldtype": "Data", 
+  "search_index": 0, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "description": "Select company name first.", 
+  "oldfieldtype": "Link", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Parent Sales Person", 
+  "oldfieldname": "parent_sales_person", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "parent_sales_person", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Sales Person"
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Has Child Node", 
+  "oldfieldname": "is_group", 
+  "options": "\nYes\nNo", 
+  "fieldname": "is_group", 
+  "fieldtype": "Select", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "cb0", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Employee", 
+  "options": "Employee", 
+  "fieldname": "employee", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Int", 
+  "doctype": "DocField", 
+  "label": "lft", 
+  "oldfieldname": "lft", 
+  "fieldname": "lft", 
+  "fieldtype": "Int", 
+  "search_index": 1, 
+  "hidden": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Int", 
+  "doctype": "DocField", 
+  "label": "rgt", 
+  "oldfieldname": "rgt", 
+  "fieldname": "rgt", 
+  "fieldtype": "Int", 
+  "search_index": 1, 
+  "hidden": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "old_parent", 
+  "oldfieldname": "old_parent", 
+  "fieldname": "old_parent", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Set targets Item Group-wise for this Sales Person.", 
+  "oldfieldtype": "Section Break", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Sales Person Targets", 
+  "fieldname": "target_details_section_break", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Table", 
+  "doctype": "DocField", 
+  "label": "Target Details1", 
+  "oldfieldname": "target_details", 
+  "options": "Target Detail", 
+  "fieldname": "target_details", 
+  "fieldtype": "Table", 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Select Budget Distribution to unevenly distribute targets across months.", 
+  "oldfieldtype": "Link", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Target Distribution", 
+  "oldfieldname": "distribution_id", 
+  "options": "Budget Distribution", 
+  "fieldname": "distribution_id", 
+  "fieldtype": "Link", 
+  "search_index": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales Manager", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales User", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Sales Master Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Sales Master Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }
+]

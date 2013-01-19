@@ -1,0 +1,136 @@
+[
+ {
+  "owner": "ashwini@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:43", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:43"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Support", 
+  "server_code_error": " ", 
+  "version": 13, 
+  "doctype": "DocType", 
+  "autoname": "MVD.#####"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Maintenance Visit Purpose", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Maintenance Visit Purpose", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Service Person", 
+  "oldfieldname": "service_person", 
+  "permlevel": 0, 
+  "fieldname": "service_person", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Sales Person"
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Work Done", 
+  "oldfieldname": "work_done", 
+  "fieldname": "work_done", 
+  "fieldtype": "Small Text", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "options": "Item"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Item Name", 
+  "oldfieldname": "item_name", 
+  "fieldname": "item_name", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "oldfieldname": "serial_no", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Against Document No", 
+  "oldfieldname": "prevdoc_docname", 
+  "width": "160px", 
+  "fieldname": "prevdoc_docname", 
+  "fieldtype": "Data", 
+  "hidden": 0, 
+  "permlevel": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Against Document Detail No", 
+  "oldfieldname": "prevdoc_detail_docname", 
+  "width": "160px", 
+  "fieldname": "prevdoc_detail_docname", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Data", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Document Type", 
+  "oldfieldname": "prevdoc_doctype", 
+  "width": "150px", 
+  "fieldname": "prevdoc_doctype", 
+  "fieldtype": "Data", 
+  "hidden": 0, 
+  "permlevel": 1, 
+  "report_hide": 1
+ }
+]

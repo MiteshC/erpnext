@@ -1,0 +1,107 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:42", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:42"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "module": "Support", 
+  "server_code_error": " ", 
+  "doctype": "DocType", 
+  "autoname": "MSD.#####", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "show_in_menu": 0, 
+  "version": 13
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Maintenance Schedule Detail", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Maintenance Schedule Detail", 
+  "doctype": "DocType"
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "options": "Item", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "reqd": 0, 
+  "permlevel": 1, 
+  "in_filter": 1
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Item Name", 
+  "oldfieldname": "item_name", 
+  "fieldname": "item_name", 
+  "fieldtype": "Data", 
+  "oldfieldtype": "Data", 
+  "permlevel": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Scheduled Date", 
+  "oldfieldname": "scheduled_date", 
+  "fieldname": "scheduled_date", 
+  "fieldtype": "Date", 
+  "oldfieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "oldfieldtype": "Date", 
+  "doctype": "DocField", 
+  "label": "Actual Date", 
+  "oldfieldname": "actual_date", 
+  "fieldname": "actual_date", 
+  "fieldtype": "Date", 
+  "hidden": 1, 
+  "permlevel": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Incharge Name", 
+  "oldfieldname": "incharge_name", 
+  "options": "Sales Person", 
+  "fieldname": "incharge_name", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "no_copy": 0, 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "oldfieldname": "serial_no", 
+  "width": "160px", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Small Text", 
+  "oldfieldtype": "Small Text", 
+  "permlevel": 1, 
+  "in_filter": 1
+ }
+]

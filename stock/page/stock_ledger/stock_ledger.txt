@@ -1,0 +1,40 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-09-21 20:15:14", 
+  "modified_by": "Administrator", 
+  "modified": "2012-10-04 17:25:35"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Stock Ledger", 
+  "module": "Stock", 
+  "doctype": "Page", 
+  "page_name": "stock-ledger", 
+  "standard": "Yes"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "stock-ledger", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "stock-ledger", 
+  "doctype": "Page"
+ }, 
+ {
+  "role": "Analytics", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Material Manager", 
+  "doctype": "Page Role"
+ }, 
+ {
+  "role": "Material User", 
+  "doctype": "Page Role"
+ }
+]

@@ -1,0 +1,111 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:26", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:26"
+ }, 
+ {
+  "section_style": "Tabbed", 
+  "module": "Setup", 
+  "doctype": "DocType", 
+  "allow_trash": 1, 
+  "server_code_error": " ", 
+  "document_type": "Master", 
+  "autoname": "field:uom_name", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "_last_update": "1307707462", 
+  "show_in_menu": 0, 
+  "version": 5
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "UOM", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "UOM", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "amend": 0, 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "UOM", 
+  "doctype": "DocType"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Master Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material Manager", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "UOM Details", 
+  "fieldname": "uom_details", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "UOM Name", 
+  "oldfieldname": "uom_name", 
+  "fieldname": "uom_name", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }
+]

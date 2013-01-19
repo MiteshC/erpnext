@@ -1,0 +1,81 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2013-01-17 17:02:24", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-17 17:04:08"
+ }, 
+ {
+  "read_only": 0, 
+  "autoname": "field:country_name", 
+  "in_create": 0, 
+  "doctype": "DocType", 
+  "module": "Setup", 
+  "document_type": "Master", 
+  "name": "__common__"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Country", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Country", 
+  "read": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Country", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Country Name", 
+  "oldfieldname": "country_name", 
+  "fieldname": "country_name", 
+  "fieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Date Format", 
+  "fieldname": "date_format", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Time Zones", 
+  "fieldname": "time_zones", 
+  "fieldtype": "Text"
+ }, 
+ {
+  "amend": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "role": "Sales Master Manager", 
+  "cancel": 0
+ }, 
+ {
+  "role": "Purchase Master Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR User", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR Manager", 
+  "doctype": "DocPerm"
+ }
+]

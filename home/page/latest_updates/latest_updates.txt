@@ -1,0 +1,32 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-11-19 12:06:54", 
+  "modified_by": "Administrator", 
+  "modified": "2012-11-23 18:03:48"
+ }, 
+ {
+  "name": "__common__", 
+  "title": "Latest Updates", 
+  "doctype": "Page", 
+  "module": "Home", 
+  "standard": "Yes", 
+  "page_name": "latest-updates"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "latest-updates", 
+  "doctype": "Page Role", 
+  "parenttype": "Page", 
+  "role": "All", 
+  "parentfield": "roles"
+ }, 
+ {
+  "name": "latest-updates", 
+  "doctype": "Page"
+ }, 
+ {
+  "doctype": "Page Role"
+ }
+]

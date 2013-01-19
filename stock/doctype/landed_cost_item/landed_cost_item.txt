@@ -1,0 +1,60 @@
+[
+ {
+  "owner": "wasim@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-05-03 11:00:55", 
+  "modified_by": "Administrator", 
+  "modified": "2012-05-04 13:02:26"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Stock", 
+  "show_in_menu": 0, 
+  "version": 1, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Landed Cost Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Landed Cost Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Account Head", 
+  "oldfieldname": "account_head", 
+  "fieldname": "account_head", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "options": "Account"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Amount", 
+  "oldfieldname": "amount", 
+  "fieldname": "amount", 
+  "fieldtype": "Currency"
+ }
+]

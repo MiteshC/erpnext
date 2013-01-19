@@ -1,0 +1,146 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:41", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:41"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "module": "Support", 
+  "server_code_error": " ", 
+  "doctype": "DocType", 
+  "autoname": "IMD.#####", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "show_in_menu": 0, 
+  "version": 9
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Maintenance Schedule Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Maintenance Schedule Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "colour": "White:FFF", 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "permlevel": 0, 
+  "trigger": "Client", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "search_index": 1, 
+  "reqd": 1, 
+  "options": "Item", 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Item Name", 
+  "oldfieldname": "item_name", 
+  "fieldname": "item_name", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Start Date", 
+  "oldfieldname": "start_date", 
+  "fieldname": "start_date", 
+  "fieldtype": "Date", 
+  "oldfieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "End Date", 
+  "oldfieldname": "end_date", 
+  "fieldname": "end_date", 
+  "fieldtype": "Date", 
+  "oldfieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Periodicity", 
+  "oldfieldname": "periodicity", 
+  "permlevel": 0, 
+  "fieldname": "periodicity", 
+  "fieldtype": "Select", 
+  "options": "\nWeekly\nMonthly\nQuarterly\nHalf Yearly\nYearly\nRandom"
+ }, 
+ {
+  "oldfieldtype": "Int", 
+  "doctype": "DocField", 
+  "label": "No of Visits", 
+  "oldfieldname": "no_of_visits", 
+  "fieldname": "no_of_visits", 
+  "fieldtype": "Int", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Incharge Name", 
+  "oldfieldname": "incharge_name", 
+  "options": "Sales Person", 
+  "fieldname": "incharge_name", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "oldfieldname": "serial_no", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "no_copy": 1, 
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Against Docname", 
+  "oldfieldname": "prevdoc_docname", 
+  "width": "150px", 
+  "fieldname": "prevdoc_docname", 
+  "fieldtype": "Data", 
+  "oldfieldtype": "Data", 
+  "permlevel": 1, 
+  "in_filter": 1
+ }
+]

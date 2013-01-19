@@ -1,0 +1,113 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:49", 
+  "modified_by": "Administrator", 
+  "modified": "2013-01-10 12:15:49"
+ }, 
+ {
+  "allow_print": 1, 
+  "module": "Accounts", 
+  "read_only": 1, 
+  "allow_email": 1, 
+  "hide_heading": 1, 
+  "issingle": 1, 
+  "name": "__common__", 
+  "doctype": "DocType", 
+  "hide_toolbar": 1, 
+  "allow_copy": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Bank Reconciliation", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "amend": 0, 
+  "name": "__common__", 
+  "parent": "Bank Reconciliation", 
+  "read": 1, 
+  "submit": 0, 
+  "doctype": "DocPerm", 
+  "cancel": 0, 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Bank Reconciliation", 
+  "doctype": "DocType"
+ }, 
+ {
+  "description": "Select account head of the bank where cheque was deposited.", 
+  "doctype": "DocField", 
+  "label": "Bank Account", 
+  "options": "Account", 
+  "fieldname": "bank_account", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "From Date", 
+  "fieldname": "from_date", 
+  "fieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "To Date", 
+  "fieldname": "to_date", 
+  "fieldtype": "Date", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Get Non Reconciled Entries", 
+  "options": "get_details", 
+  "fieldname": "get_non_reconciled_entries", 
+  "fieldtype": "Button", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Entries", 
+  "options": "Bank Reconciliation Detail", 
+  "fieldname": "entries", 
+  "fieldtype": "Table", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Update Clearance Date", 
+  "options": "update_details", 
+  "fieldname": "update_clearance_date", 
+  "fieldtype": "Button", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Total Amount", 
+  "fieldname": "total_amount", 
+  "fieldtype": "Currency", 
+  "permlevel": 1
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Accounts User", 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "role": "All", 
+  "permlevel": 1
+ }
+]

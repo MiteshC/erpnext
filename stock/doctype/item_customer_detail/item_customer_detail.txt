@@ -1,0 +1,58 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:33", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:33"
+ }, 
+ {
+  "section_style": "Tray", 
+  "istable": 1, 
+  "description": "For the convenience of customers, these codes can be used in print formats like Invoices and Delivery Notes", 
+  "module": "Stock", 
+  "server_code_error": " ", 
+  "in_create": 1, 
+  "read_only": 0, 
+  "autoname": "ITEMCUST/.#####", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "doctype": "DocType", 
+  "show_in_menu": 0, 
+  "version": 7
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Item Customer Detail", 
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "reqd": 1, 
+  "parenttype": "DocType", 
+  "parentfield": "fields", 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "name": "Item Customer Detail", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Customer Name", 
+  "oldfieldname": "price_list_name", 
+  "width": "180px", 
+  "fieldname": "customer_name", 
+  "fieldtype": "Link", 
+  "options": "Customer"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Ref Code", 
+  "oldfieldname": "ref_rate", 
+  "width": "120px", 
+  "fieldname": "ref_code", 
+  "fieldtype": "Data"
+ }
+]

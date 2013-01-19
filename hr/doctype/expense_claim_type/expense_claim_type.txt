@@ -1,0 +1,75 @@
+[
+ {
+  "owner": "harshada@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:55", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:55"
+ }, 
+ {
+  "section_style": "Simple", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "HR", 
+  "server_code_error": " ", 
+  "version": 5, 
+  "doctype": "DocType", 
+  "autoname": "field:expense_type", 
+  "document_type": "Master"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Expense Claim Type", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Expense Claim Type", 
+  "read": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Expense Claim Type", 
+  "doctype": "DocType"
+ }, 
+ {
+  "role": "System Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "HR Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "System Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Expense Claim Type", 
+  "oldfieldname": "expense_type", 
+  "fieldname": "expense_type", 
+  "fieldtype": "Data", 
+  "oldfieldtype": "Data", 
+  "reqd": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text"
+ }
+]

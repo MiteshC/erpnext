@@ -1,0 +1,73 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:03", 
+  "modified_by": "Administrator", 
+  "modified": "2012-12-25 13:20:51"
+ }, 
+ {
+  "autoname": "field:brand", 
+  "name": "__common__", 
+  "doctype": "DocType", 
+  "module": "Setup", 
+  "in_dialog": 1, 
+  "document_type": "Master"
+ }, 
+ {
+  "read_only": 0, 
+  "name": "__common__", 
+  "parent": "Brand", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Brand", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Brand", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Brand Name", 
+  "oldfieldname": "brand", 
+  "fieldname": "brand", 
+  "fieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "oldfieldtype": "Text", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Text"
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "Material Master Manager", 
+  "cancel": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0
+ }
+]

@@ -1,0 +1,115 @@
+[
+ {
+  "owner": "wasim@webnotestech.com", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:14", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:14"
+ }, 
+ {
+  "section_style": "Simple", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Selling", 
+  "show_in_menu": 0, 
+  "version": 8, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales and Purchase Return Item", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Sales and Purchase Return Item", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "permlevel": 1, 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Item"
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "width": "300px", 
+  "fieldname": "description", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "UOM", 
+  "oldfieldname": "uom", 
+  "permlevel": 1, 
+  "fieldname": "uom", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "options": "UOM"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Rate", 
+  "oldfieldname": "rate", 
+  "fieldname": "rate", 
+  "fieldtype": "Currency", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Qty", 
+  "oldfieldname": "qty", 
+  "fieldname": "qty", 
+  "fieldtype": "Data", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Returned Qty", 
+  "oldfieldname": "returned_qty", 
+  "fieldname": "returned_qty", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Serial No", 
+  "fieldname": "serial_no", 
+  "fieldtype": "Small Text", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Batch No", 
+  "fieldname": "batch_no", 
+  "fieldtype": "Data", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Detail Name", 
+  "oldfieldname": "detail_name", 
+  "fieldname": "detail_name", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 1
+ }
+]

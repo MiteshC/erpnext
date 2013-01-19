@@ -1,0 +1,223 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-05-15 12:15:04", 
+  "modified_by": "Administrator", 
+  "modified": "2012-07-31 17:23:42"
+ }, 
+ {
+  "section_style": "Simple", 
+  "in_create": 1, 
+  "search_fields": "item_code,warehouse", 
+  "module": "Stock", 
+  "server_code_error": " ", 
+  "read_only": 0, 
+  "_last_update": "1322549701", 
+  "autoname": "BIN/.#######", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "doctype": "DocType", 
+  "show_in_menu": 0, 
+  "version": 1, 
+  "hide_toolbar": 1
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Bin", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Bin", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Bin", 
+  "doctype": "DocType"
+ }, 
+ {
+  "role": "Sales Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "Sales User", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "Purchase Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "Purchase User", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material User", 
+  "cancel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Material Manager", 
+  "cancel": 0
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Warehouse", 
+  "oldfieldname": "warehouse", 
+  "fieldname": "warehouse", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "options": "Warehouse", 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Warehouse Type", 
+  "oldfieldname": "warehouse_type", 
+  "fieldname": "warehouse_type", 
+  "fieldtype": "Data"
+ }, 
+ {
+  "search_index": 1, 
+  "doctype": "DocField", 
+  "label": "Item Code", 
+  "oldfieldname": "item_code", 
+  "fieldname": "item_code", 
+  "fieldtype": "Link", 
+  "oldfieldtype": "Link", 
+  "options": "Item", 
+  "in_filter": 1
+ }, 
+ {
+  "default": "0.00", 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Reserved Quantity", 
+  "oldfieldname": "reserved_qty", 
+  "fieldname": "reserved_qty", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "in_filter": 0
+ }, 
+ {
+  "default": "0.00", 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Actual Quantity", 
+  "oldfieldname": "actual_qty", 
+  "fieldname": "actual_qty", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "in_filter": 1
+ }, 
+ {
+  "default": "0.00", 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Ordered Quantity", 
+  "oldfieldname": "ordered_qty", 
+  "fieldname": "ordered_qty", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "in_filter": 0
+ }, 
+ {
+  "default": "0.00", 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Quantity Requested for Purchase", 
+  "oldfieldname": "indented_qty", 
+  "fieldname": "indented_qty", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "in_filter": 0
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Planned Qty", 
+  "oldfieldname": "planned_qty", 
+  "fieldname": "planned_qty", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "in_filter": 0
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Projected Qty", 
+  "oldfieldname": "projected_qty", 
+  "fieldname": "projected_qty", 
+  "fieldtype": "Currency", 
+  "in_filter": 0
+ }, 
+ {
+  "print_hide": 1, 
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "Moving Average Rate", 
+  "oldfieldname": "ma_rate", 
+  "fieldname": "ma_rate", 
+  "fieldtype": "Currency", 
+  "oldfieldtype": "Currency", 
+  "hidden": 1, 
+  "report_hide": 1, 
+  "in_filter": 0
+ }, 
+ {
+  "search_index": 0, 
+  "doctype": "DocField", 
+  "label": "UOM", 
+  "oldfieldname": "stock_uom", 
+  "fieldname": "stock_uom", 
+  "fieldtype": "Data", 
+  "oldfieldtype": "Data", 
+  "in_filter": 1
+ }, 
+ {
+  "print_hide": 1, 
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "FCFS Rate", 
+  "oldfieldname": "fcfs_rate", 
+  "fieldname": "fcfs_rate", 
+  "fieldtype": "Currency", 
+  "hidden": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Valuation Rate", 
+  "oldfieldname": "valuation_rate", 
+  "fieldname": "valuation_rate", 
+  "fieldtype": "Currency"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Stock Value", 
+  "oldfieldname": "stock_value", 
+  "fieldname": "stock_value", 
+  "fieldtype": "Currency"
+ }
+]

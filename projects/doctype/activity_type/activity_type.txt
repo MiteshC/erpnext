@@ -1,0 +1,59 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-03 13:30:51", 
+  "modified_by": "Administrator", 
+  "modified": "2012-11-16 12:14:21"
+ }, 
+ {
+  "section_style": "Simple", 
+  "module": "Projects", 
+  "in_dialog": 1, 
+  "autoname": "field:activity_type", 
+  "document_type": "Master", 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "doctype": "DocType", 
+  "server_code_error": " ", 
+  "version": 1
+ }, 
+ {
+  "parent": "Activity Type", 
+  "name": "__common__", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "fieldname": "activity_type", 
+  "fieldtype": "Data", 
+  "reqd": 1, 
+  "label": "Activity Type", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Activity Type", 
+  "read": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Activity Type", 
+  "doctype": "DocType"
+ }, 
+ {
+  "doctype": "DocField"
+ }, 
+ {
+  "role": "System Manager", 
+  "doctype": "DocPerm"
+ }, 
+ {
+  "role": "Projects User", 
+  "doctype": "DocPerm"
+ }
+]

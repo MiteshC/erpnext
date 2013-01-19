@@ -1,0 +1,86 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:35:40", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:35:40"
+ }, 
+ {
+  "section_style": "Tray", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Accounts", 
+  "show_in_menu": 0, 
+  "version": 24, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales Invoice Advance", 
+  "no_copy": 1, 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Sales Invoice Advance", 
+  "doctype": "DocType"
+ }, 
+ {
+  "permlevel": 1, 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Journal Voucher", 
+  "oldfieldname": "journal_voucher", 
+  "width": "250px", 
+  "fieldname": "journal_voucher", 
+  "fieldtype": "Link", 
+  "options": "Journal Voucher"
+ }, 
+ {
+  "print_hide": 1, 
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Journal Voucher Detail No", 
+  "oldfieldname": "jv_detail_no", 
+  "width": "120px", 
+  "fieldname": "jv_detail_no", 
+  "fieldtype": "Data", 
+  "hidden": 1, 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Advance amount", 
+  "oldfieldname": "advance_amount", 
+  "width": "120px", 
+  "fieldname": "advance_amount", 
+  "fieldtype": "Currency", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Allocated amount", 
+  "oldfieldname": "allocated_amount", 
+  "width": "120px", 
+  "trigger": "Client", 
+  "fieldname": "allocated_amount", 
+  "fieldtype": "Currency", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Small Text", 
+  "doctype": "DocField", 
+  "label": "Remarks", 
+  "oldfieldname": "remarks", 
+  "width": "150px", 
+  "fieldname": "remarks", 
+  "fieldtype": "Small Text", 
+  "permlevel": 1
+ }
+]

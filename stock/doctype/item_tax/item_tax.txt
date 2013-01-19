@@ -1,0 +1,51 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-03-27 14:36:33", 
+  "modified_by": "Administrator", 
+  "modified": "2012-03-27 14:36:33"
+ }, 
+ {
+  "section_style": "Tray", 
+  "istable": 1, 
+  "name": "__common__", 
+  "colour": "White:FFF", 
+  "module": "Stock", 
+  "show_in_menu": 0, 
+  "server_code_error": " ", 
+  "doctype": "DocType"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Item Tax", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "Item Tax", 
+  "doctype": "DocType"
+ }, 
+ {
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Tax", 
+  "oldfieldname": "tax_type", 
+  "trigger": "Client", 
+  "fieldname": "tax_type", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "options": "Account"
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Tax Rate", 
+  "oldfieldname": "tax_rate", 
+  "fieldname": "tax_rate", 
+  "fieldtype": "Currency", 
+  "reqd": 0
+ }
+]

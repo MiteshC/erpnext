@@ -1,0 +1,248 @@
+[
+ {
+  "owner": "Administrator", 
+  "docstatus": 0, 
+  "creation": "2012-07-12 23:29:44", 
+  "modified_by": "Administrator", 
+  "modified": "2012-12-27 14:03:00"
+ }, 
+ {
+  "read_only": 0, 
+  "autoname": "field:partner_name", 
+  "in_create": 0, 
+  "name": "__common__", 
+  "doctype": "DocType", 
+  "module": "Setup", 
+  "document_type": "Master", 
+  "description": "A third party distributor / dealer / commission agent / affiliate / reseller who sells the companies products for a commission."
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales Partner", 
+  "doctype": "DocField", 
+  "parenttype": "DocType", 
+  "parentfield": "fields"
+ }, 
+ {
+  "name": "__common__", 
+  "parent": "Sales Partner", 
+  "read": 1, 
+  "doctype": "DocPerm", 
+  "parenttype": "DocType", 
+  "parentfield": "permissions"
+ }, 
+ {
+  "name": "Sales Partner", 
+  "doctype": "DocType"
+ }, 
+ {
+  "description": "Note: You Can Manage Multiple Address or Contacts via Addresses & Contacts", 
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Sales Partner Details", 
+  "fieldname": "basic_info", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Data", 
+  "doctype": "DocField", 
+  "label": "Sales Partner Name", 
+  "oldfieldname": "partner_name", 
+  "fieldname": "partner_name", 
+  "fieldtype": "Data", 
+  "search_index": 1, 
+  "reqd": 1, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Select", 
+  "doctype": "DocField", 
+  "label": "Partner Type", 
+  "oldfieldname": "partner_type", 
+  "options": "\nChannel Partner\nDistributor\nDealer\nAgent\nRetailer\nImplementation Partner\nReseller", 
+  "fieldname": "partner_type", 
+  "fieldtype": "Select", 
+  "search_index": 0, 
+  "permlevel": 0, 
+  "in_filter": 1
+ }, 
+ {
+  "oldfieldtype": "Column Break", 
+  "doctype": "DocField", 
+  "width": "50%", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Currency", 
+  "doctype": "DocField", 
+  "label": "Commission Rate", 
+  "oldfieldname": "commission_rate", 
+  "fieldname": "commission_rate", 
+  "fieldtype": "Currency", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Territory", 
+  "options": "Territory", 
+  "fieldname": "territory", 
+  "fieldtype": "Link", 
+  "reqd": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Address & Contacts", 
+  "fieldname": "address_contacts", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "depends_on": "eval:doc.__islocal", 
+  "doctype": "DocField", 
+  "label": "Address Desc", 
+  "options": "<em>Addresses will appear only when you save the customer</em>", 
+  "fieldname": "address_desc", 
+  "fieldtype": "HTML", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Address HTML", 
+  "fieldname": "address_html", 
+  "fieldtype": "HTML", 
+  "permlevel": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "column_break1", 
+  "fieldtype": "Column Break", 
+  "permlevel": 0
+ }, 
+ {
+  "depends_on": "eval:doc.__islocal", 
+  "doctype": "DocField", 
+  "label": "Contact Desc", 
+  "options": "<em>Contact Details will appear only when you save the customer</em>", 
+  "fieldname": "contact_desc", 
+  "fieldtype": "HTML", 
+  "permlevel": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "label": "Contact HTML", 
+  "fieldname": "contact_html", 
+  "fieldtype": "HTML", 
+  "permlevel": 1
+ }, 
+ {
+  "oldfieldtype": "Section Break", 
+  "doctype": "DocField", 
+  "label": "Sales Partner Target", 
+  "fieldname": "partner_target_details_section_break", 
+  "fieldtype": "Section Break", 
+  "permlevel": 0
+ }, 
+ {
+  "oldfieldtype": "Table", 
+  "doctype": "DocField", 
+  "label": "Partner Target Detail", 
+  "oldfieldname": "partner_target_details", 
+  "options": "Target Detail", 
+  "fieldname": "partner_target_details", 
+  "fieldtype": "Table", 
+  "reqd": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "description": "Select Budget Distribution to unevenly distribute targets across months.", 
+  "oldfieldtype": "Link", 
+  "doctype": "DocField", 
+  "label": "Target Distribution", 
+  "oldfieldname": "distribution_id", 
+  "options": "Budget Distribution", 
+  "fieldname": "distribution_id", 
+  "fieldtype": "Link", 
+  "permlevel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Sales Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Sales Manager", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Sales User", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Sales User", 
+  "cancel": 0, 
+  "permlevel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 1, 
+  "role": "Sales Master Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "amend": 0, 
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "submit": 0, 
+  "write": 0, 
+  "role": "Sales Master Manager", 
+  "cancel": 0, 
+  "permlevel": 1
+ }, 
+ {
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "write": 1, 
+  "role": "System Manager", 
+  "cancel": 1, 
+  "permlevel": 0
+ }, 
+ {
+  "create": 0, 
+  "doctype": "DocPerm", 
+  "write": 0, 
+  "role": "System Manager", 
+  "permlevel": 1
+ }
+]
