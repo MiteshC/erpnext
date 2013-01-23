@@ -1,80 +1,75 @@
 [
  {
-  "owner": "Administrator", 
+  "creation": "2013-01-10 16:34:24", 
   "docstatus": 0, 
-  "creation": "2012-03-27 14:36:22", 
+  "modified": "2013-01-22 14:47:50", 
   "modified_by": "Administrator", 
-  "modified": "2012-03-27 14:36:22"
+  "owner": "Administrator"
  }, 
  {
-  "section_style": "Simple", 
-  "search_fields": "print_heading", 
-  "module": "Setup", 
-  "doctype": "DocType", 
-  "allow_trash": 1, 
-  "document_type": "Master", 
   "autoname": "field:print_heading", 
+  "doctype": "DocType", 
+  "document_type": "Master", 
+  "module": "Setup", 
   "name": "__common__", 
-  "colour": "White:FFF", 
-  "_last_update": "1294312215", 
-  "server_code_error": " ", 
-  "version": 27
+  "search_fields": "print_heading"
  }, 
  {
-  "name": "__common__", 
-  "parent": "Print Heading", 
   "doctype": "DocField", 
-  "parenttype": "DocType", 
-  "parentfield": "fields"
- }, 
- {
-  "parent": "Print Heading", 
-  "read": 1, 
-  "doctype": "DocPerm", 
-  "cancel": 1, 
   "name": "__common__", 
-  "create": 1, 
-  "write": 1, 
+  "parent": "Print Heading", 
+  "parentfield": "fields", 
   "parenttype": "DocType", 
-  "role": "All", 
-  "permlevel": 0, 
-  "parentfield": "permissions"
+  "permlevel": 0
  }, 
  {
-  "name": "Print Heading", 
-  "doctype": "DocType"
+  "cancel": 1, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "name": "__common__", 
+  "parent": "Print Heading", 
+  "parentfield": "permissions", 
+  "parenttype": "DocType", 
+  "permlevel": 0, 
+  "read": 1, 
+  "report": 1, 
+  "role": "All", 
+  "submit": 0, 
+  "write": 1
+ }, 
+ {
+  "doctype": "DocType", 
+  "name": "Print Heading"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "trash_reason", 
+  "fieldtype": "Small Text", 
+  "label": "Trash Reason", 
+  "oldfieldname": "trash_reason", 
+  "oldfieldtype": "Small Text", 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "print_heading", 
+  "fieldtype": "Data", 
+  "in_filter": 1, 
+  "label": "Print Heading", 
+  "oldfieldname": "print_heading", 
+  "oldfieldtype": "Data", 
+  "reqd": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "description", 
+  "fieldtype": "Small Text", 
+  "label": "Description", 
+  "oldfieldname": "description", 
+  "oldfieldtype": "Small Text", 
+  "width": "300px"
  }, 
  {
   "doctype": "DocPerm"
- }, 
- {
-  "oldfieldtype": "Small Text", 
-  "doctype": "DocField", 
-  "label": "Trash Reason", 
-  "oldfieldname": "trash_reason", 
-  "fieldname": "trash_reason", 
-  "fieldtype": "Small Text", 
-  "permlevel": 1
- }, 
- {
-  "oldfieldtype": "Data", 
-  "doctype": "DocField", 
-  "label": "Print Heading", 
-  "oldfieldname": "print_heading", 
-  "fieldname": "print_heading", 
-  "fieldtype": "Data", 
-  "reqd": 1, 
-  "permlevel": 0, 
-  "in_filter": 1
- }, 
- {
-  "oldfieldtype": "Small Text", 
-  "doctype": "DocField", 
-  "label": "Description", 
-  "oldfieldname": "description", 
-  "width": "300px", 
-  "fieldname": "description", 
-  "fieldtype": "Small Text", 
-  "permlevel": 0
  }
 ]

@@ -17,19 +17,17 @@
 from __future__ import unicode_literals
 import webnotes
 
-from webnotes.utils import cstr, load_json
-from webnotes.model import db_exists
-from webnotes.model.doc import Document
-from webnotes.model.wrapper import getlist, copy_doclist
+from webnotes.utils import cstr, getdate
+from webnotes.model.wrapper import getlist
 from webnotes.model.code import get_obj
 from webnotes import msgprint
 
 sql = webnotes.conn.sql
 	
 
-from utilities.transaction_base import TransactionBase
+from controllers.selling_controller import SellingController
 
-class DocType(TransactionBase):
+class DocType(SellingController):
 	def __init__(self, doc, doclist=[]):
 		self.doc = doc
 		self.doclist = doclist
@@ -173,12 +171,10 @@ class DocType(TransactionBase):
 			else:
 				msgprint("Contact Date Cannot be before Last Contact Date")
 				raise Exception
-			#webnotes.conn.set(self.doc, 'contact_date_ref',self.doc.contact_date)
-	
 
-	# Validate
-	# --------
 	def validate(self):
+		super(DocType, self).validate()
+		
 		import utilities
 		utilities.validate_status(self.doc.status, ["Draft", "Submitted", 
 			"Order Confirmed", "Order Lost", "Cancelled"])
@@ -190,13 +186,9 @@ class DocType(TransactionBase):
 		self.validate_for_items()
 		sales_com_obj = get_obj('Sales Common')
 		sales_com_obj.check_active_sales_items(self)
-		sales_com_obj.validate_max_discount(self,'quotation_details') #verify whether rate is not greater than max_discount
+		sales_com_obj.validate_max_discount(self,'quotation_details')
 		sales_com_obj.check_conversion_rate(self)
 		
-		# Get total in words
-		dcc = TransactionBase().get_company_currency(self.doc.company)
-		self.doc.in_words = sales_com_obj.get_total_in_words(dcc, self.doc.rounded_total)
-		self.doc.in_words_export = sales_com_obj.get_total_in_words(self.doc.currency, self.doc.rounded_total_export)
 
 	def on_update(self):
 		# Set Quotation Status
@@ -247,10 +239,6 @@ class DocType(TransactionBase):
 	# =========================================================================
 	def on_submit(self):
 		self.check_item_table()
-		if not self.doc.amended_from:
-			webnotes.conn.set(self.doc, 'message', 'Quotation: '+self.doc.name+' has been sent')
-		else:
-			webnotes.conn.set(self.doc, 'message', 'Quotation has been amended. New Quotation no:'+self.doc.name)
 		
 		# Check for Approving Authority
 		get_obj('Authorization Control').validate_approving_authority(self.doc.doctype, self.doc.company, self.doc.grand_total, self)
@@ -265,24 +253,11 @@ class DocType(TransactionBase):
 # ON CANCEL
 # ==========================================================================
 	def on_cancel(self):
-		webnotes.conn.set(self.doc, 'message', 'Quotation: '+self.doc.name+' has been cancelled')
-		
 		#update enquiry status
 		self.update_enquiry('cancel')
 		
 		webnotes.conn.set(self.doc,'status','Cancelled')
-		
-	
-# SEND SMS
-# =============================================================================
-	def send_sms(self):
-		if not self.doc.customer_mobile_no:
-			msgprint("Please enter customer mobile no")
-		elif not self.doc.message:
-			msgprint("Please enter the message you want to send")
-		else:
-			msgprint(get_obj("SMS Control", "SMS Control").send_sms([self.doc.contact_mobile,], self.doc.message))
-	
+			
 # Print other charges
 # ===========================================================================
 	def print_other_charges(self,docname):

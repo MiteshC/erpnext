@@ -1,907 +1,797 @@
 [
  {
-  "owner": "Administrator", 
+  "creation": "2013-01-21 18:19:17", 
   "docstatus": 0, 
-  "creation": "2012-12-03 17:26:39", 
+  "modified": "2013-01-22 14:56:42", 
   "modified_by": "Administrator", 
-  "modified": "2012-12-04 17:15:28"
+  "owner": "Administrator"
  }, 
  {
-  "is_submittable": 1, 
-  "autoname": "naming_series:", 
   "allow_attach": 1, 
-  "search_fields": "posting_date, credit_to, fiscal_year, bill_no, grand_total, outstanding_amount", 
-  "module": "Accounts", 
+  "autoname": "naming_series:", 
   "doctype": "DocType", 
+  "is_submittable": 1, 
+  "module": "Accounts", 
+  "name": "__common__", 
   "read_only_onload": 1, 
-  "name": "__common__"
+  "search_fields": "posting_date, credit_to, fiscal_year, bill_no, grand_total, outstanding_amount"
  }, 
  {
+  "doctype": "DocField", 
   "name": "__common__", 
   "parent": "Purchase Invoice", 
-  "doctype": "DocField", 
+  "parentfield": "fields", 
   "parenttype": "DocType", 
-  "parentfield": "fields"
- }, 
- {
-  "name": "__common__", 
-  "parent": "Purchase Invoice", 
-  "read": 1, 
-  "doctype": "DocPerm", 
-  "parenttype": "DocType", 
-  "parentfield": "permissions"
- }, 
- {
-  "name": "Purchase Invoice", 
-  "doctype": "DocType"
- }, 
- {
-  "oldfieldtype": "Column Break", 
-  "doctype": "DocField", 
-  "width": "50%", 
-  "fieldname": "column_break0", 
-  "fieldtype": "Column Break", 
   "permlevel": 0
  }, 
  {
-  "print_hide": 1, 
-  "description": "To manage multiple series please go to Setup > Manage Series", 
-  "no_copy": 1, 
-  "oldfieldtype": "Select", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Series", 
-  "oldfieldname": "naming_series", 
+  "doctype": "DocPerm", 
+  "name": "__common__", 
+  "parent": "Purchase Invoice", 
+  "parentfield": "permissions", 
+  "parenttype": "DocType", 
   "permlevel": 0, 
+  "read": 1, 
+  "report": 1
+ }, 
+ {
+  "doctype": "DocType", 
+  "name": "Purchase Invoice"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "column_break0", 
+  "fieldtype": "Column Break", 
+  "oldfieldtype": "Column Break", 
+  "width": "50%"
+ }, 
+ {
+  "description": "To manage multiple series please go to Setup > Manage Series", 
+  "doctype": "DocField", 
   "fieldname": "naming_series", 
   "fieldtype": "Select", 
-  "reqd": 1, 
+  "label": "Series", 
+  "no_copy": 1, 
+  "oldfieldname": "naming_series", 
+  "oldfieldtype": "Select", 
   "options": "BILL\nBILLJ", 
-  "report_hide": 0
+  "print_hide": 1, 
+  "report_hide": 0, 
+  "reqd": 1
  }, 
  {
-  "print_hide": 1, 
   "description": "The account to which you will pay (have paid) the money to.", 
-  "oldfieldtype": "Link", 
   "doctype": "DocField", 
-  "label": "Credit To", 
-  "oldfieldname": "credit_to", 
-  "permlevel": 0, 
-  "trigger": "Client", 
   "fieldname": "credit_to", 
   "fieldtype": "Link", 
-  "search_index": 1, 
-  "reqd": 1, 
   "in_filter": 1, 
-  "options": "Account"
+  "label": "Credit To", 
+  "oldfieldname": "credit_to", 
+  "oldfieldtype": "Link", 
+  "options": "Account", 
+  "print_hide": 1, 
+  "reqd": 1, 
+  "search_index": 1
  }, 
  {
-  "oldfieldtype": "Data", 
   "doctype": "DocField", 
-  "label": "Name", 
-  "oldfieldname": "supplier_name", 
   "fieldname": "supplier_name", 
   "fieldtype": "Text", 
   "hidden": 1, 
-  "permlevel": 1
+  "label": "Name", 
+  "oldfieldname": "supplier_name", 
+  "oldfieldtype": "Data", 
+  "read_only": 1
  }, 
  {
   "doctype": "DocField", 
-  "label": "Address", 
   "fieldname": "address_display", 
   "fieldtype": "Small Text", 
   "hidden": 1, 
-  "permlevel": 1
+  "label": "Address", 
+  "read_only": 1
  }, 
  {
   "doctype": "DocField", 
-  "label": "Contact", 
   "fieldname": "contact_display", 
   "fieldtype": "Small Text", 
   "hidden": 1, 
-  "permlevel": 1
+  "label": "Contact", 
+  "read_only": 1
  }, 
  {
   "doctype": "DocField", 
-  "label": "Mobile No", 
   "fieldname": "contact_mobile", 
   "fieldtype": "Text", 
   "hidden": 1, 
-  "permlevel": 1
+  "label": "Mobile No", 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
   "doctype": "DocField", 
-  "label": "Contact Email", 
   "fieldname": "contact_email", 
   "fieldtype": "Text", 
   "hidden": 1, 
-  "permlevel": 1
+  "label": "Contact Email", 
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "oldfieldtype": "Column Break", 
   "doctype": "DocField", 
-  "width": "50%", 
   "fieldname": "column_break1", 
   "fieldtype": "Column Break", 
+  "oldfieldtype": "Column Break", 
   "reqd": 0, 
-  "permlevel": 0
+  "width": "50%"
  }, 
  {
-  "print_hide": 1, 
-  "description": "The date at which current entry will get or has actually executed.", 
   "default": "Today", 
-  "oldfieldtype": "Date", 
+  "description": "The date at which current entry will get or has actually executed.", 
   "doctype": "DocField", 
-  "label": "Posting Date", 
-  "oldfieldname": "posting_date", 
-  "no_copy": 0, 
   "fieldname": "posting_date", 
   "fieldtype": "Date", 
-  "search_index": 1, 
-  "reqd": 1, 
   "in_filter": 1, 
-  "permlevel": 0
+  "label": "Posting Date", 
+  "no_copy": 0, 
+  "oldfieldname": "posting_date", 
+  "oldfieldtype": "Date", 
+  "print_hide": 1, 
+  "reqd": 1, 
+  "search_index": 1
  }, 
  {
-  "print_hide": 1, 
   "description": "If not applicable please enter: NA", 
-  "oldfieldtype": "Data", 
   "doctype": "DocField", 
-  "label": "Bill No", 
-  "oldfieldname": "bill_no", 
   "fieldname": "bill_no", 
   "fieldtype": "Data", 
-  "search_index": 1, 
-  "reqd": 1, 
   "in_filter": 1, 
-  "permlevel": 0
+  "label": "Bill No", 
+  "oldfieldname": "bill_no", 
+  "oldfieldtype": "Data", 
+  "print_hide": 1, 
+  "reqd": 1, 
+  "search_index": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Date", 
   "doctype": "DocField", 
-  "label": "Bill Date", 
-  "oldfieldname": "bill_date", 
   "fieldname": "bill_date", 
   "fieldtype": "Date", 
-  "search_index": 1, 
+  "in_filter": 1, 
+  "label": "Bill Date", 
+  "oldfieldname": "bill_date", 
+  "oldfieldtype": "Date", 
+  "print_hide": 1, 
   "reqd": 0, 
-  "permlevel": 0, 
-  "in_filter": 1
+  "search_index": 1
  }, 
  {
-  "oldfieldtype": "Section Break", 
   "doctype": "DocField", 
-  "label": "Items", 
   "fieldname": "items", 
   "fieldtype": "Section Break", 
-  "permlevel": 0
+  "label": "Items", 
+  "oldfieldtype": "Section Break"
  }, 
  {
-  "oldfieldtype": "Table", 
   "allow_on_submit": 1, 
   "doctype": "DocField", 
-  "label": "Entries", 
-  "oldfieldname": "entries", 
-  "options": "Purchase Invoice Item", 
   "fieldname": "entries", 
   "fieldtype": "Table", 
-  "permlevel": 0
+  "label": "Entries", 
+  "oldfieldname": "entries", 
+  "oldfieldtype": "Table", 
+  "options": "Purchase Invoice Item"
  }, 
  {
   "doctype": "DocField", 
   "fieldname": "section_break0", 
-  "fieldtype": "Section Break", 
-  "permlevel": 0
+  "fieldtype": "Section Break"
  }, 
  {
-  "print_hide": 1, 
-  "description": "Will be calculated automatically when you enter the details", 
-  "oldfieldtype": "Currency", 
   "doctype": "DocField", 
-  "label": "Net Total", 
-  "oldfieldname": "net_total", 
-  "fieldname": "net_total", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Net Total (Import)", 
-  "oldfieldname": "net_total_import", 
-  "fieldname": "net_total_import", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "oldfieldtype": "Button", 
-  "doctype": "DocField", 
-  "label": "Recalculate", 
-  "trigger": "Client", 
   "fieldname": "recalculate", 
   "fieldtype": "Button", 
-  "permlevel": 0
+  "label": "Recalculate", 
+  "oldfieldtype": "Button"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "section_break_17", 
+  "fieldtype": "Section Break", 
+  "options": "Simple"
+ }, 
+ {
+  "description": "Select Items from Purchase Order", 
+  "doctype": "DocField", 
+  "fieldname": "purchase_order_main", 
+  "fieldtype": "Link", 
+  "label": "Purchase Order", 
+  "oldfieldname": "purchase_order_main", 
+  "oldfieldtype": "Link", 
+  "options": "Purchase Order", 
+  "print_hide": 1
+ }, 
+ {
+  "description": "Select Items from Purchase Receipt", 
+  "doctype": "DocField", 
+  "fieldname": "purchase_receipt_main", 
+  "fieldtype": "Link", 
+  "label": "Purchase Receipt", 
+  "oldfieldname": "purchase_receipt_main", 
+  "oldfieldtype": "Link", 
+  "options": "Purchase Receipt", 
+  "print_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "get_items", 
+  "fieldtype": "Button", 
+  "label": "Get Items", 
+  "oldfieldtype": "Button", 
+  "options": "pull_details"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "currency_price_list", 
+  "fieldtype": "Section Break", 
+  "label": "Currency & Price List"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "currency", 
+  "fieldtype": "Select", 
+  "label": "Currency", 
+  "oldfieldname": "currency", 
+  "oldfieldtype": "Select", 
+  "options": "link:Currency", 
+  "print_hide": 1
+ }, 
+ {
+  "default": "1", 
+  "description": "The rate at which Bill Currency is converted into company's base currency", 
+  "doctype": "DocField", 
+  "fieldname": "conversion_rate", 
+  "fieldtype": "Float", 
+  "label": "Exchange Rate", 
+  "oldfieldname": "conversion_rate", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1
  }, 
  {
   "doctype": "DocField", 
   "fieldname": "column_break2", 
-  "fieldtype": "Column Break", 
-  "permlevel": 0
+  "fieldtype": "Column Break"
  }, 
  {
-  "print_hide": 1, 
-  "description": "The rate at which Bill Currency is converted into company's base currency", 
-  "default": "1", 
-  "oldfieldtype": "Currency", 
-  "colour": "White:FFF", 
+  "description": "Consider this Price List for fetching rate. (only which have \"For Buying\" as checked)", 
   "doctype": "DocField", 
-  "label": "Bill Conversion Rate", 
-  "oldfieldname": "conversion_rate", 
-  "fieldname": "conversion_rate", 
+  "fieldname": "price_list_name", 
+  "fieldtype": "Link", 
+  "label": "Price List", 
+  "options": "Price List", 
+  "print_hide": 1
+ }, 
+ {
+  "depends_on": "price_list_name", 
+  "doctype": "DocField", 
+  "fieldname": "price_list_currency", 
+  "fieldtype": "Link", 
+  "label": "Price List Currency", 
+  "options": "Currency", 
+  "print_hide": 1
+ }, 
+ {
+  "depends_on": "price_list_name", 
+  "doctype": "DocField", 
+  "fieldname": "plc_conversion_rate", 
   "fieldtype": "Float", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Select", 
-  "doctype": "DocField", 
-  "label": "Bill Currency", 
-  "oldfieldname": "currency", 
-  "options": "link:Currency", 
-  "fieldname": "currency", 
-  "fieldtype": "Select", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "description": "Select Items from Purchase Order", 
-  "oldfieldtype": "Link", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Purchase Order", 
-  "oldfieldname": "purchase_order_main", 
-  "permlevel": 0, 
-  "trigger": "Client", 
-  "fieldname": "purchase_order_main", 
-  "fieldtype": "Link", 
-  "options": "Purchase Order"
- }, 
- {
-  "print_hide": 1, 
-  "description": "Select Items from Purchase Receipt", 
-  "oldfieldtype": "Link", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Purchase Receipt", 
-  "oldfieldname": "purchase_receipt_main", 
-  "permlevel": 0, 
-  "trigger": "Client", 
-  "fieldname": "purchase_receipt_main", 
-  "fieldtype": "Link", 
-  "options": "Purchase Receipt"
- }, 
- {
-  "oldfieldtype": "Button", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Get Items", 
-  "options": "pull_details", 
-  "fieldname": "get_items", 
-  "fieldtype": "Button", 
-  "permlevel": 0
+  "label": "Price List Exchange Rate", 
+  "print_hide": 1
  }, 
  {
   "description": "Add / Edit Taxes and Charges", 
-  "oldfieldtype": "Section Break", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Taxes", 
   "fieldname": "taxes", 
   "fieldtype": "Section Break", 
-  "permlevel": 0
+  "label": "Taxes", 
+  "oldfieldtype": "Section Break"
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Link", 
   "doctype": "DocField", 
-  "label": "Purchase Taxes and Charges", 
-  "oldfieldname": "purchase_other_charges", 
-  "options": "Purchase Taxes and Charges Master", 
   "fieldname": "purchase_other_charges", 
   "fieldtype": "Link", 
-  "permlevel": 0
+  "label": "Purchase Taxes and Charges", 
+  "oldfieldname": "purchase_other_charges", 
+  "oldfieldtype": "Link", 
+  "options": "Purchase Taxes and Charges Master", 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Button", 
   "doctype": "DocField", 
-  "label": "Get Tax Detail", 
-  "options": "get_purchase_tax_details", 
   "fieldname": "get_tax_detail", 
   "fieldtype": "Button", 
-  "permlevel": 0
+  "label": "Get Tax Detail", 
+  "oldfieldtype": "Button", 
+  "options": "get_purchase_tax_details", 
+  "print_hide": 1
  }, 
  {
-  "oldfieldtype": "Table", 
   "doctype": "DocField", 
-  "label": "Purchase Taxes and Charges", 
-  "oldfieldname": "purchase_tax_details", 
-  "options": "Purchase Taxes and Charges", 
   "fieldname": "purchase_tax_details", 
   "fieldtype": "Table", 
-  "permlevel": 0
+  "label": "Purchase Taxes and Charges", 
+  "oldfieldname": "purchase_tax_details", 
+  "oldfieldtype": "Table", 
+  "options": "Purchase Taxes and Charges"
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Button", 
   "doctype": "DocField", 
-  "label": "Calculate Tax", 
-  "trigger": "Client", 
   "fieldname": "calculate_tax", 
   "fieldtype": "Button", 
-  "permlevel": 0
+  "label": "Calculate Tax", 
+  "oldfieldtype": "Button", 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "HTML", 
   "doctype": "DocField", 
-  "label": "Tax Calculation", 
   "fieldname": "tax_calculation", 
   "fieldtype": "HTML", 
-  "permlevel": 0
+  "label": "Tax Calculation", 
+  "oldfieldtype": "HTML", 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
   "doctype": "DocField", 
-  "label": "Total Tax", 
-  "oldfieldname": "total_tax", 
   "fieldname": "total_tax", 
   "fieldtype": "Currency", 
-  "permlevel": 1
+  "label": "Total Tax", 
+  "oldfieldname": "total_tax", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
   "doctype": "DocField", 
-  "label": "Contact Info", 
   "fieldname": "contact_section", 
   "fieldtype": "Section Break", 
-  "permlevel": 0
+  "label": "Contact Info"
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Link", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Supplier", 
-  "oldfieldname": "supplier", 
-  "permlevel": 0, 
-  "trigger": "Client", 
   "fieldname": "supplier", 
   "fieldtype": "Link", 
   "hidden": 0, 
-  "options": "Supplier"
+  "label": "Supplier", 
+  "oldfieldname": "supplier", 
+  "oldfieldtype": "Link", 
+  "options": "Supplier", 
+  "print_hide": 1
  }, 
  {
   "depends_on": "eval:doc.supplier", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Supplier Address", 
-  "options": "Address", 
   "fieldname": "supplier_address", 
   "fieldtype": "Link", 
-  "permlevel": 0
+  "label": "Supplier Address", 
+  "options": "Address"
  }, 
  {
   "doctype": "DocField", 
-  "width": "50%", 
   "fieldname": "col_break23", 
   "fieldtype": "Column Break", 
-  "permlevel": 0
+  "width": "50%"
  }, 
  {
-  "print_hide": 1, 
   "depends_on": "eval:doc.supplier", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Contact Person", 
-  "options": "Contact", 
   "fieldname": "contact_person", 
   "fieldtype": "Link", 
-  "permlevel": 0
+  "label": "Contact Person", 
+  "options": "Contact", 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Section Break", 
   "doctype": "DocField", 
-  "label": "More Info", 
-  "fieldname": "more_info", 
-  "fieldtype": "Section Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Column Break", 
-  "doctype": "DocField", 
-  "width": "50%", 
-  "fieldname": "column_break3", 
-  "fieldtype": "Column Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "default": "No", 
-  "oldfieldtype": "Select", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Is Opening", 
-  "oldfieldname": "is_opening", 
-  "permlevel": 0, 
-  "trigger": "Client", 
-  "fieldname": "is_opening", 
-  "fieldtype": "Select", 
-  "search_index": 1, 
-  "options": "No\nYes", 
-  "in_filter": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Date", 
-  "doctype": "DocField", 
-  "label": "Aging Date", 
-  "oldfieldname": "aging_date", 
-  "fieldname": "aging_date", 
-  "fieldtype": "Date", 
-  "search_index": 0, 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Link", 
-  "doctype": "DocField", 
-  "label": "Amended From", 
-  "oldfieldname": "amended_from", 
-  "options": "Purchase Invoice", 
-  "fieldname": "amended_from", 
-  "fieldtype": "Link", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "description": "The date at which current entry is corrected in the system.", 
-  "no_copy": 1, 
-  "oldfieldtype": "Date", 
-  "doctype": "DocField", 
-  "label": "Amendment Date", 
-  "oldfieldname": "amendment_date", 
-  "fieldname": "amendment_date", 
-  "fieldtype": "Date", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Link", 
-  "colour": "White:FFF", 
-  "allow_on_submit": 1, 
-  "doctype": "DocField", 
-  "label": "Select Print Heading", 
-  "oldfieldname": "select_print_heading", 
-  "permlevel": 0, 
-  "trigger": "Client", 
-  "fieldname": "select_print_heading", 
-  "fieldtype": "Link", 
-  "options": "Print Heading", 
-  "report_hide": 1
- }, 
- {
-  "print_hide": 0, 
-  "no_copy": 0, 
-  "oldfieldtype": "Date", 
-  "doctype": "DocField", 
-  "label": "Due Date", 
-  "oldfieldname": "due_date", 
-  "fieldname": "due_date", 
-  "fieldtype": "Date", 
-  "search_index": 1, 
-  "permlevel": 0, 
-  "in_filter": 1
- }, 
- {
-  "oldfieldtype": "Select", 
-  "doctype": "DocField", 
-  "label": "Mode of Payment", 
-  "oldfieldname": "mode_of_payment", 
-  "options": "link:Mode of Payment", 
-  "fieldname": "mode_of_payment", 
-  "fieldtype": "Select", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Column Break", 
-  "doctype": "DocField", 
-  "width": "50%", 
-  "fieldname": "column_break4", 
-  "fieldtype": "Column Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Link", 
-  "doctype": "DocField", 
-  "label": "Company", 
-  "oldfieldname": "company", 
-  "options": "Company", 
-  "fieldname": "company", 
-  "fieldtype": "Link", 
-  "search_index": 1, 
-  "permlevel": 0, 
-  "in_filter": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Select", 
-  "doctype": "DocField", 
-  "label": "Fiscal Year", 
-  "oldfieldname": "fiscal_year", 
-  "options": "link:Fiscal Year", 
-  "fieldname": "fiscal_year", 
-  "fieldtype": "Select", 
-  "search_index": 1, 
-  "permlevel": 0, 
-  "in_filter": 1
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Data", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Cancel Reason", 
-  "oldfieldname": "cancel_reason", 
-  "fieldname": "cancel_reason", 
-  "fieldtype": "Data", 
-  "depends_on": "eval:!doc.__islocal", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Text", 
-  "doctype": "DocField", 
-  "label": "Remarks", 
-  "oldfieldname": "remarks", 
-  "fieldname": "remarks", 
-  "fieldtype": "Small Text", 
-  "reqd": 0, 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Section Break", 
-  "doctype": "DocField", 
-  "label": "Advances", 
-  "fieldname": "advances", 
-  "fieldtype": "Section Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Button", 
-  "doctype": "DocField", 
-  "label": "Get Advances Paid", 
-  "options": "get_advances", 
-  "fieldname": "get_advances_paid", 
-  "fieldtype": "Button", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Table", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "Purchase Invoice Advances", 
-  "oldfieldname": "advance_allocation_details", 
-  "options": "Purchase Invoice Advance", 
-  "fieldname": "advance_allocation_details", 
-  "fieldtype": "Table", 
-  "permlevel": 0
- }, 
- {
-  "oldfieldtype": "Section Break", 
-  "doctype": "DocField", 
-  "label": "Totals", 
   "fieldname": "totals", 
   "fieldtype": "Section Break", 
-  "permlevel": 0
+  "label": "Totals", 
+  "oldfieldtype": "Section Break"
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Column Break", 
   "doctype": "DocField", 
-  "width": "50%", 
-  "fieldname": "column_break7", 
-  "fieldtype": "Column Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Taxes and Charges Added", 
-  "oldfieldname": "other_charges_added", 
-  "fieldname": "other_charges_added", 
+  "fieldname": "net_total_import", 
   "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
+  "label": "Net Total (Import)", 
+  "oldfieldname": "net_total_import", 
   "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Taxes and Charges Deducted", 
-  "oldfieldname": "other_charges_deducted", 
-  "fieldname": "other_charges_deducted", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
+  "doctype": "DocField", 
+  "fieldname": "other_charges_added_import", 
+  "fieldtype": "Currency", 
+  "label": "Taxes and Charges Added (Import)", 
+  "oldfieldname": "other_charges_added_import", 
   "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Grand Total", 
-  "oldfieldname": "grand_total", 
-  "fieldname": "grand_total", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
-  "description": "In Words will be visible once you save the Purchase Invoice.", 
-  "oldfieldtype": "Data", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "In Words", 
-  "oldfieldname": "in_words", 
-  "fieldname": "in_words", 
+  "fieldname": "other_charges_deducted_import", 
+  "fieldtype": "Currency", 
+  "label": "Taxes and Charges Deducted (Import)", 
+  "oldfieldname": "other_charges_deducted_import", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "grand_total_import", 
+  "fieldtype": "Currency", 
+  "label": "Grand Total (Import)", 
+  "oldfieldname": "grand_total_import", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "in_words_import", 
   "fieldtype": "Data", 
-  "permlevel": 1
+  "label": "In Words (Import)", 
+  "oldfieldname": "in_words_import", 
+  "oldfieldtype": "Data", 
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
-  "oldfieldtype": "Column Break", 
   "doctype": "DocField", 
-  "width": "50%", 
-  "fieldname": "column_break8", 
-  "fieldtype": "Column Break", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Total Amount To Pay", 
-  "oldfieldname": "total_amount_to_pay", 
   "fieldname": "total_amount_to_pay", 
   "fieldtype": "Currency", 
   "hidden": 0, 
-  "permlevel": 1
+  "label": "Total Amount To Pay", 
+  "no_copy": 1, 
+  "oldfieldname": "total_amount_to_pay", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Currency", 
   "doctype": "DocField", 
-  "label": "Total Advance", 
-  "oldfieldname": "total_advance", 
   "fieldname": "total_advance", 
   "fieldtype": "Currency", 
-  "permlevel": 1
+  "label": "Total Advance", 
+  "no_copy": 1, 
+  "oldfieldname": "total_advance", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
-  "oldfieldtype": "Currency", 
   "doctype": "DocField", 
-  "label": "Outstanding Amount", 
-  "oldfieldname": "outstanding_amount", 
   "fieldname": "outstanding_amount", 
   "fieldtype": "Currency", 
-  "search_index": 1, 
-  "permlevel": 1, 
-  "in_filter": 1
+  "in_filter": 1, 
+  "label": "Outstanding Amount", 
+  "no_copy": 1, 
+  "oldfieldname": "outstanding_amount", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1, 
+  "search_index": 1
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
   "doctype": "DocField", 
-  "label": "Write Off Amount", 
+  "fieldname": "column_break8", 
+  "fieldtype": "Column Break", 
+  "oldfieldtype": "Column Break", 
+  "print_hide": 1, 
+  "width": "50%"
+ }, 
+ {
+  "description": "Will be calculated automatically when you enter the details", 
+  "doctype": "DocField", 
+  "fieldname": "net_total", 
+  "fieldtype": "Currency", 
+  "label": "Net Total", 
+  "oldfieldname": "net_total", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "other_charges_added", 
+  "fieldtype": "Currency", 
+  "label": "Taxes and Charges Added", 
+  "oldfieldname": "other_charges_added", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "other_charges_deducted", 
+  "fieldtype": "Currency", 
+  "label": "Taxes and Charges Deducted", 
+  "oldfieldname": "other_charges_deducted", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "grand_total", 
+  "fieldtype": "Currency", 
+  "label": "Grand Total", 
+  "oldfieldname": "grand_total", 
+  "oldfieldtype": "Currency", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "description": "In Words will be visible once you save the Purchase Invoice.", 
+  "doctype": "DocField", 
+  "fieldname": "in_words", 
+  "fieldtype": "Data", 
+  "label": "In Words", 
+  "oldfieldname": "in_words", 
+  "oldfieldtype": "Data", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
   "fieldname": "write_off_amount", 
   "fieldtype": "Currency", 
-  "permlevel": 0
+  "label": "Write Off Amount", 
+  "no_copy": 1, 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
   "depends_on": "eval:flt(doc.write_off_amount)!=0", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Write Off Account", 
-  "options": "Account", 
   "fieldname": "write_off_account", 
   "fieldtype": "Link", 
-  "permlevel": 0
+  "label": "Write Off Account", 
+  "no_copy": 1, 
+  "options": "Account", 
+  "print_hide": 1
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
   "depends_on": "eval:flt(doc.write_off_amount)!=0", 
-  "colour": "White:FFF", 
   "doctype": "DocField", 
-  "label": "Write Off Cost Center", 
-  "options": "Account", 
   "fieldname": "write_off_cost_center", 
   "fieldtype": "Link", 
-  "permlevel": 0
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Taxes and Charges Added (Import)", 
-  "oldfieldname": "other_charges_added_import", 
-  "fieldname": "other_charges_added_import", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Taxes and Charges Deducted (Import)", 
-  "oldfieldname": "other_charges_deducted_import", 
-  "fieldname": "other_charges_deducted_import", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Currency", 
-  "doctype": "DocField", 
-  "label": "Grand Total (Import)", 
-  "oldfieldname": "grand_total_import", 
-  "fieldname": "grand_total_import", 
-  "fieldtype": "Currency", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
-  "oldfieldtype": "Data", 
-  "colour": "White:FFF", 
-  "doctype": "DocField", 
-  "label": "In Words (Import)", 
-  "oldfieldname": "in_words_import", 
-  "fieldname": "in_words_import", 
-  "fieldtype": "Data", 
-  "permlevel": 1
- }, 
- {
-  "print_hide": 1, 
+  "label": "Write Off Cost Center", 
   "no_copy": 1, 
-  "oldfieldtype": "Small Text", 
+  "options": "Account", 
+  "print_hide": 1
+ }, 
+ {
   "doctype": "DocField", 
-  "label": "Against Expense Account", 
-  "oldfieldname": "against_expense_account", 
   "fieldname": "against_expense_account", 
   "fieldtype": "Small Text", 
   "hidden": 1, 
-  "permlevel": 0, 
+  "label": "Against Expense Account", 
+  "no_copy": 1, 
+  "oldfieldname": "against_expense_account", 
+  "oldfieldtype": "Small Text", 
+  "print_hide": 1, 
   "report_hide": 0
  }, 
  {
-  "print_hide": 1, 
-  "no_copy": 1, 
   "doctype": "DocField", 
-  "label": "File List", 
+  "fieldname": "advances", 
+  "fieldtype": "Section Break", 
+  "label": "Advances", 
+  "oldfieldtype": "Section Break", 
+  "print_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "get_advances_paid", 
+  "fieldtype": "Button", 
+  "label": "Get Advances Paid", 
+  "oldfieldtype": "Button", 
+  "options": "get_advances", 
+  "print_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "advance_allocation_details", 
+  "fieldtype": "Table", 
+  "label": "Purchase Invoice Advances", 
+  "no_copy": 1, 
+  "oldfieldname": "advance_allocation_details", 
+  "oldfieldtype": "Table", 
+  "options": "Purchase Invoice Advance", 
+  "print_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "more_info", 
+  "fieldtype": "Section Break", 
+  "label": "More Info", 
+  "oldfieldtype": "Section Break", 
+  "print_hide": 1
+ }, 
+ {
+  "default": "No", 
+  "doctype": "DocField", 
+  "fieldname": "is_opening", 
+  "fieldtype": "Select", 
+  "in_filter": 1, 
+  "label": "Is Opening", 
+  "oldfieldname": "is_opening", 
+  "oldfieldtype": "Select", 
+  "options": "No\nYes", 
+  "print_hide": 1, 
+  "search_index": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "aging_date", 
+  "fieldtype": "Date", 
+  "label": "Aging Date", 
+  "oldfieldname": "aging_date", 
+  "oldfieldtype": "Date", 
+  "print_hide": 1, 
+  "search_index": 0
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "amended_from", 
+  "fieldtype": "Link", 
+  "label": "Amended From", 
+  "no_copy": 1, 
+  "oldfieldname": "amended_from", 
+  "oldfieldtype": "Link", 
+  "options": "Purchase Invoice", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "allow_on_submit": 1, 
+  "doctype": "DocField", 
+  "fieldname": "select_print_heading", 
+  "fieldtype": "Link", 
+  "label": "Select Print Heading", 
+  "no_copy": 1, 
+  "oldfieldname": "select_print_heading", 
+  "oldfieldtype": "Link", 
+  "options": "Print Heading", 
+  "print_hide": 1, 
+  "report_hide": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "due_date", 
+  "fieldtype": "Date", 
+  "in_filter": 1, 
+  "label": "Due Date", 
+  "no_copy": 0, 
+  "oldfieldname": "due_date", 
+  "oldfieldtype": "Date", 
+  "print_hide": 0, 
+  "search_index": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "mode_of_payment", 
+  "fieldtype": "Select", 
+  "label": "Mode of Payment", 
+  "oldfieldname": "mode_of_payment", 
+  "oldfieldtype": "Select", 
+  "options": "link:Mode of Payment"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "column_break_63", 
+  "fieldtype": "Column Break"
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "company", 
+  "fieldtype": "Link", 
+  "in_filter": 1, 
+  "label": "Company", 
+  "oldfieldname": "company", 
+  "oldfieldtype": "Link", 
+  "options": "Company", 
+  "print_hide": 1, 
+  "search_index": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "fiscal_year", 
+  "fieldtype": "Select", 
+  "in_filter": 1, 
+  "label": "Fiscal Year", 
+  "oldfieldname": "fiscal_year", 
+  "oldfieldtype": "Select", 
+  "options": "link:Fiscal Year", 
+  "print_hide": 1, 
+  "search_index": 1
+ }, 
+ {
+  "depends_on": "eval:!doc.__islocal", 
+  "doctype": "DocField", 
+  "fieldname": "cancel_reason", 
+  "fieldtype": "Data", 
+  "label": "Cancel Reason", 
+  "no_copy": 1, 
+  "oldfieldname": "cancel_reason", 
+  "oldfieldtype": "Data", 
+  "print_hide": 1, 
+  "read_only": 1
+ }, 
+ {
+  "doctype": "DocField", 
+  "fieldname": "remarks", 
+  "fieldtype": "Small Text", 
+  "label": "Remarks", 
+  "no_copy": 1, 
+  "oldfieldname": "remarks", 
+  "oldfieldtype": "Text", 
+  "print_hide": 1, 
+  "reqd": 0
+ }, 
+ {
+  "doctype": "DocField", 
   "fieldname": "file_list", 
   "fieldtype": "Text", 
   "hidden": 1, 
-  "permlevel": 0
+  "label": "File List", 
+  "no_copy": 1, 
+  "print_hide": 1
  }, 
  {
   "amend": 1, 
-  "create": 1, 
-  "doctype": "DocPerm", 
-  "submit": 1, 
-  "write": 1, 
   "cancel": 1, 
-  "role": "Accounts User", 
-  "permlevel": 0
- }, 
- {
-  "amend": 0, 
-  "create": 0, 
-  "doctype": "DocPerm", 
-  "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
-  "role": "Purchase User", 
-  "permlevel": 1
- }, 
- {
-  "amend": 0, 
   "create": 1, 
   "doctype": "DocPerm", 
-  "submit": 0, 
-  "write": 1, 
-  "cancel": 0, 
-  "role": "Purchase User", 
-  "permlevel": 0
+  "role": "Accounts User", 
+  "submit": 1, 
+  "write": 1
  }, 
  {
   "amend": 0, 
+  "cancel": 0, 
+  "create": 1, 
+  "doctype": "DocPerm", 
+  "role": "Purchase User", 
+  "submit": 0, 
+  "write": 1
+ }, 
+ {
+  "amend": 0, 
+  "cancel": 0, 
   "create": 0, 
   "doctype": "DocPerm", 
-  "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
+  "match": "supplier", 
   "role": "Supplier", 
-  "permlevel": 0, 
-  "match": "supplier"
- }, 
- {
-  "amend": 0, 
-  "create": 0, 
-  "doctype": "DocPerm", 
   "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
-  "role": "Accounts Manager", 
-  "permlevel": 1
+  "write": 0
  }, 
  {
   "amend": 1, 
+  "cancel": 1, 
   "create": 1, 
   "doctype": "DocPerm", 
-  "submit": 1, 
-  "write": 1, 
-  "cancel": 1, 
   "role": "Accounts Manager", 
-  "permlevel": 0
+  "submit": 1, 
+  "write": 1
  }, 
  {
   "amend": 0, 
+  "cancel": 0, 
   "create": 0, 
   "doctype": "DocPerm", 
-  "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
-  "role": "Accounts User", 
-  "permlevel": 1
- }, 
- {
-  "amend": 0, 
-  "create": 0, 
-  "doctype": "DocPerm", 
-  "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
   "role": "Auditor", 
-  "permlevel": 1
- }, 
- {
-  "amend": 0, 
-  "create": 0, 
-  "doctype": "DocPerm", 
   "submit": 0, 
-  "write": 0, 
-  "cancel": 0, 
-  "role": "Auditor", 
-  "permlevel": 0
+  "write": 0
  }
 ]

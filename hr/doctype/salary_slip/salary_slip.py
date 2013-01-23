@@ -18,11 +18,11 @@ from __future__ import unicode_literals
 import webnotes
 
 from webnotes.utils import add_days, cint, cstr, flt, getdate
-from webnotes.model import db_exists
 from webnotes.model.doc import make_autoname
-from webnotes.model.wrapper import getlist, copy_doclist
+from webnotes.model.wrapper import getlist
 from webnotes.model.code import get_obj
 from webnotes import msgprint
+from setup.utils import get_company_currency
 
 sql = webnotes.conn.sql
 	
@@ -136,9 +136,10 @@ class DocType(TransactionBase):
 
 
 	def validate(self):
+		from webnotes.utils import money_in_words
 		self.check_existing()
-		dcc = TransactionBase().get_company_currency(self.doc.company)
-		self.doc.total_in_words	= get_obj('Sales Common').get_total_in_words(dcc, self.doc.rounded_total)
+		company_currency = get_company_currency(self.doc.company)
+		self.doc.total_in_words = money_in_words(self.doc.rounded_total, company_currency)
 
 
 	def calculate_earning_total(self):

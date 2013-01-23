@@ -18,15 +18,14 @@ from __future__ import unicode_literals
 import webnotes
 
 from webnotes.utils import cint, cstr, flt, fmt_money, formatdate, getdate
-from webnotes.model import db_exists
 from webnotes.model.doc import addchild, make_autoname
-from webnotes.model.wrapper import getlist, copy_doclist
+from webnotes.model.wrapper import getlist
 from webnotes.model.code import get_obj
-from webnotes import form, msgprint
+from webnotes import msgprint
+from setup.utils import get_company_currency
 
 sql = webnotes.conn.sql
 	
-from utilities.transaction_base import TransactionBase
 
 class DocType:
 	def __init__(self,d,dl):
@@ -176,9 +175,9 @@ class DocType:
 			if flag == 0 and (flt(diff) != 0):
 				jd = addchild(self.doc, 'entries', 'Journal Voucher Detail', self.doclist)
 				if diff>0:
-					jd.credit = flt(diff)
+					jd.credit = flt(abs(diff))
 				elif diff<0:
-					jd.debit = flt(diff)
+					jd.debit = flt(abs(diff))
 					
 			# Set the total debit, total credit and difference
 			for d in getlist(self.doclist,'entries'):
@@ -238,11 +237,12 @@ class DocType:
 					self.doc.pay_to_recd_from = webnotes.conn.get_value(master_type, ' - '.join(d.account.split(' - ')[:-1]), master_type == 'Customer' and 'customer_name' or 'supplier_name')
 			
 			if acc_type == 'Bank or Cash':
-				dcc = TransactionBase().get_company_currency(self.doc.company)
-				amt = cint(d.debit) and d.debit or d.credit	
-				self.doc.total_amount = dcc +' '+ cstr(amt)
-				self.doc.total_amount_in_words = get_obj('Sales Common').get_total_in_words(dcc, cstr(amt))
-
+				company_currency = get_company_currency(self.doc.company)
+				amt = flt(d.debit) and d.debit or d.credit	
+				self.doc.total_amount = company_currency +' '+ cstr(amt)
+				from webnotes.utils import money_in_words
+				self.doc.total_amount_in_words = money_in_words(amt, company_currency)
+				
 	def get_values(self):
 		cond = (flt(self.doc.write_off_amount) > 0) and ' and outstanding_amount <= '+self.doc.write_off_amount or ''
 		if self.doc.write_off_based_on == 'Accounts Receivable':
