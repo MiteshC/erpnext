@@ -29,7 +29,13 @@ class DocType:
 	def __init__(self, doc, doclist):
 		self.doc = doc
 		self.doclist = doclist
-		
+
+	def busyDay(self):
+		msgprint(self.doc.from_date)
+		busy_days=["2013-02-01","2013-02-02","2013-02-03","2013-02-04","2013-02-05","2013-02-06","2013-02-07","2013-02-08","2013-02-09","2013-02-10","2013-02-11","2013-02-12","2013-02-13","2013-02-14","2013-02-15","2013-02-16","2013-02-18","2013-02-19","2013-02-20"]
+		if self.doc.from_date in busy_days or self.doc.to_date in busy_days:
+			msgprint("You can not take leave(s) in busy day(s)...")
+
 	def validate(self):
 		# if self.doc.leave_approver == self.doc.owner:
 		self.validate_to_date()
