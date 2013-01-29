@@ -4,6 +4,7 @@
  "Contact Info", 
  "Lead", 
  "Address Line 1", 
+ "Fiscal Year", 
  "Address Line 2", 
  "Lost Reason", 
  "Blog", 
@@ -36,6 +37,7 @@
  "Consultant", 
  "Date on which the lead was last contacted", 
  "Naming Series", 
+ "<a href=\"#!Sales Browser/Territory\">To manage Territory, click here</a>", 
  "Customer", 
  "Website", 
  "Remark", 
@@ -54,7 +56,7 @@
  "Contact in Future", 
  "Market Segment", 
  "Request Type", 
- "Fiscal Year", 
+ "Replied", 
  "Upper Income", 
  "Not interested", 
  "Contacted", 
@@ -75,6 +77,5 @@
  "Request for Information", 
  "Open", 
  "Campaign", 
- "<a href=\"javascript:cur_frm.cscript.TerritoryHelp();\">To manage Territory, click here</a>", 
  "Email Id"
 ]

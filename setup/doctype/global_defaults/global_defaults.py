@@ -23,6 +23,7 @@ keydict = {
 	"fiscal_year": "current_fiscal_year",
 	'company': 'default_company',
 	'currency': 'default_currency',
+	'hide_currency_symbol':'hide_currency_symbol',
 	'price_list_name': 'default_price_list',
 	'price_list_currency': 'default_price_list_currency',
 	'item_group': 'default_item_group',
@@ -32,11 +33,10 @@ keydict = {
 	'supp_master_name': 'supp_master_name', 
 	'territory': 'default_territory',
 	'stock_uom': 'default_stock_uom',
-	'fraction_currency': 'default_currency_fraction',
 	'valuation_method': 'default_valuation_method',
 	'date_format': 'date_format',
 	'number_format': 'number_format',
-	'currency_format':'default_currency_format',
+	'float_precision': 'float_precision',
 	'account_url':'account_url',
 	'allow_negative_stock' : 'allow_negative_stock',
 	'maintain_same_rate' : 'maintain_same_rate',
@@ -65,7 +65,11 @@ class DocType:
 			webnotes.conn.set_default('year_start_date', ysd.strftime('%Y-%m-%d'))
 			webnotes.conn.set_default('year_end_date', \
 				get_last_day(get_first_day(ysd,0,11)).strftime('%Y-%m-%d'))
-				
+		
+		# enable default currency
+		if self.doc.default_currency:
+			webnotes.conn.set_value("Currency", self.doc.default_currency, "enabled", 1)
+		
 		# clear cache
 		webnotes.clear_cache()
 	

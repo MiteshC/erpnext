@@ -66,27 +66,24 @@ erpnext.buying.BuyingController = erpnext.utils.Controller.extend({
 		var me = this;
 		
 		if(this.frm.doc.price_list_name) {
-			// set price list currency
-			this.frm.call({
-				method: "setup.utils.get_price_list_currency",
-				args: {args: {
-					price_list_name: this.frm.doc.price_list_name,
-					use_for: "buying"
-				}},
-				callback: function(r) {
-					if(!r.exc) {
-						// for now, setting it as 1.0
-						if(me.frm.doc.price_list_currency === me.get_company_currency())
-							me.frm.set_value("plc_conversion_rate", 1.0);
-						else if(me.frm.doc.price_list_currency === me.frm.doc.currency)
-							me.frm.set_value("plc_conversion_rate", me.frm.doc.conversion_rate);
-						
-						if(r.message.price_list_currency)
+			if(!this.frm.doc.price_list_currency) {
+				// set price list currency
+				this.frm.call({
+					method: "setup.utils.get_price_list_currency",
+					args: {args: {
+						price_list_name: this.frm.doc.price_list_name,
+						use_for: "buying"
+					}},
+					callback: function(r) {
+						if(!r.exc) {
 							me.price_list_currency();
+						}
 					}
-				}
-			});
-		}
+				});
+			} else {
+				me.price_list_currency();
+			}
+		} 
 	},
 	
 	item_code: function(doc, cdt, cdn) {
@@ -145,9 +142,10 @@ erpnext.buying.BuyingController = erpnext.utils.Controller.extend({
 	price_list_currency: function() {
 		this.set_dynamic_labels();
 		
-		if(this.frm.doc.price_list_currency === this.get_company_currency()) {
+		if(this.frm.doc.price_list_currency === this.get_company_currency())
 			this.frm.set_value("plc_conversion_rate", 1.0);
-		}
+		else if(this.frm.doc.price_list_currency === this.frm.doc.currency)
+			this.frm.set_value("plc_conversion_rate", this.frm.doc.conversion_rate || 1.0);
 	},
 	
 	set_dynamic_labels: function(doc, dt, dn) {
@@ -228,10 +226,10 @@ erpnext.buying.BuyingController = erpnext.utils.Controller.extend({
 		
 		// toggle columns
 		var item_grid = this.frm.fields_dict[this.fname].grid;
-		var hide = this.frm.doc.currency == company_currency;
+		var show = this.frm.doc.currency != company_currency;
 		$.each(["purchase_rate", "purchase_ref_rate", "amount", "rate"], function(i, fname) {
 			if(wn.meta.get_docfield(item_grid.doctype, fname))
-				item_grid.set_column_disp(fname, hide);
+				item_grid.set_column_disp(fname, show);
 		});
 		
 		// set labels
@@ -242,8 +240,7 @@ erpnext.buying.BuyingController = erpnext.utils.Controller.extend({
 	},
 	
 	get_company_currency: function() {
-		return (wn.boot.company[this.frm.doc.company].default_currency ||
-			sys_defaults['currency']);
+		return erpnext.get_currency(this.frm.doc.company);
 	}
 });
 
@@ -648,9 +645,9 @@ cur_frm.cscript.calc_other_charges = function(doc , tname , fname , other_fname)
 				//prev_total += flt(tax[t].total_amount);	 // for previous row total
 
 				if(tax[t].charge_type == 'Actual')
-					$td(otc,i+1,t+1).innerHTML = fmt_money(tax[t].total_amount);
+					$td(otc,i+1,t+1).innerHTML = format_currency(tax[t].total_amount, erpnext.get_currency(doc.company));
 				else
-					$td(otc,i+1,t+1).innerHTML = '('+fmt_money(rate) + '%) ' +fmt_money(tax[t].total_amount);
+					$td(otc,i+1,t+1).innerHTML = '('+fmt_money(rate) + '%) ' +format_currency(tax[t].total_amount, erpnext.get_currency(doc.company));
 
 				if (tax[t].category != "Total"){
 					item_tax += tax[t].total_amount;
@@ -676,9 +673,9 @@ cur_frm.cscript.calc_other_charges = function(doc , tname , fname , other_fname)
 				//prev_total += flt(tax[t].total_amount);	 // for previous row total
 
 				if(tax[t].charge_type == 'Actual')
-					$td(otc,i+1,t+1).innerHTML = fmt_money(tax[t].total_amount);
+					$td(otc,i+1,t+1).innerHTML = format_currency(tax[t].total_amount, erpnext.get_currency(doc.company));
 				else
-					$td(otc,i+1,t+1).innerHTML = '('+fmt_money(rate) + '%) ' +fmt_money(tax[t].total_amount);
+					$td(otc,i+1,t+1).innerHTML = '('+fmt_money(rate) + '%) ' +format_currency(tax[t].total_amount, erpnext.get_currency(doc.company));
 
 				if (tax[t].category != "Total"){
 					item_tax -= tax[t].total_amount;

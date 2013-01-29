@@ -198,7 +198,7 @@ class DocType:
 	# ---------------------------------------------------
 	def create_default_cost_center(self):
 		glc = get_obj('GL Control')
-		cc_list = [{'cost_center_name':'Root','company_name':self.doc.name,'company_abbr':self.doc.abbr,'group_or_ledger':'Group','parent_cost_center':''}, {'cost_center_name':'Default CC Ledger','company_name':self.doc.name,'company_abbr':self.doc.abbr,'group_or_ledger':'Ledger','parent_cost_center':'Root - ' + self.doc.abbr}]
+		cc_list = [{'cost_center_name':'Root','company_name':self.doc.name,'group_or_ledger':'Group','parent_cost_center':''}, {'cost_center_name':'Default CC Ledger','company_name':self.doc.name,'group_or_ledger':'Ledger','parent_cost_center':'Root - ' + self.doc.abbr}]
 		for c in cc_list:
 			glc.add_cc(str(c))
 			
@@ -213,7 +213,9 @@ class DocType:
 		cc = sql("select name from `tabCost Center` where cost_center_name = 'Root' and company_name = '%s'"%(self.doc.name))
 		if not cc:
 			self.create_default_cost_center()
-
+			
+		if self.doc.default_currency:
+			webnotes.conn.set_value("Currency", self.doc.default_currency, "enabled", 1)
 
 	def on_trash(self):
 		"""

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # ERPNext - web based ERP (http://erpnext.com)
 # Copyright (C) 2012 Web Notes Technologies Pvt Ltd
 # 
@@ -16,6 +18,20 @@
 
 # default settings that can be made for a profile.
 from __future__ import unicode_literals
+
+lang_names = {
+	"हिंदी": "hi",
+	"english": "en",
+	"español": "es",
+	"français": "fr",
+	"português": "pt",
+	"nederlands": "nl",
+	"српски":"sr",
+	"தமிழ்": "ta",
+	"العربية":"ar"
+}
+
+lang_list = ["ar", "en", "hi", "es", "fr", "pt", "nl"]
 
 product_name = "ERPNext"
 profile_defaults = {

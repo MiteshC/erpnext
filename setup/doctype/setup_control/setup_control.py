@@ -53,6 +53,7 @@ class DocType:
 		}}
 		self.create_records(master_dict)
 		
+		
 		# Company
 		master_dict = {'Company': {
 			'company_name':args.get('company_name'),
@@ -60,12 +61,14 @@ class DocType:
 			'default_currency':args.get('currency')
 		}}
 		self.create_records(master_dict)
+
+		# enable default currency
+		webnotes.conn.set_value("Currency", args.get("currency"), "enabled", 1)
+
 		
 		def_args = {
 			'current_fiscal_year':curr_fiscal_year,
 			'default_currency': args.get('currency'),
-			"default_fraction_currency": webnotes.conn.get_value("Currency", 
-				args.get("currency"), "fraction"),
 			'default_company':args.get('company_name'),
 			'default_valuation_method':'FIFO',
 			'default_stock_uom':'Nos',
@@ -77,9 +80,7 @@ class DocType:
 			'pr_required':'No',
 			'emp_created_by':'Naming Series',
 			'cust_master_name':'Customer Name', 
-			'supp_master_name':'Supplier Name',
-			'default_currency_format': \
-				(args.get('currency')=='INR') and 'Lacs' or 'Millions'
+			'supp_master_name':'Supplier Name'
 		}
 
 		# Set 
